@@ -375,7 +375,7 @@ body <- dashboardBody(
                                 status = "primary", 
                                 solidHeader = T,
                                 tabsetPanel(
-                                  tabPanel("Most common highest qualifications held by employees",
+                                  tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
                                           column(id = "third", width = 12,
                                                 DT::dataTableOutput("hqSubTable"))
                                           ), 
@@ -1106,10 +1106,10 @@ output$page2title <- renderUI({
     distinct(IndustrySector, .keep_all = FALSE) %>%
     unlist(use.names = F)
   if(sr[[1]] %in% c("London", "Yorkshire and The Humber")) {
-    tags$b(paste0(sis[[1]], " in ", sr[[1]], ": employee qualification pathways"),
+    tags$b(paste0(sis[[1]], " in ", sr[[1]], ": post-16 qualification pathways"),
            style = "font-size: 24px;")
   } else {
-    tags$b(paste0(sis[[1]], " in the ", sr[[1]], ": employee qualification pathways"),
+    tags$b(paste0(sis[[1]], " in the ", sr[[1]], ": post-16 qualification pathways"),
            style = "font-size: 24px;")
   }
   
@@ -1140,7 +1140,7 @@ output$box2title <- renderText({
   if(input$showMedian == 'No') {
     paste0("Distribution of employees by industry sub-sector and highest level of education")
   } else {
-    paste0("Employees earnings by industry sub-sector and highest level of education")
+    paste0("Employee earnings by industry sub-sector and highest level of education")
   }
 })
 
@@ -1176,8 +1176,8 @@ output$box4title <- renderText({
   s <- selected_region_sector() %>%
     filter( Level == input$inSelect3)
   s[c('Level')] <- sapply(s[c('Level')], function(x) tolower(x))
-  HTML(paste("Qualification pathways starting at ", 
-             s$Level[1]))
+  HTML(paste("Post-16 qualification pathways starting at ", 
+             s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
 })
 
 
