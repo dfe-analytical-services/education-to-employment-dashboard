@@ -1,0 +1,128 @@
+{
+  "output": {
+    "treePlot": {
+      "x": {
+        "data": {
+          "name": "Your selection:",
+          "fill": "#f3f2f1",
+          "children": [
+            {
+              "name": "Award in Community Sports Leadership",
+              "fill": "#1d70b8",
+              "children": [
+                {
+                  "name": "BTEC National Diploma in Sport",
+                  "fill": "#003078"
+                },
+                {
+                  "name": "GCE A Level Mathematics",
+                  "fill": "#003078"
+                },
+                {
+                  "name": "GCE A Level Physical Education",
+                  "fill": "#003078"
+                },
+                {
+                  "name": "GCE A Level Geography",
+                  "fill": "#003078"
+                }
+              ]
+            },
+            {
+              "name": "Award in Door Supervision",
+              "fill": "#1d70b8"
+            },
+            {
+              "name": "Certificate in Basic Plumbing Studies",
+              "fill": "#1d70b8",
+              "children": [
+                {
+                  "name": "Certificate in Plumbing Studies",
+                  "fill": "#003078"
+                }
+              ]
+            },
+            {
+              "name": "Certificate in Electrotechnical Technology",
+              "fill": "#1d70b8",
+              "children": [
+                {
+                  "name": "Certificate in Electrotechnical Technology",
+                  "fill": "#003078",
+                  "children": [
+                    {
+                      "name": "BTEC HNC Diploma in Construction and the Built Environment",
+                      "fill": "#912b88",
+                      "children": [
+                        {
+                          "name": "First Degree (excluding Integrated Master's Degree) in Building",
+                          "fill": "#4c2c92"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Certificate in the Requirements for Electrical Installations (16 to 17th edition update BS7671 June 2008)",
+                  "fill": "#003078"
+                },
+                {
+                  "name": "Certificate in the Requirements for Electrical Installations (BS 7671 June 2008)",
+                  "fill": "#003078"
+                },
+                {
+                  "name": "Electrotechnical Apprenticeship",
+                  "fill": "#003078"
+                }
+              ]
+            },
+            {
+              "name": "Construction Award",
+              "fill": "#1d70b8"
+            },
+            {
+              "name": "Construction Skills Apprenticeship",
+              "fill": "#1d70b8",
+              "children": [
+                {
+                  "name": "Construction Skills Apprenticeship",
+                  "fill": "#003078"
+                }
+              ]
+            }
+          ]
+        },
+        "options": {
+          "hierarchy": [
+            "Qual",
+            "NextQual",
+            "NextQual.2",
+            "NextQual.3"
+          ],
+          "input": null,
+          "attribute": "leafCount",
+          "linkLength": null,
+          "fontSize": 12,
+          "tooltip": false,
+          "collapsed": true,
+          "zoomable": false,
+          "margin": {
+            "top": 20,
+            "bottom": 20,
+            "left": 115,
+            "right": 403
+          }
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}

@@ -161,13 +161,13 @@ siderbar <- dashboardSidebar(
                          "sectorp", 
                          label = "What sector do you want to work in?",
                          choices = sector_v2,
-                         selected = "Accommodation & food"),
+                         selected = "Construction"),
                        br(),
                        selectInput(
                          "regionp", 
                          label = "Where you want to live?",
                          choices = region_v2,
-                         selected = "North West"),
+                         selected = "London"),
                       br(),
                        selectInput(
                        "inSelect3", 
@@ -375,7 +375,7 @@ body <- dashboardBody(
                                 status = "primary", 
                                 solidHeader = T,
                                 tabsetPanel(
-                                  tabPanel("Most common highest qualifications held by employees",
+                                  tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
                                           column(id = "third", width = 12,
                                                 DT::dataTableOutput("hqSubTable"))
                                           ), 
@@ -402,18 +402,21 @@ body <- dashboardBody(
                   # stacked bar chart and kpis
                   fluidRow(style='margin: 0px;',
                     #style = 'width:10vw', 
-                           splitLayout(cellWidths = c('50%', '50%'),
+                           splitLayout(cellWidths = c('70%', '30%'),
                     box(title = textOutput("box7title"), 
                       width = 600, 
                       status = "primary", 
                       solidHeader = T,
                       plotlyOutput("studinWorkChart", height = 150)
                       ),
-                    box(title = textOutput("box6title"), 
+                    box(title = "Legend", 
                         width = 600, 
                         status = "primary",
                         solidHeader = T,
-                        DT::dataTableOutput("t3subjectsTable")
+                        img(src = "legend.png", 
+                            height = 150, 
+                           # width = "50%", 
+                            align = "center") 
                       )
                            )
                 ), 
@@ -423,13 +426,7 @@ body <- dashboardBody(
                          status = "primary", 
                          solidHeader = T,
                          collapsibleTreeOutput("treePlot")
-                         ),
-                  # table 
-                     box(title = textOutput("box5title"),
-                              width = 600, 
-                              status = "primary", 
-                              solidHeader = T,
-                         DT::dataTableOutput("pathwayTable"))
+                         )
                  )
        
   )
@@ -934,7 +931,7 @@ output$directionSector<- renderUI({
     filter(Sector == input$sector,
            Region == input$region) %>%
     select(direction = Years2022.2027)
-  tags$b(paste(wf$direction[[1]], "%"), 
+  tags$b(paste(round(wf$direction[[1]], digits = 1), "%"), 
          style = "font-size:40px; text-align:center; color:	#ffffff")
                  
 })
@@ -953,7 +950,19 @@ selected_region_sector <- reactive({
            Qual, 
            NextQual,
            LevelNextQual,
-           Links, perc_qual)
+           Links, perc_qual) %>%
+    mutate(ColourLevel = case_when(Level == "Level 2" ~ "#1d70b8",
+                                   Level == "Level 3" ~ "#003078",
+                                   Level == "Level 4/5" ~ "#912b88",
+                                   Level == "Level 6" ~ "#4c2c92",
+                                   Level == "Level 7+"~ "#28a197",
+                                   TRUE ~   "#ffffff"),
+           ColourNextLevel = case_when(LevelNextQual == "Level  2" ~ "#1d70b8",
+                                       LevelNextQual == "Level 3" ~ "#003078",
+                                       LevelNextQual == "Level 4/5" ~ "#912b88",
+                                       LevelNextQual == "Level 6" ~ "#4c2c92",
+                                       LevelNextQual == "Level 7+"~ "#28a197",
+                                       TRUE ~   "#ffffff"))
   })
 
 # choices in select input for level based on previous selections
@@ -981,25 +990,42 @@ tree_data <- reactive({
   left_join(selected_region_sector(), by = c("Region", 
                                            "IndustrySector",
                                            "NextQual" = "Qual",
-                                           "LevelNextQual" = "Level"), 
+                                           "LevelNextQual" = "Level", 
+                                           "ColourNextLevel" = "ColourLevel"), 
             na_matches = "na",
             suffix = c(".1", ".2")) %>% 
   left_join(selected_region_sector(), by = c("Region", 
                                            "IndustrySector",
                                            "NextQual.2" = "Qual",
-                                           "LevelNextQual.2" = "Level"), 
+                                           "LevelNextQual.2" = "Level", 
+                                           "ColourNextLevel.2" = "ColourLevel"), 
             na_matches = "na",
             suffix = c("", ".3")) %>% 
-  select(Qual, starts_with(c("NextQual", "Links", "Level"))) %>%
+  select(Qual, starts_with(c("NextQual", "Links", "Level", "Colour"))) %>%
   # replace nas with 0 in number of students
   mutate_at(vars(matches("Links")), ~replace(., is.na(.), 0)) %>%
+  # replace nas for vector colors
+  mutate_at(vars(matches("Colour")), ~na_if(., "#ffffff")) %>% 
   # restrict each next qual the number of nodes to top 5
   group_by(Qual, Level) %>%
   arrange(desc(Links.1), .by_group = T) %>%
   mutate(numbering = dplyr::row_number()) %>%
-  filter(numbering <= 3) %>%
+  filter(numbering <= 10) %>%
   ungroup()
 })
+
+# Make vectors for colors
+color1 <- reactive({tree_data() %>% 
+    distinct(Qual, ColourLevel, .keep_all = F) })
+color2 <- reactive({tree_data() %>% 
+    distinct(Qual, NextQual, ColourNextLevel, .keep_all = F) %>% 
+    filter(!is.na(NextQual))})
+color3 <- reactive({tree_data() %>% 
+    distinct(Qual, NextQual, NextQual.2, ColourNextLevel.2, .keep_all = F) %>% 
+    filter(!is.na(NextQual) & !is.na(NextQual.2))})
+color4 <- reactive({tree_data() %>% 
+    distinct(Qual, NextQual, NextQual.2, NextQual.3, ColourNextLevel.3, .keep_all = F) %>%
+    filter(!is.na(NextQual) & !is.na(NextQual.2) & !is.na(NextQual.3))})
 
 
 # Page2: Render treeplot --------------------------------------------------
@@ -1008,25 +1034,18 @@ output$treePlot <- renderCollapsibleTree({
 
   collapsibleTree(tree_data(), 
                   hierarchy = c("Qual", "NextQual", "NextQual.2", "NextQual.3"),
-                  root = paste(input$inSelect3),
+                  root = paste("Your selection:"),
                   zoomable = FALSE,
+                  fontSize = 12, 
                   fill = c("#f3f2f1",
-                           rep("#1D70B8", length(unique(tree_data()$Qual))),
-                           rep("#28a197", length(str_subset(unique(paste(tree_data()$NextQual,
-                                                                             tree_data()$Qual)), "NA", negate = TRUE))),
-                           rep("#003078", length(str_subset(unique(paste(tree_data()$Qual,
-                                                                           tree_data()$NextQual,
-                                                                           tree_data()$NextQual.2)), "NA", negate = TRUE))),
-                           rep("#489FD6", length(str_subset(unique(paste(tree_data()$Qual,
-                                                                        tree_data()$NextQual.2,
-                                                                        tree_data()$NextQual.3,
-                                                                        tree_data()$NextQual)), "NA", negate = TRUE)))
-
-                  ),
+                           color1()$ColourLevel, 
+                           color2()$ColourNextLevel, 
+                           color3()$ColourNextLevel.2, 
+                           color4()$ColourNextLevel.3),
                   fillByLevel = TRUE,
                   collapsed = TRUE,
                   tooltip = F ,
-                 width = 800
+                 width = 1200
                   )
   
 })
@@ -1063,69 +1082,8 @@ output$t3subjectsTable <- renderDataTable({
   
 })
 
-
-
-# Page 2: Render pathway table --------------------------------------------------
-
-
-# re-create tree data but with perc_qual in it
-pathway_table_data <- reactive({
-  selected_region_sector() %>%
-    filter(Level == input$inSelect3) %>% 
-    left_join(selected_region_sector(), by = c("Region", 
-                                               "IndustrySector",
-                                               "NextQual" = "Qual",
-                                               "LevelNextQual" = "Level"), 
-              na_matches = "na",
-              suffix = c(".1", ".2")) %>% 
-    left_join(selected_region_sector(), by = c("Region", 
-                                               "IndustrySector",
-                                               "NextQual.2" = "Qual",
-                                               "LevelNextQual.2" = "Level"), 
-              na_matches = "na",
-              suffix = c("", ".3")) %>% 
-    select(Qual, starts_with(c("NextQual", "Links", "Level", "perc"))) %>%
-    # replace nas with 0 in number of students
-    mutate_at(vars(matches("Links")), ~replace(., is.na(.), 0)) %>%
-    # restrict each next qual the number of nodes to top 5
-    group_by(Qual, Level) %>%
-    arrange(desc(Links.1), .by_group = T) %>%
-    mutate(numbering = dplyr::row_number()) %>%
-    filter(numbering <= 3) %>%
-    ungroup()
-})
-
-
-output$pathwayTable <- renderDataTable({
-  
-  DT::datatable(pathway_table_data() %>%
-                select(Qual, NextQual, perc_qual.1) %>%
-                  distinct(Qual, NextQual, .keep_all = T),
-                rownames = FALSE,
-                colnames = c("Qualification",  "Next qualification","Proportion students"),
-                options = list(searching = FALSE,
-                               pageLength = 20,
-                               searchHighlight = TRUE,
-                               dom = 't',
-                               scrollX = F),
-                width = '625px',
-                height = '400px' ,
-                style = 'bootstrap', 
-                class = 'table-bordered table-condensed align-center') %>%
-   formatPercentage(3, digits = 0) %>%
-    formatStyle(0, target = 'row',
-                color = 'black',
-                fontSize = '16px',
-                backgroundColor = 'white',
-                lineHeight='100%')
-  
-})
-
-
-
 # Page 1&2: reactive Box & KPIs titles --------------------------------------------------------------
 
- 
 # page titles
 output$page1title <- renderUI({
   s <- selection() 
@@ -1148,10 +1106,10 @@ output$page2title <- renderUI({
     distinct(IndustrySector, .keep_all = FALSE) %>%
     unlist(use.names = F)
   if(sr[[1]] %in% c("London", "Yorkshire and The Humber")) {
-    tags$b(paste0(sis[[1]], " in ", sr[[1]], ": employee qualification pathways"),
+    tags$b(paste0(sis[[1]], " in ", sr[[1]], ": post-16 qualification pathways"),
            style = "font-size: 24px;")
   } else {
-    tags$b(paste0(sis[[1]], " in the ", sr[[1]], ": employee qualification pathways"),
+    tags$b(paste0(sis[[1]], " in the ", sr[[1]], ": post-16 qualification pathways"),
            style = "font-size: 24px;")
   }
   
@@ -1182,7 +1140,7 @@ output$box2title <- renderText({
   if(input$showMedian == 'No') {
     paste0("Distribution of employees by industry sub-sector and highest level of education")
   } else {
-    paste0("Employees earnings by industry sub-sector and highest level of education")
+    paste0("Employee earnings by industry sub-sector and highest level of education")
   }
 })
 
@@ -1213,34 +1171,14 @@ output$box7title <- renderText({
               inWorkChartTitle(), " qualification"))
 })
 
-# page 2: title for table page 3 subjects
-output$box6title <- renderText({
-  s <- selected_region_sector() %>%
-    filter( Level == input$inSelect3)
-  s[c('Level')] <- sapply(s[c('Level')], function(x) tolower(x))
-  HTML(paste("Top three subject areas for employees at ", 
-             s$Level[1]))
-})
-
 # page 2: treeplot
 output$box4title <- renderText({
   s <- selected_region_sector() %>%
     filter( Level == input$inSelect3)
   s[c('Level')] <- sapply(s[c('Level')], function(x) tolower(x))
-  HTML(paste("Qualification pathways starting at ", 
-             s$Level[1]))
+  HTML(paste("Post-16 qualification pathways starting at ", 
+             s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
 })
-
-
-# page 2: title for pathways table 
-output$box5title <- renderText({
-  s <- selected_region_sector() %>%
-    filter( Level == input$inSelect3)
-  s[c('Level')] <- sapply(s[c('Level')], function(x) tolower(x))
-  HTML(paste("Qualification progression for ", 
-             s$Level[1]))
-})
-
 
 
 
