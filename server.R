@@ -1,4 +1,9 @@
 
+theme_set(theme_hc(base_family = "Helvetica")) 
+
+defaultW <- getOption("warn")
+options(warn = -1)
+
 
 server <- function(input, output, session) {
   
@@ -14,6 +19,100 @@ server <- function(input, output, session) {
   
   observeEvent(input$link_to_regional_tab, {
     updateTabsetPanel(session, "navbar", selected = "regional")
+  })
+  
+  
+  # Page1: Reactive chart sub-sector ------------------------------------------------------------------
+  
+  selection_subs <- reactive({
+    stat_subs %>%
+      filter(Region == input$region &
+               Sector == input$sector) 
+  })
+  
+  numberRows_subs <- reactive({
+    selection_subs() %>% nrow()
+  })
+  
+  subsVolMedianChart <- reactive({
+    if(input$showMedian == 'No'){ 
+      selection_subs() %>%
+        ggplot(aes(x = Subsector, 
+                   text = paste(paste0("Percentage: ", formatC(perc_subs*100,
+                                                               digits = 0,
+                                                               format = "f"), "%"), 
+                                paste0("Volume: ", formatC(number_students_subs, 
+                                                           digits = 0, 
+                                                           format = "f", 
+                                                           big.mark = ",")), 
+                                paste0("Apprentices: ", formatC(number_students_app,
+                                                                digits = 0,
+                                                                format = "f",
+                                                                big.mark = ",")),
+                                sep = "\n"))) +
+        geom_col(aes(y = perc_subs), 
+                 fill = "#28a197")  +
+        labs(y = "", x = "",
+             title = "") +
+        theme(legend.position="none", 
+              plot.title = element_text((hjust = 0.5)),
+              axis.text.y = element_text(face="bold", color="#0b0c0c",
+                                         size=12, angle=0),
+              axis.ticks.x = element_blank(), axis.text.x = element_blank(),
+              panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+              panel.background = element_blank(),panel.grid.major.y = element_blank(),
+              panel.grid.minor.y = element_blank()) +
+        scale_y_continuous(labels = scales::percent) +
+        coord_flip() 
+    } else {
+      selection_subs() %>%
+        ggplot(aes(x = Subsector,
+                   text = paste(paste0("Percentage: ", formatC(perc_subs*100,
+                                                               digits = 0,
+                                                               format = "f"), "%"), 
+                                paste0("Volume: ", formatC(number_students_subs, 
+                                                           digits = 0, 
+                                                           format = "f", 
+                                                           big.mark = ",")), 
+                                paste0("Apprentices: ", formatC(number_students_app,
+                                                                digits = 0,
+                                                                format = "f",
+                                                                big.mark = ",")),
+                                
+                                sep = "\n"))) +
+        geom_count(aes(y = median_income),
+                   size = 1,
+                   shape = 21,
+                   color = "#4c2c92",
+                   fill = "#4c2c92") + 
+        geom_text(data = selection_subs(), 
+                  aes(x = Subsector, y = median_income,
+                      label = paste0("£", formatC(signif(median_income/1000, digits = 2), 
+                                                  digits = 0, 
+                                                  format = "f", 
+                                                  big.mark = ","), "K")),
+                  nudge_x = 0.25,
+                  nudge_y = -0.5,
+                  size = 3,
+                  colour="#0b0c0c", 
+                  check_overlap = TRUE) +
+        geom_segment(aes(x = Subsector, xend = Subsector, 
+                         y = 0, 
+                         yend = median_income),
+                     size = 0.5, color = "#4c2c92") +
+        labs(y = "Average Earnings (£)", x = "",
+             title = "") +
+        theme(legend.position="none",
+              plot.title = element_text((hjust = 0.5)),
+              axis.text.y = element_text(face="bold", color="#0b0c0c",
+                                         size=12, angle=0),
+              axis.text.x = element_blank(),  
+              axis.ticks.x = element_blank(),panel.grid.major.y = element_blank(),
+              panel.grid.minor.y = element_blank())  + 
+        scale_y_continuous(labels = comma_format(big.mark = ",") )+
+        coord_flip()
+      
+    }
   })
   
   
@@ -119,99 +218,7 @@ server <- function(input, output, session) {
   })
   
   
-  # Page1: Reactive chart sub-sector ------------------------------------------------------------------
-  
-  selection_subs <- reactive({
-    stat_subs %>%
-      filter(Region == input$region &
-               Sector == input$sector) 
-  })
-  
-  numberRows_subs <- reactive({
-    selection_subs() %>% nrow()
-  })
-  
-  subsVolMedianChart <- reactive({
-    if(input$showMedian == 'No'){ 
-      selection_subs() %>%
-        ggplot(aes(x = Subsector, 
-                   text = paste(paste0("Percentage: ", formatC(perc_subs*100,
-                                                               digits = 0,
-                                                               format = "f"), "%"), 
-                                paste0("Volume: ", formatC(number_students_subs, 
-                                                           digits = 0, 
-                                                           format = "f", 
-                                                           big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
-                                sep = "\n"))) +
-        geom_col(aes(y = perc_subs), 
-                 fill = "#28a197")  +
-        labs(y = "", x = "",
-             title = "") +
-        theme(legend.position="none", 
-              plot.title = element_text((hjust = 0.5)),
-              axis.text.y = element_text(face="bold", color="#0b0c0c",
-                                         size=12, angle=0),
-              axis.ticks.x = element_blank(), axis.text.x = element_blank(),
-              panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-              panel.background = element_blank(),panel.grid.major.y = element_blank(),
-              panel.grid.minor.y = element_blank()) +
-        scale_y_continuous(labels = scales::percent) +
-        coord_flip() 
-    } else {
-      selection_subs() %>%
-        ggplot(aes(x = Subsector,
-                   text = paste(paste0("Percentage: ", formatC(perc_subs*100,
-                                                               digits = 0,
-                                                               format = "f"), "%"), 
-                                paste0("Volume: ", formatC(number_students_subs, 
-                                                           digits = 0, 
-                                                           format = "f", 
-                                                           big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
-                                
-                                sep = "\n"))) +
-        geom_count(aes(y = median_income),
-                   size = 1,
-                   shape = 21,
-                   color = "#4c2c92",
-                   fill = "#4c2c92") + 
-        geom_text(data = selection_subs(), 
-                  aes(x = Subsector, y = median_income,
-                      label = paste0("£", formatC(signif(median_income/1000, digits = 2), 
-                                                  digits = 0, 
-                                                  format = "f", 
-                                                  big.mark = ","), "K")),
-                  nudge_x = 0.25,
-                  nudge_y = -0.5,
-                  size = 3,
-                  colour="#0b0c0c", 
-                  check_overlap = TRUE) +
-        geom_segment(aes(x = Subsector, xend = Subsector, 
-                         y = 0, 
-                         yend = median_income),
-                     size = 0.5, color = "#4c2c92") +
-        labs(y = "Average Earnings (£)", x = "",
-             title = "") +
-        theme(legend.position="none",
-              plot.title = element_text((hjust = 0.5)),
-              axis.text.y = element_text(face="bold", color="#0b0c0c",
-                                         size=12, angle=0),
-              axis.text.x = element_blank(),  
-              axis.ticks.x = element_blank(),panel.grid.major.y = element_blank(),
-              panel.grid.minor.y = element_blank())  + 
-        scale_y_continuous(labels = comma_format(big.mark = ",") )+
-        coord_flip()
-      
-    }
-  })
-  
+
   # Page1: Reactive chart subject ------------------------------------------------------
   
   # choices in select input

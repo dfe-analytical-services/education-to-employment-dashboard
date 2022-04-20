@@ -1,11 +1,5 @@
 
 
-theme_set(theme_hc(base_family = "Helvetica")) 
-
-defaultW <- getOption("warn")
-options(warn = -1)
-
-
 fluidPage(
   shinyjs::useShinyjs(),
   includeCSS("www/dfe_shiny_gov_style.css"),
@@ -31,13 +25,13 @@ HTML("<title>Post-16 Career Pathway Explorer: employees aged 25-30 in sustained 
   
 # Navbar ===========================================================================
 
-# This CSS sets the 4th item on the navbar to the right
+# This CSS sets the 5th item on the navbar to the right
 tagList(
   tags$head(tags$style(HTML("
                            .navbar-nav {
                            float: none !important;
                            }
-                           .navbar-nav > li:nth-child(4) {
+                           .navbar-nav > li:nth-child(5) {
                            float: right;
                            }
                            ")))
@@ -120,7 +114,7 @@ navbarPage("",
                  width = 2,
                  
                  ### Help text ---------------------------------------------------------------------
-                 helpText("Choose an industry sector and region to view the education level and earnings of employees."),
+                 #helpText("Choose an industry sector and region to view the education level and earnings of employees."),
                  
                  ### Sector input -------------------------------------------------------------------
                  selectizeInput("sector", options = list(create = TRUE), 
@@ -137,18 +131,21 @@ navbarPage("",
                                 selected = "London"),
                  
                  ### Show earnings button --------------------------------------------------------------------
-                 br(),
+                 #br(),
                  radioButtons("showMedian",
                               selected = "No",
-                              label = "Show Average Earnings", 
+                              label = div(style = "white-space: nowrap;", 
+                                          "Show Average Earnings:"), 
                               choices = c("No","Yes"),
                               inline = TRUE, 
-                              width = "85%"),
+                              width = "50%"),
+                 br(),
+                 br(),
                  br(),
                  
                  ### Help text ---------------------------------------------------------------------
-                 helpText("Choose an industry sub-sector and qualification level to view more detail on subject and qualifications choices of employees."),
-                 br(),
+                 #helpText("Choose an industry sub-sector and qualification level to view more detail on subject and qualifications choices of employees."),
+                 #br(),
                  
                  ### Sub-Sector input -------------------------------------------------------------------
                  selectizeInput("inSelect2", 
@@ -158,7 +155,7 @@ navbarPage("",
                                 multiple = F,
                                 width = "100%",
                                 selected = "All subsectors"),
-                 br(),
+                 #br(),
                  
                  ### Level input -------------------------------------------------------------------
                  selectizeInput("inSelect",
@@ -167,10 +164,10 @@ navbarPage("",
                                 choices = levelsRelabelled,
                                 multiple = F,
                                 selected = "All levels"),
-                 br(),
+                 #br(),
                  
                  ### Reset button -------------------------------------------------------------------
-                 br(), 
+                 #br(), 
                  actionButton("reset", "Reset", 
                               style = "color: #0b0c0c; 
                                        font-size: 12px; 
@@ -198,10 +195,10 @@ navbarPage("",
                     #### KPIs ----------------------------------------------------------------------------
                 
                 tabItem("",
-                  box(title = NULL, 
-                      width = 600, 
-                      status = "primary", 
-                      solidHeader = T, 
+                  # box(title = NULL, 
+                  #     width = 600, 
+                  #     status = "primary", 
+                  #     solidHeader = T, 
                       column(id = "second", 
                              align = "left", 
                              width = 3,
@@ -230,24 +227,20 @@ navbarPage("",
                       ),
                       column(id = "third", 
                              width = 1)
-                  )
+                  #)
                 ),
                 
                     #### Subsector & Level Charts ----------------------------------------------------------------------------
                 
                 tabItem("",
-                box(title = textOutput("box2title"), 
-                    width = 600, 
-                    status = "primary", 
-                    solidHeader = T,
-                    column(width = 6, 
-                           plotlyOutput("subsVolMedianChart")
-                    ),
-                    column(width = 6, 
+                column(4,  
+                       textOutput("box2title")), 
+ splitLayout(cellWidths = c("50%", "50%"),
+                           plotlyOutput("subsVolMedianChart"),
+          
                            plotlyOutput("highestQualVolMedianChart")
-                    )
-                )
-              ), 
+                   ) 
+ ), 
               
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               

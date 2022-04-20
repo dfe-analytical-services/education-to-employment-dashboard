@@ -92,6 +92,7 @@ a {
 
 .help-block{
   color: #ffffff;
+  font-size: 14px;
 }
 
 .govuk-inset-text{
@@ -103,3 +104,17 @@ a {
   font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
   font-size: 14px;
 }
+
+
+.selectize-input {
+  font-size: 12pt; 
+  background: 	#ffffff !important;
+  float: center; padding: 1px;
+}
+
+.radio-inline {
+  float: left;
+  color:#ffffff !important;
+}
+
+
