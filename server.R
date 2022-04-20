@@ -45,10 +45,6 @@ server <- function(input, output, session) {
                                                            digits = 0, 
                                                            format = "f", 
                                                            big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
                                 sep = "\n"))) +
         geom_col(aes(y = perc_subs), 
                  fill = "#28a197")  +
@@ -73,12 +69,7 @@ server <- function(input, output, session) {
                                 paste0("Volume: ", formatC(number_students_subs, 
                                                            digits = 0, 
                                                            format = "f", 
-                                                           big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
-                                
+                                                           big.mark = ",")),
                                 sep = "\n"))) +
         geom_count(aes(y = median_income),
                    size = 1,
@@ -138,11 +129,7 @@ server <- function(input, output, session) {
                                 paste0("Volume: ", formatC(number_students_hq, 
                                                            digits = 0, 
                                                            format = "f", 
-                                                           big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
+                                                           big.mark = ",")),
                                 sep = "\n"))) + 
         geom_col(aes(y = perc_hq), 
                  fill = c("#f3f2f1","#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"))  +
@@ -172,11 +159,7 @@ server <- function(input, output, session) {
                                 paste0("Volume: ", formatC(number_students_hq, 
                                                            digits = 0, 
                                                            format = "f", 
-                                                           big.mark = ",")), 
-                                paste0("Apprentices: ", formatC(number_students_app,
-                                                                digits = 0,
-                                                                format = "f",
-                                                                big.mark = ",")),
+                                                           big.mark = ",")),
                                 sep = "\n"))) + 
         geom_point(aes(y = median_income),
                    size = 1,
@@ -489,7 +472,7 @@ server <- function(input, output, session) {
     perc <- round(perc, digits = 2) 
     
     tags$b(paste0(perc[[1]]*100, "%"), 
-           style = "font-size:40px; text-align:center; color:	#ffffff")
+           style = "font-size:20px; text-align:center; color:	#ffffff")
   })
   
   # median income
@@ -503,7 +486,7 @@ server <- function(input, output, session) {
     median_inc <- prettyNum(median_inc, big.mark = ",")
     
     tags$b(paste0("£", median_inc), 
-           style = "font-size:40px; text-align:center; color:	#ffffff")
+           style = "font-size:20px; text-align:center; color:	#ffffff")
   })
   
   # direction of change
@@ -513,7 +496,7 @@ server <- function(input, output, session) {
              Region == input$region) %>%
       select(direction = Years2022.2027)
     tags$b(paste(round(wf$direction[[1]], digits = 1), "%"), 
-           style = "font-size:40px; text-align:center; color:	#ffffff")
+           style = "font-size:20px; text-align:center; color:	#ffffff")
     
   })
   
@@ -701,7 +684,7 @@ server <- function(input, output, session) {
     s <- selection() 
     
     tags$b(paste0("of employees work in ", tolower(s$Sector[1])), 
-           style = "font-size: 18px; color: #ffffff")
+           style = "font-size: 16px; color: #ffffff")
     
   })
   
@@ -713,7 +696,7 @@ server <- function(input, output, session) {
       select(direction = Years2022.2027)
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
     tags$b(paste0("forecast annual employment ", changeS), 
-           style = "font-size: 18px; color: #ffffff")
+           style = "font-size: 16px; color: #ffffff")
   })
   
   # page 1: subsector/qualification level chart

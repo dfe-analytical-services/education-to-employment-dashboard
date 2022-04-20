@@ -6,68 +6,65 @@ fluidPage(
   title = "Unit for Future Skills - Career Explorer Dashboard",
   
 tags$head(
-  # modify column background
-  tags$style(HTML("
-                                  #first {
-                                  border: 2px ;
-                                  border-radius: 3px;
-                                  border-style: groove;
-                                  border-color: 	#1D70B8;
-                                  background-color: #1D70B8;
-                                  }
-                                  #second {
-                                  border: 2px ;
-                                  border-radius: 3px;
-                                  border-style: groove;
-                                  border-color: #003078;
-                                  background-color: #003078;
-                                  }
-                                  #third {
-                                  border: 0px ;
-                                  border-radius: 15px;
-                                  padding:10px; 
-                                  border-color: #ffffff;
-                                  background-color: #ffffff;
-                                  align: center;
-                                  }                                 
-                                  ")),
+  
   ## Customize tabs
+  
+  # Subsector/Level choices
+  tags$style(HTML(".tabbable > .nav > li > a[data-value='Sub-sector and Level'] {
+                border-style: solid !important;
+                border-width: 1px !important;
+                background-color: #1d70b8;   
+                color:#0b0c0c;
+                font-size: 20px;
+                font-weight:normal;}")),
+  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Sub-sector and Level'] {
+                border-style: solid !important;
+                border-width: 1px !important;
+                background-color: #ffffff;   
+                color:#0b0c0c;
+                font-size: 20px;
+                font-weight:bold;}")),
+  
+  # Subject/Qualification choices
+  tags$style(HTML(".tabbable > .nav > li > a[data-value='Subject and Qualification'] {
+                border-style: solid !important;
+                border-width: 1px !important;
+                background-color: #1d70b8;   
+                color:#0b0c0c; 
+                font-size: 20px;
+                font-weight:normal;}")),
+  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Subject and Qualification'] {
+                border-style: solid !important;
+                border-width: 1px !important;
+                background-color: #ffffff;   
+                color:#0b0c0c; 
+                font-size: 20px;
+                font-weight:bold;}")),
+  
   # Subject choices
   tags$style(HTML(".tabbable > .nav > li > a[data-value='Distribution of employees by subject of highest qualification'] {
                 background-color: #b1b4b6;   
-                color:#0b0c0c; 
-                font-weight:normal}")),
+                color:#0b0c0c;
+                font-size: 14px;
+                font-weight:normal;}")),
   tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Distribution of employees by subject of highest qualification'] {
                 background-color: #ffffff;   
                 color:#0b0c0c; 
-                font-weight:italic}")),
+                font-size: 14px;
+                font-weight:bold;}")),
   
   # Most common qualifications
   tags$style(HTML(".tabbable > .nav > li > a[data-value='Most common highest qualifications held by employees'] {
                 background-color: #b1b4b6;   
                 color:#0b0c0c; 
-                font-weight:normal}")),
+                font-size: 14px;
+                font-weight:normal;}")),
   tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Most common highest qualifications held by employees'] {
                 background-color: #ffffff;   
-                color:#0b0c0c; 
-                font-weight:italic}")),
-  
-  # modify boxes background and font 
-  tags$style(HTML('
-                      /* primary */
-                      .box.box-solid.box-primary>.box-header {
-                      background: 	#ffffff;
-                      color: 	#0b0c0c;
-                      }
-                      .box.box-solid.box-primary{
-                      background: 	#ffffff;
-                      color: #0b0c0c;
-                      font-size:16px;
-                       border-bottom-color:#ffffff;
-                       border-left-color:#ffffff;
-                       border-right-color:#ffffff;
-                       border-top-color:#ffffff;
-                      }')) 
+                color:#0b0c0c;
+                font-size: 14px;
+                font-weight:bold;}")),
+
   
 ),
   
@@ -180,8 +177,8 @@ navbarPage("",
                  width = 2,
                  
                  ### Help text ---------------------------------------------------------------------
-                 #helpText("Choose an industry sector and region to view the education level and earnings of employees."),
-                 
+                 helpText("Choose an industry sector and region to view the education level and earnings of employees."),
+                 br(), 
                  ### Sector input -------------------------------------------------------------------
                  selectizeInput("sector", options = list(create = TRUE), 
                                 label = "Choose an industry sector:",
@@ -197,21 +194,20 @@ navbarPage("",
                                 selected = "London"),
                  
                  ### Show earnings button --------------------------------------------------------------------
-                 #br(),
+                 
                  radioButtons("showMedian",
                               selected = "No",
                               label = div(style = "white-space: nowrap;", 
                                           "Show Average Earnings:"), 
                               choices = c("No","Yes"),
-                              inline = TRUE, 
+                              inline = F, 
                               width = "50%"),
-                 br(),
-                 br(),
-                 br(),
+                 br(), br(),
+                
                  
                  ### Help text ---------------------------------------------------------------------
-                 #helpText("Choose an industry sub-sector and qualification level to view more detail on subject and qualifications choices of employees."),
-                 #br(),
+                 helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
+                 br(),
                  
                  ### Sub-Sector input -------------------------------------------------------------------
                  selectizeInput("inSelect2", 
@@ -251,16 +247,13 @@ navbarPage("",
               
                 uiOutput("page1title"),
                 br(),
-                strong("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year."),
+                h4("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year"),
                 br(),
               
-                 ### Tabs ------------------------------------------------------------------------------
+                 ### Sections ------------------------------------------------------------------------------
               
-                tabItems(
-                
                     #### KPIs ----------------------------------------------------------------------------
                 
-                tabItem("",
                   box(title = NULL,
                       width = 600,
                       status = "primary",
@@ -269,7 +262,7 @@ navbarPage("",
                         id = "second", 
                              align = "left", 
                              width = 3,
-                             style='height:15vh; padding:10px', 
+                             style='height:10vh; padding:0px; word-wrap: break-word;', 
                              uiOutput("perc_in_sector"), 
                              uiOutput("kpiSector")
                       ),
@@ -280,10 +273,10 @@ navbarPage("",
                         id = "first", 
                              align = "left", 
                              width = 3,
-                             style='height:15vh; padding:10px', 
+                             style='height:10vh; padding:0px; word-wrap: break-word;', 
                              uiOutput("median_in_sector"),
                              tags$b("annual average earnings", 
-                                    style = "font-size: 18px; color: #ffffff")
+                                    style = "font-size: 16px; color: #ffffff")
                       ), 
                       column(
                         id = "third", 
@@ -292,31 +285,57 @@ navbarPage("",
                         id = "second", 
                              align="left", 
                              width = 3,
-                             style='height:15vh; padding:10px',
+                             style='height:10vh; padding:0px; word-wrap: break-word;',
                              uiOutput("directionSector"),
                              uiOutput("kpiChange")
                       ),
                       column(
                         id = "third", 
                              width = 1)
-                  )
-                ),
+                  ),
+
+                box(title = NULL,
+                    width = 600,
+                    status = "primary",
+                    solidHeader = T,
+                    column(id = "third", width = 12, 
+                           style='height:3vh; padding:0px;')), 
                 
-                    #### Subsector & Level Charts ----------------------------------------------------------------------------
-                
-                tabItem("",
-                column(4,  
-                      textOutput("box2title")), 
-                      splitLayout(cellWidths = c("50%", "50%"),
-                           plotlyOutput("subsVolMedianChart"),
-                           plotlyOutput("highestQualVolMedianChart")
-                   ) 
- ), 
+                #### Subsector & Level Charts ----------------------------------------------------------------------------
+ 
+                tabsetPanel(
+                  br(),
+                  tabPanel("Sub-sector and Level",
+                           br(),
+                           details(
+                           inputId = "SubsectorLevel",
+                           label = "How to read these charts", 
+                           help_text = "These charts show the distribution ..."
+                           ),
+                        box(title =  textOutput("box2title"), 
+                            width = 600, 
+                            status = "primary", 
+                            solidHeader = T,
+                            column(width = 6, 
+                                   style='height:20vh; padding:5px;',
+                                   plotlyOutput("subsVolMedianChart")
+                            ),
+                            column(width = 6, 
+                                   style='height:20vh; padding:5px;',
+                                   plotlyOutput("highestQualVolMedianChart")
+                            )
+                        )
+                ), 
               
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               
-              tabItem("",
-                box(title =  textOutput("box3title"), 
+                tabPanel("Subject and Qualification", 
+                          br(),
+                          details(
+                          inputId = "SubjectQualification",
+                          label = "How to read these charts", 
+                          help_text = "These charts show the distribution ..."),
+                box(title = textOutput("box3title"), 
                   width = 600, 
                   status = "primary", 
                   solidHeader = T,
@@ -387,28 +406,28 @@ navbarPage("",
                 
                  ### Tabs ------------------------------------------------------------------------------
                   
-                  tabItems( 
+                  #tabItems( 
                     
                     #### Stacked bar chart ---------------------------------------------------------------
-                    tabItem("",
+                    #tabItem("",
                       box(title = textOutput("box7title"), 
                           width = 600, 
                           status = "primary", 
                           solidHeader = T,
                           plotlyOutput("studinWorkChart", height = 150)
-                        )
-                      ),
+                        ),
+                      #),
                       
                       #### Tree plot --------------------------------------------------------------- 
-                    tabItem("",      
+                    #tabItem("",      
                       box(title = textOutput("box4title"),
                           width = 600, 
                           status = "primary", 
                           solidHeader = T,
                           collapsibleTreeOutput("treePlot")
                         )
-                      )
-                  )
+                      #)
+                 # )
            ) # end of main panel
         )
     ), # end of Qualification Pathway tab
