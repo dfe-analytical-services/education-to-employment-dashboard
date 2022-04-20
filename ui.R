@@ -5,7 +5,73 @@ fluidPage(
   includeCSS("www/dfe_shiny_gov_style.css"),
   title = "Unit for Future Skills - Career Explorer Dashboard",
   
-
+tags$head(
+  # modify column background
+  tags$style(HTML("
+                                  #first {
+                                  border: 2px ;
+                                  border-radius: 3px;
+                                  border-style: groove;
+                                  border-color: 	#1D70B8;
+                                  background-color: #1D70B8;
+                                  }
+                                  #second {
+                                  border: 2px ;
+                                  border-radius: 3px;
+                                  border-style: groove;
+                                  border-color: #003078;
+                                  background-color: #003078;
+                                  }
+                                  #third {
+                                  border: 0px ;
+                                  border-radius: 15px;
+                                  padding:10px; 
+                                  border-color: #ffffff;
+                                  background-color: #ffffff;
+                                  align: center;
+                                  }                                 
+                                  ")),
+  ## Customize tabs
+  # Subject choices
+  tags$style(HTML(".tabbable > .nav > li > a[data-value='Distribution of employees by subject of highest qualification'] {
+                background-color: #b1b4b6;   
+                color:#0b0c0c; 
+                font-weight:normal}")),
+  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Distribution of employees by subject of highest qualification'] {
+                background-color: #ffffff;   
+                color:#0b0c0c; 
+                font-weight:italic}")),
+  
+  # Most common qualifications
+  tags$style(HTML(".tabbable > .nav > li > a[data-value='Most common highest qualifications held by employees'] {
+                background-color: #b1b4b6;   
+                color:#0b0c0c; 
+                font-weight:normal}")),
+  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Most common highest qualifications held by employees'] {
+                background-color: #ffffff;   
+                color:#0b0c0c; 
+                font-weight:italic}")),
+  
+  # modify boxes background and font 
+  tags$style(HTML('
+                      /* primary */
+                      .box.box-solid.box-primary>.box-header {
+                      background: 	#ffffff;
+                      color: 	#0b0c0c;
+                      }
+                      .box.box-solid.box-primary{
+                      background: 	#ffffff;
+                      color: #0b0c0c;
+                      font-size:16px;
+                       border-bottom-color:#ffffff;
+                       border-left-color:#ffffff;
+                       border-right-color:#ffffff;
+                       border-top-color:#ffffff;
+                      }')) 
+  
+),
+  
+  
 # Set metadata for browser ===============================================================
 
 tags$html(lang = "en"),
@@ -195,20 +261,23 @@ navbarPage("",
                     #### KPIs ----------------------------------------------------------------------------
                 
                 tabItem("",
-                  # box(title = NULL, 
-                  #     width = 600, 
-                  #     status = "primary", 
-                  #     solidHeader = T, 
-                      column(id = "second", 
+                  box(title = NULL,
+                      width = 600,
+                      status = "primary",
+                      solidHeader = T,
+                      column(
+                        id = "second", 
                              align = "left", 
                              width = 3,
                              style='height:15vh; padding:10px', 
                              uiOutput("perc_in_sector"), 
                              uiOutput("kpiSector")
                       ),
-                      column(id = "third", 
+                      column(
+                        id = "third", 
                              width = 1),
-                      column(id = "first", 
+                      column(
+                        id = "first", 
                              align = "left", 
                              width = 3,
                              style='height:15vh; padding:10px', 
@@ -216,28 +285,30 @@ navbarPage("",
                              tags$b("annual average earnings", 
                                     style = "font-size: 18px; color: #ffffff")
                       ), 
-                      column(id = "third", 
+                      column(
+                        id = "third", 
                              width = 1),
-                      column(id = "second", 
+                      column(
+                        id = "second", 
                              align="left", 
                              width = 3,
                              style='height:15vh; padding:10px',
                              uiOutput("directionSector"),
                              uiOutput("kpiChange")
                       ),
-                      column(id = "third", 
+                      column(
+                        id = "third", 
                              width = 1)
-                  #)
+                  )
                 ),
                 
                     #### Subsector & Level Charts ----------------------------------------------------------------------------
                 
                 tabItem("",
                 column(4,  
-                       textOutput("box2title")), 
- splitLayout(cellWidths = c("50%", "50%"),
+                      textOutput("box2title")), 
+                      splitLayout(cellWidths = c("50%", "50%"),
                            plotlyOutput("subsVolMedianChart"),
-          
                            plotlyOutput("highestQualVolMedianChart")
                    ) 
  ), 

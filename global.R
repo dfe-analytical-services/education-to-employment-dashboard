@@ -12,18 +12,10 @@ shhh(library(meta))
 shhh(library(shiny))
 shhh(library(shinydashboard))
 shhh(library(shinyWidgets))
-#shhh(library(networkD3))
-#shhh(library(reactable))
-#shhh(library(knitr))
 shhh(library(NCmisc))
-#shhh(library(sourcetools))
-#shhh(library(shinyBS))
-#shhh(library(readr))
 shhh(library(utils))
-#shhh(library(DescTools))
 shhh(library(shinyGovstyle))
 shhh(library(shinyjs))
-#shhh(library(shinya11y))
 
 # tidy_code_function -------------------------------------------------------------------------------
 # 
