@@ -434,7 +434,7 @@ server <- function(input, output, session) {
                                  dom = 'p',
                                  scrollX = TRUE),
                   width = '625px',
-                  height = '400px' ,
+                  height = '350px' ,
                   style = 'bootstrap', class = 'table-bordered table-condensed align-center') %>%
       formatPercentage(3, digits = 1) %>%
       formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
@@ -593,7 +593,7 @@ server <- function(input, output, session) {
   
   
   # Page2: Render treeplot --------------------------------------------------
-  
+  #https://adeelk93.github.io/collapsibleTree/ 
   output$treePlot <- renderCollapsibleTree({
     
     collapsibleTree(tree_data(), 
@@ -608,7 +608,7 @@ server <- function(input, output, session) {
                              color4()$ColourNextLevel.3),
                     fillByLevel = TRUE,
                     collapsed = TRUE,
-                    tooltip = F ,
+                    tooltip = T ,
                     width = 1200
     )
     

@@ -11,15 +11,13 @@ tags$head(
   
   # Subsector/Level choices
   tags$style(HTML(".tabbable > .nav > li > a[data-value='Sub-sector and Level'] {
-                border-style: solid !important;
-                border-width: 1px !important;
-                background-color: #1d70b8;   
-                color:#0b0c0c;
+                border-color: #0b0c0c;
+                background-color: #0b0c0c;   
+                color:#ffffff;
                 font-size: 20px;
                 font-weight:normal;}")),
   tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Sub-sector and Level'] {
-                border-style: solid !important;
-                border-width: 1px !important;
+                border-color: #0b0c0c;
                 background-color: #ffffff;   
                 color:#0b0c0c;
                 font-size: 20px;
@@ -27,39 +25,41 @@ tags$head(
   
   # Subject/Qualification choices
   tags$style(HTML(".tabbable > .nav > li > a[data-value='Subject and Qualification'] {
-                border-style: solid !important;
-                border-width: 1px !important;
-                background-color: #1d70b8;   
-                color:#0b0c0c; 
+                border-color: #0b0c0c;
+                background-color: #0b0c0c;   
+                color:#ffffff;
                 font-size: 20px;
                 font-weight:normal;}")),
   tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Subject and Qualification'] {
-                border-style: solid !important;
-                border-width: 1px !important;
+                border-color: #0b0c0c;
                 background-color: #ffffff;   
-                color:#0b0c0c; 
+                color:#0b0c0c;
                 font-size: 20px;
                 font-weight:bold;}")),
   
   # Subject choices
   tags$style(HTML(".tabbable > .nav > li > a[data-value='Distribution of employees by subject of highest qualification'] {
-                background-color: #b1b4b6;   
-                color:#0b0c0c;
+                border-color: #0b0c0c;
+                background-color: #0b0c0c;   
+                color:#ffffff;
                 font-size: 14px;
                 font-weight:normal;}")),
   tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Distribution of employees by subject of highest qualification'] {
+                border-color: #0b0c0c;
                 background-color: #ffffff;   
-                color:#0b0c0c; 
+                color:#0b0c0c;
                 font-size: 14px;
                 font-weight:bold;}")),
   
   # Most common qualifications
-  tags$style(HTML(".tabbable > .nav > li > a[data-value='Most common highest qualifications held by employees'] {
-                background-color: #b1b4b6;   
-                color:#0b0c0c; 
+  tags$style(HTML(".tabbable > .nav > li > a[data-value='Highest post-16 qualifications held by employees: top 20 by volume'] {
+                border-color: #0b0c0c;
+                background-color: #0b0c0c;   
+                color:#ffffff;
                 font-size: 14px;
                 font-weight:normal;}")),
-  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Most common highest qualifications held by employees'] {
+  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Highest post-16 qualifications held by employees: top 20 by volume'] {
+                border-color: #0b0c0c;
                 background-color: #ffffff;   
                 color:#0b0c0c;
                 font-size: 14px;
@@ -202,7 +202,7 @@ navbarPage("",
                               choices = c("No","Yes"),
                               inline = F, 
                               width = "50%"),
-                 br(), br(),
+                 br(), 
                 
                  
                  ### Help text ---------------------------------------------------------------------
@@ -241,13 +241,13 @@ navbarPage("",
             
               mainPanel(
                 width = 10,
-                style = "height: 90vh; overflow-y: auto;",
+                style = "height: 100vh; overflow-y: auto;",
               
                  ### TITLE 1-----------------------------------------------------------------------------
               
                 uiOutput("page1title"),
                 br(),
-                h4("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year"),
+                div("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year", style = "font-size: 16px; font-style: italic;"),
                 br(),
               
                  ### Sections ------------------------------------------------------------------------------
@@ -262,7 +262,7 @@ navbarPage("",
                         id = "second", 
                              align = "left", 
                              width = 3,
-                             style='height:10vh; padding:0px; word-wrap: break-word;', 
+                             style='height:10vh; padding:5px; word-wrap: break-word;', 
                              uiOutput("perc_in_sector"), 
                              uiOutput("kpiSector")
                       ),
@@ -273,7 +273,7 @@ navbarPage("",
                         id = "first", 
                              align = "left", 
                              width = 3,
-                             style='height:10vh; padding:0px; word-wrap: break-word;', 
+                             style='height:10vh; padding:5px; word-wrap: break-word;', 
                              uiOutput("median_in_sector"),
                              tags$b("annual average earnings", 
                                     style = "font-size: 16px; color: #ffffff")
@@ -285,7 +285,7 @@ navbarPage("",
                         id = "second", 
                              align="left", 
                              width = 3,
-                             style='height:10vh; padding:0px; word-wrap: break-word;',
+                             style='height:10vh; padding:5px; word-wrap: break-word;',
                              uiOutput("directionSector"),
                              uiOutput("kpiChange")
                       ),
@@ -302,20 +302,18 @@ navbarPage("",
                            style='height:3vh; padding:0px;')), 
                 
                 #### Subsector & Level Charts ----------------------------------------------------------------------------
- 
-                tabsetPanel(
-                  br(),
+
+                tabsetPanel(id = "subsectorlevel",
+
                   tabPanel("Sub-sector and Level",
-                           br(),
-                           details(
-                           inputId = "SubsectorLevel",
-                           label = "How to read these charts", 
-                           help_text = "These charts show the distribution ..."
-                           ),
-                        box(title =  textOutput("box2title"), 
-                            width = 600, 
-                            status = "primary", 
-                            solidHeader = T,
+                           # br(),
+                           # details(
+                           # inputId = "SubsectorLevel",
+                           # label = "How to read these charts", 
+                           # help_text = "These charts show the distribution ..."
+                           # ),
+                           
+                        div(textOutput("box2title"), style =  "font-size: 20px; font-weight: bold; margin-top: 15px;"),
                             column(width = 6, 
                                    style='height:20vh; padding:5px;',
                                    plotlyOutput("subsVolMedianChart")
@@ -324,22 +322,19 @@ navbarPage("",
                                    style='height:20vh; padding:5px;',
                                    plotlyOutput("highestQualVolMedianChart")
                             )
-                        )
                 ), 
               
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               
                 tabPanel("Subject and Qualification", 
                           br(),
-                          details(
-                          inputId = "SubjectQualification",
-                          label = "How to read these charts", 
-                          help_text = "These charts show the distribution ..."),
-                box(title = textOutput("box3title"), 
-                  width = 600, 
-                  status = "primary", 
-                  solidHeader = T,
-                  tabsetPanel(
+                          # details(
+                          # inputId = "SubjectQualification",
+                          # label = "How to read these charts", 
+                          # help_text = "These charts show the distribution ..."),
+                         div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;"),
+                         br(),
+                  tabsetPanel(id = "qualificationsubject",
                     tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
                              column(id = "third", width = 12,
                                     DT::dataTableOutput("hqSubTable"))
@@ -350,7 +345,6 @@ navbarPage("",
                     )
                   )
                 )
-              )
             )
           ) # end of main panel
        )
@@ -395,13 +389,13 @@ navbarPage("",
                 
                 mainPanel(
                   width = 10,
-                  style = "height: 90vh; overflow-y: auto;",                
+                  style = "height: 100vh; overflow-y: auto;",                
                 
                  ### TITLE 2-----------------------------------------------------------------------------
                   
                   uiOutput("page2title"),
                   br(),
-                  strong("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year."),
+                 div("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year", style = "font-size: 16px; font-style: italic;"),
                   br(),               
                 
                  ### Tabs ------------------------------------------------------------------------------
