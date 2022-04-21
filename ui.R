@@ -327,13 +327,13 @@ navbarPage("",
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               
                 tabPanel("Subject and Qualification", 
-                          br(),
-                          # details(
-                          # inputId = "SubjectQualification",
-                          # label = "How to read these charts", 
-                          # help_text = "These charts show the distribution ..."),
-                         div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;"),
-                         br(),
+                         div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
+                          details(
+                          inputId = "SubjectQualification",
+                          label = "How to read use these tabs",
+                          help_text = "When clicking on the highest post-16 qualifications held by employees tab you can see a selection of qualifications bla bla ... ,
+                          and when clicking on the distribution of employees by subject of highest qualification chart you can see for selected subsector and qualification level all the subjects bla bla ..."),
+                  
                   tabsetPanel(id = "qualificationsubject",
                     tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
                              column(id = "third", width = 12,
@@ -398,30 +398,20 @@ navbarPage("",
                  div("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year", style = "font-size: 16px; font-style: italic;"),
                   br(),               
                 
-                 ### Tabs ------------------------------------------------------------------------------
-                  
-                  #tabItems( 
-                    
+                 ### Sections ------------------------------------------------------------------------------
+
                     #### Stacked bar chart ---------------------------------------------------------------
-                    #tabItem("",
-                      box(title = textOutput("box7title"), 
-                          width = 600, 
-                          status = "primary", 
-                          solidHeader = T,
-                          plotlyOutput("studinWorkChart", height = 150)
-                        ),
-                      #),
+                 
+                          div(textOutput("box7title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
+
+                          div(plotlyOutput("studinWorkChart", height = 150), style = "align-content: left;"),
                       
                       #### Tree plot --------------------------------------------------------------- 
-                    #tabItem("",      
-                      box(title = textOutput("box4title"),
-                          width = 600, 
-                          status = "primary", 
-                          solidHeader = T,
+                 
+                          div(textOutput("box4title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
+    
                           collapsibleTreeOutput("treePlot")
-                        )
-                      #)
-                 # )
+
            ) # end of main panel
         )
     ), # end of Qualification Pathway tab
