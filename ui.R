@@ -179,6 +179,7 @@ navbarPage("",
                  ### Help text ---------------------------------------------------------------------
                  helpText("Choose an industry sector and region to view the education level and earnings of employees."),
                  br(), 
+                 
                  ### Sector input -------------------------------------------------------------------
                  selectizeInput("sector", options = list(create = TRUE), 
                                 label = "Choose an industry sector:",
@@ -206,6 +207,7 @@ navbarPage("",
                  
                  conditionalPanel(
                    condition="input.subsectorlevel=='Subject and Qualification'",
+                   
                    ### Help text ---------------------------------------------------------------------
                  helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
                  br(),
@@ -218,7 +220,7 @@ navbarPage("",
                                 multiple = F,
                                 width = "100%",
                                 selected = "All subsectors"),
-                 #br(),
+  
                  
                  ### Level input -------------------------------------------------------------------
                    selectizeInput("inSelect",
@@ -226,18 +228,17 @@ navbarPage("",
                                 label = "Choose a qualification level:",
                                 choices = levelsRelabelled,
                                 multiple = F,
-                                selected = "All levels")
-                 ),
+                                selected = "All levels"),
                  
-                 #br(),
-                 
-                 ### Reset button -------------------------------------------------------------------
-                 #br(), 
+                  ### Reset button -------------------------------------------------------------------
+
                  actionButton("reset", "Reset", 
                               style = "color: #0b0c0c; 
                                        font-size: 12px; 
                                        font-weight: bold; 
-                                       background-color: #ffffff")
+                                       background-color: #ffffff")                
+                 )
+                 
                  ), # end of sidebar
                
               ## Main panel 1============================================================================

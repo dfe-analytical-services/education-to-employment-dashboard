@@ -447,6 +447,17 @@ server <- function(input, output, session) {
   })
   
   observeEvent(input$reset, {
+    
+    updateSelectInput(session, 
+                      "sector",
+                      choices = sectors_v,
+                      selected = "Construction")
+    
+    updateSelectInput(session, 
+                      "region",
+                      choices = regions_v,
+                      selected = "London")
+    
     updateSelectInput(session, 
                       "inSelect",
                       choices = hq_sub_v(), 
@@ -456,7 +467,7 @@ server <- function(input, output, session) {
                       "inSelect2",
                       choices = sect_sub_v(), 
                       selected = "All subsectors")
-    
+   
   }) 
   
   
