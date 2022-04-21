@@ -203,9 +203,10 @@ navbarPage("",
                               inline = F, 
                               width = "50%"),
                  br(), 
-                
                  
-                 ### Help text ---------------------------------------------------------------------
+                 conditionalPanel(
+                   condition="input.subsectorlevel=='Subject and Qualification'",
+                   ### Help text ---------------------------------------------------------------------
                  helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
                  br(),
                  
@@ -220,12 +221,14 @@ navbarPage("",
                  #br(),
                  
                  ### Level input -------------------------------------------------------------------
-                 selectizeInput("inSelect",
+                   selectizeInput("inSelect",
                                 options = list(create = TRUE),
                                 label = "Choose a qualification level:",
                                 choices = levelsRelabelled,
                                 multiple = F,
-                                selected = "All levels"),
+                                selected = "All levels")
+                 ),
+                 
                  #br(),
                  
                  ### Reset button -------------------------------------------------------------------
