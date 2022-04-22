@@ -67,8 +67,7 @@ tags$head(
 
   
 ),
-  
-  
+
 # Set metadata for browser ===============================================================
 
 tags$html(lang = "en"),
@@ -414,7 +413,10 @@ navbarPage("",
                  
                           div(textOutput("box4title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
     
+                           uiOutput("svglegend"),
+                 
                           collapsibleTreeOutput("treePlot")
+
 
            ) # end of main panel
         )
