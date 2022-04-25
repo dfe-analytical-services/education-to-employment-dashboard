@@ -5,68 +5,7 @@ fluidPage(
   includeCSS("www/dfe_shiny_gov_style.css"),
   title = "Unit for Future Skills - Career Explorer Dashboard",
   
-tags$head(
-  
-  ## Customize tabs
-  
-  # Subsector/Level choices
-  tags$style(HTML(".tabbable > .nav > li > a[data-value='Sub-sector and Level'] {
-                border-color: #0b0c0c;
-                background-color: #0b0c0c;   
-                color:#ffffff;
-                font-size: 20px;
-                font-weight:normal;}")),
-  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Sub-sector and Level'] {
-                border-color: #0b0c0c;
-                background-color: #ffffff;   
-                color:#0b0c0c;
-                font-size: 20px;
-                font-weight:bold;}")),
-  
-  # Subject/Qualification choices
-  tags$style(HTML(".tabbable > .nav > li > a[data-value='Subject and Qualification'] {
-                border-color: #0b0c0c;
-                background-color: #0b0c0c;   
-                color:#ffffff;
-                font-size: 20px;
-                font-weight:normal;}")),
-  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Subject and Qualification'] {
-                border-color: #0b0c0c;
-                background-color: #ffffff;   
-                color:#0b0c0c;
-                font-size: 20px;
-                font-weight:bold;}")),
-  
-  # Subject choices
-  tags$style(HTML(".tabbable > .nav > li > a[data-value='Distribution of employees by subject of highest qualification'] {
-                border-color: #0b0c0c;
-                background-color: #0b0c0c;   
-                color:#ffffff;
-                font-size: 14px;
-                font-weight:normal;}")),
-  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Distribution of employees by subject of highest qualification'] {
-                border-color: #0b0c0c;
-                background-color: #ffffff;   
-                color:#0b0c0c;
-                font-size: 14px;
-                font-weight:bold;}")),
-  
-  # Most common qualifications
-  tags$style(HTML(".tabbable > .nav > li > a[data-value='Highest post-16 qualifications held by employees: top 20 by volume'] {
-                border-color: #0b0c0c;
-                background-color: #0b0c0c;   
-                color:#ffffff;
-                font-size: 14px;
-                font-weight:normal;}")),
-  tags$style(HTML(".tabbable > .nav > li.active > a[data-value='Highest post-16 qualifications held by employees: top 20 by volume'] {
-                border-color: #0b0c0c;
-                background-color: #ffffff;   
-                color:#0b0c0c;
-                font-size: 14px;
-                font-weight:bold;}")),
 
-  
-),
 
 # Set metadata for browser ===============================================================
 
@@ -197,7 +136,7 @@ navbarPage("",
                  
                  radioButtons("showMedian",
                               selected = "No",
-                              label = div(style = "white-space: nowrap;", 
+                              label = div(style = "white-space: nowrap; ", 
                                           "Show Average Earnings:"), 
                               choices = c("No","Yes"),
                               inline = F, 
@@ -210,6 +149,15 @@ navbarPage("",
                    ### Help text ---------------------------------------------------------------------
                  helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
                  br(),
+                 
+                 ### Reset button -------------------------------------------------------------------
+                 
+                 actionButton("reset", "Reset", 
+                              style = "color: #0b0c0c; 
+                                       font-size: 12px; 
+                                       font-weight: bold; 
+                                       background-color: #ffffff"),
+                 br(), br(),
                  
                  ### Sub-Sector input -------------------------------------------------------------------
                  selectizeInput("inSelect2", 
@@ -227,15 +175,9 @@ navbarPage("",
                                 label = "Choose a qualification level:",
                                 choices = levelsRelabelled,
                                 multiple = F,
-                                selected = "All levels"),
+                                selected = "All levels")
                  
-                  ### Reset button -------------------------------------------------------------------
-
-                 actionButton("reset", "Reset", 
-                              style = "color: #0b0c0c; 
-                                       font-size: 12px; 
-                                       font-weight: bold; 
-                                       background-color: #ffffff")                
+               
                  )
                  
                  ), # end of sidebar
@@ -309,12 +251,16 @@ navbarPage("",
                 tabsetPanel(id = "subsectorlevel",
 
                   tabPanel("Sub-sector and Level",
-                           # br(),
-                           # details(
-                           # inputId = "SubsectorLevel",
-                           # label = "How to read these charts", 
-                           # help_text = "These charts show the distribution ..."
-                           # ),
+                           br(),
+                           details(
+                           inputId = "SubsLev",
+                           label = "How to use these tabs",
+                           help_text = "Select the Sub-sector and Level tab for a
+                           breakdown of employee numbers and median earnings by highest 
+                           level of education and detailed industry sector. 
+                           Select the Subject and Qualification tab for more information 
+                           about the highest qualifications employees hold."
+                            ),
                            
                         div(textOutput("box2title"), style =  "font-size: 20px; font-weight: bold; margin-top: 15px;"),
                             column(width = 6, 
@@ -408,11 +354,15 @@ navbarPage("",
                           div(textOutput("box7title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
 
                           div(plotlyOutput("studinWorkChart", height = 150), style = "align-content: left;"),
+                          hr(),
                       
                       #### Tree plot --------------------------------------------------------------- 
                  
                           div(textOutput("box4title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
     
+                          div("This chart indicates which are the most common pathways taken by employees in sustained employment 
+                              in the tax year 2018-19. It is not exhaustive.", style = "font-size: 16px; font-style: italic;"),
+                          br(),
                            uiOutput("svglegend"),
                  
                           collapsibleTreeOutput("treePlot")

@@ -29,7 +29,7 @@
 }
 
 .well {
-    height: 90vh; 
+    height: 95vh; 
     padding: 19px;
     margin-bottom: 20px;
     background-color: #1d70b8;
@@ -110,7 +110,7 @@ a {
 .selectize-input {
   font-size: 12pt; 
   background: 	#ffffff !important;
-  float: center; padding: 1px;
+  
 }
 
 .radio {

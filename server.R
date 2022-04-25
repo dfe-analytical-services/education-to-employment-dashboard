@@ -17,8 +17,8 @@ server <- function(input, output, session) {
     updateTabsetPanel(session, "navbar", selected = "overview")
   })
   
-  observeEvent(input$link_to_regional_tab, {
-    updateTabsetPanel(session, "navbar", selected = "regional")
+  observeEvent(input$link_to_qualificationPathways_tab, {
+    updateTabsetPanel(session, "navbar", selected = "pathways")
   })
   
   
@@ -414,7 +414,6 @@ server <- function(input, output, session) {
   })
   
   output$hqSubTable <- renderDataTable({
-    
     DT::datatable(stat_hq_sub %>% 
                     filter(Region == input$region &
                              Sector == input$sector &
@@ -423,6 +422,7 @@ server <- function(input, output, session) {
                     mutate(median_income = signif(median_income, 2)) %>%
                     # final selection 
                     select(Qualification, 
+                           Level = Level_order,
                            Subject, 
                            Percentage = perc, 
                            "Average Earnings" = median_income),
@@ -436,14 +436,13 @@ server <- function(input, output, session) {
                   width = '625px',
                   height = '350px' ,
                   style = 'bootstrap', class = 'table-bordered table-condensed align-center') %>%
-      formatPercentage(3, digits = 1) %>%
-      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
+      formatPercentage(4, digits = 1) %>%
+      formatCurrency(5, digits = 0, currency = "£", mark = ",") %>%
       formatStyle(0, target = 'row',
                   color = 'black',
-                  fontSize = '16px',
+                  fontSize = '14px',
                   backgroundColor = 'white',
                   lineHeight='100%')
-    
   })
   
   observeEvent(input$reset, {
@@ -586,7 +585,8 @@ server <- function(input, output, session) {
       arrange(desc(Links.1), .by_group = T) %>%
       mutate(numbering = dplyr::row_number()) %>%
       filter(numbering <= 10) %>%
-      ungroup()
+      ungroup() %>%
+      mutate(Employees = round(Links.1), digits = 0)
   })
   
   # Make vectors for colors
@@ -620,6 +620,7 @@ server <- function(input, output, session) {
                     fillByLevel = TRUE,
                     collapsed = TRUE,
                     tooltip = T ,
+                    attribute = "Employees",
                     width = 1200
     )
     
@@ -755,17 +756,23 @@ server <- function(input, output, session) {
                s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
   })
   
-  svg_html_legend <- paste('<svg width="450" height="16">',
-                           '<circle cx="10" cy="10" r="6" style="fill: rgb(29, 112, 184);"></circle>',
-                           '<circle cx="90" cy="10" r="6" style="fill: rgb(0, 48, 120);"></circle>',
-                           '<circle cx="170" cy="10" r="6" style="fill: rgb(145, 43, 136);"></circle>',
-                           '<circle cx="260" cy="10" r="6" style="fill: #4c2c92";></circle>',
-                           '<circle cx="340" cy="10" r="6" style="fill: #28a197";></circle>',
-                            '<text x="25" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 2</text>',
-                            '<text x="105" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 3</text>',
-                            '<text x="185" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 4/5</text>',
-                            '<text x="275" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 6</text>',
-                            '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>')
+  # page 2: treeplot legend
+  svg_html_legend <- paste('<svg width="450" height="20">',
+                           '<circle cx="10" cy="10" r="8" style="fill: rgb(29, 112, 184);"></circle>',
+                           '<circle cx="90" cy="10" r="8" style="fill: rgb(0, 48, 120);"></circle>',
+                           '<circle cx="170" cy="10" r="8" style="fill: rgb(145, 43, 136);"></circle>',
+                           '<circle cx="260" cy="10" r="8" style="fill: #4c2c92";></circle>',
+                           '<circle cx="340" cy="10" r="8" style="fill: #28a197";></circle>',
+                           '<circle cx="10" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
+                           '<circle cx="90" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
+                           '<circle cx="170" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
+                           '<circle cx="260" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
+                           '<circle cx="340" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
+                           '<text x="25" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 2</text>',
+                           '<text x="105" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 3</text>',
+                           '<text x="185" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 4/5</text>',
+                           '<text x="275" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 6</text>',
+                           '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>')
   
   output$svglegend <- renderUI({
     HTML(svg_html_legend)

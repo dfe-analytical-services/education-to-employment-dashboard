@@ -3,7 +3,7 @@ support_links <- function() {
     h2("Give us feedback"),
     "This dashboard is a new service that we are developing. If you have any feedback or suggestions for improvements, please submit them using our ",
     a(
-      href = "https://forms.office.com/Pages/ResponsePage.aspx?id=yXfS-grGoU2187O4s0qC-c6JT6ONG3lJtlg-5hU4A6xURUpQME1OUVZIMEFMUUdNMEVONkhEN0g1VSQlQCN0PWcu",
+      href = "https://forms.office.com/r/xrpAxmSA1b",
       "feedback form", .noWS = c("after")
     ),
     ".",
@@ -20,7 +20,7 @@ support_links <- function() {
     br(),
     h2("See the source code"),
     "The source code for this dashboard is available in our ",
-    a(href = "https://github.com/dfe-analytical-services/leo-graduate-industry-dashboard", "GitHub repository", .noWS = c("after")),
+    a(href = "https://github.com/dfe-analytical-services/education-to-employment-dashboard", "GitHub repository", .noWS = c("after")),
     ".",
     br(),
     br(),
