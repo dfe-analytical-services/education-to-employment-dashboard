@@ -1,5 +1,5 @@
 
-datalist <- readRDS("data/datasets_random.rds")
+datalist <- readRDS("datasets_random.rds")
 
 # first page --------------------------------------------------------------
 
