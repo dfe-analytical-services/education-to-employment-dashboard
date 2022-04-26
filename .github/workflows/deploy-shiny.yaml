@@ -16,7 +16,7 @@ jobs:
       matrix:
         config:
         # Running on mac as it's quicker to build
-          - {os: macOS-latest, r: 'release'}
+          - {os: macOS-latest, r: '4.1.3'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
