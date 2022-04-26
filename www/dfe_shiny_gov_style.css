@@ -29,7 +29,7 @@
 }
 
 .well {
-    height: 90vh; 
+    height: 95vh; 
     padding: 19px;
     margin-bottom: 20px;
     background-color: #1d70b8;
@@ -92,6 +92,8 @@ a {
 
 .help-block{
   color: #ffffff;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .govuk-inset-text{
@@ -102,4 +104,56 @@ a {
 .govuk-details{
   font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
   font-size: 14px;
+}
+
+
+.selectize-input {
+  font-size: 12pt; 
+  background: 	#ffffff !important;
+  
+}
+
+.radio {
+  color:#ffffff !important;
+}
+
+.box.box-solid.box-primary>.box-header {
+background: 	#ffffff;
+color: 	#0b0c0c;
+}
+
+.box.box-solid.box-primary{
+background: 	#ffffff;
+color: #0b0c0c;
+font-size:16px;
+ border-bottom-color:#ffffff;
+ border-left-color:#ffffff;
+ border-right-color:#ffffff;
+ border-top-color:#ffffff;
+}
+
+
+#first {
+border: 2px ;
+border-radius: 3px;
+border-style: groove;
+border-color: 	#1D70B8;
+background-color: #1D70B8;
+}
+
+#second {
+border: 2px ;
+border-radius: 3px;
+border-style: groove;
+border-color: #003078;
+background-color: #003078;
+}
+
+#third {
+border: 0px ;
+border-radius: 15px;
+padding:10px; 
+border-color: #ffffff;
+background-color: #ffffff;
+align: center;
 }
