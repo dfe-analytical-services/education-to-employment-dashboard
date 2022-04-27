@@ -33,7 +33,7 @@ accessibility_statement <- function() {
     h3("Feedback and contact information"),
     "If you need information on this website in a different format like accessible PDF, large print, easy read, audio recording or braille or
       if you have any feedback on how we could further improve the accessibility of this application, please contact us at ",
-    a(href = "mailto:he.leo@education.gov.uk", "he.leo@education.gov.uk", .noWS = c("after")),
+    a(href = "mailto:ufs.contact@education.gov.uk", "ufs.contact@education.gov.uk", .noWS = c("after")),
     ".",
     br(),
     br(),

@@ -423,7 +423,6 @@ server <- function(input, output, session) {
                     # final selection 
                     select(Qualification, 
                            Level = Level_order,
-                           Subject, 
                            Percentage = perc, 
                            "Average Earnings" = median_income),
                   rownames = FALSE,
@@ -436,8 +435,8 @@ server <- function(input, output, session) {
                   width = '625px',
                   height = '350px' ,
                   style = 'bootstrap', class = 'table-bordered table-condensed align-center') %>%
-      formatPercentage(4, digits = 1) %>%
-      formatCurrency(5, digits = 0, currency = "£", mark = ",") %>%
+      formatPercentage(3, digits = 1) %>%
+      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
       formatStyle(0, target = 'row',
                   color = 'black',
                   fontSize = '14px',
@@ -455,7 +454,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, 
                       "region",
                       choices = regions_v,
-                      selected = "London")
+                      selected = "England")
     
     updateSelectInput(session, 
                       "inSelect",
@@ -515,7 +514,7 @@ server <- function(input, output, session) {
   
   # filter region/sector
   selected_region_sector <- reactive({
-    qualifications %>%
+    qualifications %>% 
       filter(Region == input$regionp & 
                IndustrySector == input$sectorp) %>%
       select(Region, 
@@ -663,7 +662,7 @@ server <- function(input, output, session) {
   # page titles
   output$page1title <- renderUI({
     s <- selection() 
-    if(s$Region[1] %in% c("London", "Yorkshire and The Humber")) {
+    if(s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(s$Sector[1], " in ", s$Region[1],
                     ": overview of employee education levels and qualification choices"), 
              style = "font-size: 24px;")
@@ -681,7 +680,7 @@ server <- function(input, output, session) {
     sis <- selected_region_sector() %>% 
       distinct(IndustrySector, .keep_all = FALSE) %>%
       unlist(use.names = F)
-    if(sr[[1]] %in% c("London", "Yorkshire and The Humber")) {
+    if(sr[[1]] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(sis[[1]], " in ", sr[[1]], ": post-16 qualification pathways"),
              style = "font-size: 24px;")
     } else {

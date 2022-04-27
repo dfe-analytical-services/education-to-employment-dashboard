@@ -130,7 +130,7 @@ navbarPage("",
                                 label = "Choose a region:",
                                 choices = regions_v,
                                 multiple = F,
-                                selected = "London"),
+                                selected = "England"),
                  
                  ### Show earnings button --------------------------------------------------------------------
                  
@@ -250,15 +250,15 @@ navbarPage("",
 
                 tabsetPanel(id = "subsectorlevel",
 
-                  tabPanel("Sub-sector and Level",
+                  tabPanel("Sub-sector and level",
                            br(),
                            details(
                            inputId = "SubsLev",
-                           label = "How to use these tabs",
-                           help_text = "Select the Sub-sector and Level tab for a
+                           label = "How to read these tabs",
+                           help_text = "Select the Sub-sector and level tab for a
                            breakdown of employee numbers and median earnings by highest 
                            level of education and detailed industry sector. 
-                           Select the Subject and Qualification tab for more information 
+                           Select the Subject and qualification tab for more information 
                            about the highest qualifications employees hold."
                             ),
                            
@@ -275,13 +275,15 @@ navbarPage("",
               
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               
-                tabPanel("Subject and Qualification", 
+                tabPanel("Subject and qualification", 
                          div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
                           details(
                           inputId = "SubjectQualification",
-                          label = "How to read use these tabs",
-                          help_text = "When clicking on the highest post-16 qualifications held by employees tab you can see a selection of qualifications bla bla ... ,
-                          and when clicking on the distribution of employees by subject of highest qualification chart you can see for selected subsector and qualification level all the subjects bla bla ..."),
+                          label = "How to read these tabs",
+                          help_text = "Select the Highest post-16 qualifications held by employees tab for a
+                           breakdown of employee proportions and median earnings by qualification titles. 
+                           Select the Distribution of employees by subject of highest qualification tab for a breakdown of employee proportions and
+                           median earnings by subject areas studied."),
                   
                   tabsetPanel(id = "qualificationsubject",
                     tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
@@ -310,26 +312,26 @@ navbarPage("",
                   width = 2,
                   
                  ### Help text ---------------------------------------------------------------------
-                helpText("Explain here what these selections do."),
+                helpText("Choose an industry sector, a region and a qualification level to view the most common career pathways of employees."),
       
                  ### Sector to work input -------------------------------------------------------------------
                 selectInput(
                   "sectorp", 
-                  label = "What sector do you want to work in?",
+                  label = "Choose an industry sector:",
                   choices = sector_v2,
                   selected = "Construction"),
               
                  ### Region to live input -------------------------------------------------------------------
               selectInput(
                 "regionp", 
-                label = "Where you want to live?",
+                label = "Choose a region:",
                 choices = region_v2,
-                selected = "London"),
+                selected = "England"),
               
                  ### Level to study input -------------------------------------------------------------------
               selectInput(
                 "inSelect3", 
-                label = "What qualification level do you want to study at?",
+                label = "Choose a level of study:",
                 choices = level_v2,
                 selected = "Level 2")
               ), # end of sidebar
@@ -360,8 +362,8 @@ navbarPage("",
                  
                           div(textOutput("box4title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
     
-                          div("This chart indicates which are the most common pathways taken by employees in sustained employment 
-                              in the tax year 2018-19. It is not exhaustive.", style = "font-size: 16px; font-style: italic;"),
+                          div("This chart shows the most common career pathways taken by employees in sustained employment 
+                              in the tax year 2018-19. Please note that it is not a complete list.", style = "font-size: 16px; font-style: italic;"),
                           br(),
                            uiOutput("svglegend"),
                  
