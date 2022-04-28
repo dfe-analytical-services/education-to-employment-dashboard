@@ -121,7 +121,6 @@ server <- function(input, output, session) {
       selection() %>%
         ggplot(aes(x = Level_order,
                    y = perc_hq,
-                   fill = Level_order,
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
                                                                digits = 0,
                                                                format = "f"), "%"), 
@@ -130,11 +129,10 @@ server <- function(input, output, session) {
                                                            format = "f", 
                                                            big.mark = ",")),
                                 sep = "\n"))) + 
-        geom_col()  +
+        geom_col(fill = "#489FD6")  +
         labs(y = "", x = "",
-             title = "") +
-        scale_fill_brewer(palette = "Blues") +
-        theme(legend.position="none",
+             title = "") + 
+        theme(legend.position ="none",
               plot.title = element_text((hjust = 0.5)),
               axis.text.y = element_text(face = "bold", color = "#0b0c0c",
                                          size = 12, angle = 0),
@@ -395,7 +393,7 @@ server <- function(input, output, session) {
                       filter(Region == input$region &
                                Sector == input$sector &
                                Subsector == input$inSelect2 &
-                               Level_order == input$inSelect) ) > 0, "Data insufficient for plot.")
+                               Level_order == input$inSelect) ) > 0, "There are no employees matching this selection. Please select again.")
     )
     ggplotly(indSubChart(), tooltip = "text")
   })
@@ -403,7 +401,7 @@ server <- function(input, output, session) {
   
   output$studinWorkChart <- renderPlotly({
     validate(
-      need( nrow(selection_in_work() ) > 0, "Data insufficient for plot.")
+      need( nrow(selection_in_work() ) > 0, "There are no employees matching this selection. Please select again.")
     )
     ggplotly(inWorkChart(), tooltip = "text")
   })
@@ -616,7 +614,7 @@ server <- function(input, output, session) {
   #https://adeelk93.github.io/collapsibleTree/ 
   output$treePlot <- renderCollapsibleTree({
     validate(
-      need( nrow(tree_data() ) > 0, "Data insufficient for plot.")
+      need( nrow(tree_data() ) > 0, "There are no employees matching this selection. Please select again.")
     )
     collapsibleTree(tree_data(), 
                     hierarchy = c("Qual", "NextQual", "NextQual.2", "NextQual.3"),
