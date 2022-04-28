@@ -144,7 +144,7 @@ navbarPage("",
                  br(), 
                  
                  conditionalPanel(
-                   condition="input.subsectorlevel=='Subject and Qualification'",
+                   condition="input.subsectorlevel=='Subject and qualification'",
                    
                    ### Help text ---------------------------------------------------------------------
                  helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
