@@ -138,15 +138,17 @@ sic_groups_text <- function() {
     a(href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
       "https://explore-education-statistics.service.gov.uk/find-statistics/",
       .noWS = c("after")),
-    br(), br(), 
+    br(), 
     tags$table(border = 0, 
-                         tags$tbody(colspan = 2, height = 50, width = 600,
+                         tags$tbody( height = 50, width = 1000, 
+                          tags$colgroup(
+                            tags$col(span = 2, width = 175),
                            tags$tr(
                              tags$td(align = "left", strong("Sector")),
-                             tags$td(align = "center", strong("SIC 2007 Section")),
-                             tags$td(align = "center", strong("SIC 2007 Division"))
+                             tags$td(align = "center", strong("SIC", tags$br(), "2007", tags$br(), "Section")),
+                             tags$td(align = "left", strong("SIC",  tags$br(), "2007", tags$br(), "Division"))
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Accommodation & food"),
                              tags$td(align = "center", 
@@ -154,7 +156,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "55-56")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Agriculture"),
                              tags$td(align = "center", 
@@ -162,7 +164,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "01-03")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Arts & entertainment"),
                              tags$td(align = "center", 
@@ -170,7 +172,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "90-93")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Construction"),
                              tags$td(align = "center", 
@@ -178,7 +180,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "41-43")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Education"),
                              tags$td(align = "center", 
@@ -186,7 +188,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "85")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Electricity & gas"),
                              tags$td(align = "center", 
@@ -194,7 +196,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "35")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Engineering"),
                              tags$td(align = "center", 
@@ -202,7 +204,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "26-28")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Finance & insurance"),
                              tags$td(align = "center", 
@@ -210,7 +212,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "64-66")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Food, drink & tobacco"),
                              tags$td(align = "center", 
@@ -218,7 +220,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "10-12")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Health & social work"),
                              tags$td(align = "center", 
@@ -226,7 +228,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "86-88")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "IT"),
                              tags$td(align = "center", 
@@ -234,7 +236,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "61-62")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Manufacturing"),
                              tags$td(align = "center", 
@@ -242,7 +244,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "13-25, 29-33")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Media"),
                              tags$td(align = "center", 
@@ -250,7 +252,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "58-60, 63")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Mining & quarrying"),
                              tags$td(align = "center", 
@@ -258,7 +260,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "05-09")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Other services"),
                              tags$td(align = "center", 
@@ -266,7 +268,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "94-96")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Professional services"),
                              tags$td(align = "center", 
@@ -274,7 +276,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "69-75")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Public admin & defence"),
                              tags$td(align = "center", 
@@ -282,7 +284,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "84")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Real estate"),
                              tags$td(align = "center", 
@@ -290,7 +292,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "68")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Support services"),
                              tags$td(align = "center", 
@@ -298,7 +300,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "77-82")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Transport & storage"),
                              tags$td(align = "center", 
@@ -306,7 +308,7 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "49-53")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Water & sewerage"),
                              tags$td(align = "center", 
@@ -314,14 +316,14 @@ sic_groups_text <- function() {
                              tags$td(align = "left", 
                                      "36-39")
                            ),
-                           tags$tr(
+                           tags$tr( height = 10, 
                              tags$td(align = "left", 
                                      "Whole & retail trade"),
                              tags$td(align = "center", 
                                      "G"), 
                              tags$td(align = "left", 
                                      "45-47")
-                           )
+                           ))
                            
   
     )
