@@ -110,19 +110,17 @@ server <- function(input, output, session) {
   # Page1: Reactive chart qualification level ------------------------------------------------------------------
   
   selection <- reactive({
-    stat_hq %>%
+      stat_hq %>%
       filter(Region == input$region &
-               Sector == input$sector) 
+               Sector == input$sector)
   })
-  
-  numberRows <- reactive({
-    selection() %>% nrow()
-  })
-  
+
   highestQualVolMedianChart <- reactive({
+
     if(input$showMedian == 'No'){
       selection() %>%
         ggplot(aes(x = Level_order,
+                   y = perc_hq,
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
                                                                digits = 0,
                                                                format = "f"), "%"), 
@@ -131,13 +129,10 @@ server <- function(input, output, session) {
                                                            format = "f", 
                                                            big.mark = ",")),
                                 sep = "\n"))) + 
-        geom_col(aes(y = perc_hq), 
-                 fill = c("#f3f2f1","#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"))  +
-        scale_y_continuous(labels = scales::percent) +
-        scale_x_discrete(labels = levelsRelabelled) +
+        geom_col(fill = "#489FD6")  +
         labs(y = "", x = "",
-             title = "") +
-        theme(legend.position="none",
+             title = "") + 
+        theme(legend.position ="none",
               plot.title = element_text((hjust = 0.5)),
               axis.text.y = element_text(face = "bold", color = "#0b0c0c",
                                          size = 12, angle = 0),
@@ -145,13 +140,13 @@ server <- function(input, output, session) {
               axis.text.x = element_blank(),
               panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
               panel.background = element_blank(),panel.grid.major.y = element_blank(),
-              panel.grid.minor.y = element_blank()
+              panel.grid.minor.y = element_blank() +
+              scale_y_continuous(labels = scales::percent) +
+              scale_x_discrete(labels = levelsRelabelled) 
         )  + 
         coord_flip()
     } else {
-      stat_hq %>% 
-        filter(Region == input$region & 
-                 Sector == input$sector) %>%
+      selection() %>%
         ggplot(aes(x = Level_order,
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
                                                                digits = 0,
@@ -196,14 +191,26 @@ server <- function(input, output, session) {
         scale_y_continuous(labels = comma_format(big.mark = ",") ) +
         scale_x_discrete(labels = levelsRelabelled) +
         coord_flip()               
-    }
+      }
     
   })
   
   
 
   # Page1: Reactive chart subject ------------------------------------------------------
-  
+
+  observe({  
+    updateSelectInput(session, 
+                      "inSelect2",
+                      choices = subsector_v, 
+                      selected = "All subsectors")
+    
+    updateSelectInput(session, 
+                      "inSelect",
+                      choices = levelsRelabelled, 
+                      selected = "All levels")
+  })
+    
   # choices in select input
   sect_sub_v <-  reactive({
     stat_subs_sub %>%
@@ -221,20 +228,7 @@ server <- function(input, output, session) {
       unlist(use.names = F)
   })
   
-  
-  
-  observe({  
-    updateSelectInput(session, 
-                      "inSelect2",
-                      choices = subsector_v, 
-                      selected = "All subsectors")
-    
-    updateSelectInput(session, 
-                      "inSelect",
-                      choices = levelsRelabelled, 
-                      selected = "All levels")
-  })
-  
+
   indSubChart <- reactive({
     stat_subs_sub %>%
       filter(Region == input$region &
@@ -292,7 +286,7 @@ server <- function(input, output, session) {
   })
   
   # title for stacked chart page 2 -- gives the level
-  inWorkChartTitle <- reactive({
+  inWorkChartLevel <- reactive({
     s <- students_in_work %>% 
       filter(Region == input$regionp &
                Sector == input$sectorp & 
@@ -302,11 +296,11 @@ server <- function(input, output, session) {
     s <- tolower(s[1])
   })
   
-  inWorkChart <- reactive({
+ selection_in_work <- reactive({
     students_in_work %>% 
-      mutate(var_to_show = case_when(new_level == level_reac() ~ paste("At", inWorkChartTitle()), 
-                                     new_level < level_reac() ~ paste("Lower than", inWorkChartTitle()), 
-                                     TRUE ~ paste("Higher than", inWorkChartTitle())),
+      mutate(var_to_show = case_when(new_level == level_reac() ~ paste("At", inWorkChartLevel()), 
+                                     new_level < level_reac() ~ paste("Lower than", inWorkChartLevel()), 
+                                     TRUE ~ paste("Higher than", inWorkChartLevel())),
              var_to_plot = case_when(new_level == level_reac() ~ "At level", 
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
@@ -322,7 +316,11 @@ server <- function(input, output, session) {
                 by = c("Region", "Sector")) %>%
       mutate(perc = students/total) %>%
       filter(Region == input$regionp &
-               Sector == input$sectorp ) %>%
+               Sector == input$sectorp )
+ })    
+  
+  inWorkChart <- reactive({
+    selection_in_work() %>%
       ggplot(aes(fill = var_to_plot, 
                  y = perc, 
                  x = Sector, 
@@ -355,9 +353,9 @@ server <- function(input, output, session) {
   
   percInWork <- reactive({
     students_in_work %>% 
-      mutate(var_to_show = case_when(new_level == level_reac() ~ paste("At", inWorkChartTitle()), 
-                                     new_level < level_reac() ~ paste("Lower than", inWorkChartTitle()), 
-                                     TRUE ~ paste("Higher than", inWorkChartTitle())),
+      mutate(var_to_show = case_when(new_level == level_reac() ~ paste("At", inWorkChartLevel()), 
+                                     new_level < level_reac() ~ paste("Lower than", inWorkChartLevel()), 
+                                     TRUE ~ paste("Higher than", inWorkChartLevel())),
              var_to_plot = case_when(new_level == level_reac() ~ "At level", 
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
@@ -381,7 +379,7 @@ server <- function(input, output, session) {
   # Render Charts ------------------------------------------------------------------
   
   output$highestQualVolMedianChart <- renderPlotly({
-    ggplotly(highestQualVolMedianChart(), tooltip = "text")
+    ggplotly(highestQualVolMedianChart(), tooltip = "text") 
   })
   
   output$subsVolMedianChart <- renderPlotly({
@@ -390,11 +388,21 @@ server <- function(input, output, session) {
   
   
   output$indSubChart <- renderPlotly({
+    validate(
+      need( nrow( stat_subs_sub %>%
+                      filter(Region == input$region &
+                               Sector == input$sector &
+                               Subsector == input$inSelect2 &
+                               Level_order == input$inSelect) ) > 0, "There are no employees matching this selection. Please select again.")
+    )
     ggplotly(indSubChart(), tooltip = "text")
   })
   
   
   output$studinWorkChart <- renderPlotly({
+    validate(
+      need( nrow(selection_in_work() ) > 0, "There are no employees matching this selection. Please select again.")
+    )
     ggplotly(inWorkChart(), tooltip = "text")
   })
   
@@ -423,7 +431,6 @@ server <- function(input, output, session) {
                     # final selection 
                     select(Qualification, 
                            Level = Level_order,
-                           Subject, 
                            Percentage = perc, 
                            "Average Earnings" = median_income),
                   rownames = FALSE,
@@ -436,8 +443,8 @@ server <- function(input, output, session) {
                   width = '625px',
                   height = '350px' ,
                   style = 'bootstrap', class = 'table-bordered table-condensed align-center') %>%
-      formatPercentage(4, digits = 1) %>%
-      formatCurrency(5, digits = 0, currency = "£", mark = ",") %>%
+      formatPercentage(3, digits = 1) %>%
+      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
       formatStyle(0, target = 'row',
                   color = 'black',
                   fontSize = '14px',
@@ -455,7 +462,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, 
                       "region",
                       choices = regions_v,
-                      selected = "London")
+                      selected = "England")
     
     updateSelectInput(session, 
                       "inSelect",
@@ -515,7 +522,7 @@ server <- function(input, output, session) {
   
   # filter region/sector
   selected_region_sector <- reactive({
-    qualifications %>%
+    qualifications %>% 
       filter(Region == input$regionp & 
                IndustrySector == input$sectorp) %>%
       select(Region, 
@@ -606,7 +613,9 @@ server <- function(input, output, session) {
   # Page2: Render treeplot --------------------------------------------------
   #https://adeelk93.github.io/collapsibleTree/ 
   output$treePlot <- renderCollapsibleTree({
-    
+    validate(
+      need( nrow(tree_data() ) > 0, "There are no employees matching this selection. Please select again.")
+    )
     collapsibleTree(tree_data(), 
                     hierarchy = c("Qual", "NextQual", "NextQual.2", "NextQual.3"),
                     root = paste("Your selection:"),
@@ -663,7 +672,7 @@ server <- function(input, output, session) {
   # page titles
   output$page1title <- renderUI({
     s <- selection() 
-    if(s$Region[1] %in% c("London", "Yorkshire and The Humber")) {
+    if(s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(s$Sector[1], " in ", s$Region[1],
                     ": overview of employee education levels and qualification choices"), 
              style = "font-size: 24px;")
@@ -681,7 +690,7 @@ server <- function(input, output, session) {
     sis <- selected_region_sector() %>% 
       distinct(IndustrySector, .keep_all = FALSE) %>%
       unlist(use.names = F)
-    if(sr[[1]] %in% c("London", "Yorkshire and The Humber")) {
+    if(sr[[1]] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(sis[[1]], " in ", sr[[1]], ": post-16 qualification pathways"),
              style = "font-size: 24px;")
     } else {
@@ -744,7 +753,7 @@ server <- function(input, output, session) {
                         digits = 0,
                         format = "f"), "% ",
                 "of employees entered work with a ",
-                inWorkChartTitle(), " qualification"))
+                inWorkChartLevel(), " qualification"))
   })
   
   # page 2: treeplot

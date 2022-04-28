@@ -15,7 +15,7 @@ support_links <- function() {
     br(),
     h2("Contact us"),
     "If you have questions about the dashboard or data within it, please contact us at ",
-    a(href = "mailto:he.leo@education.gov.uk", "he.leo@education.gov.uk", .noWS = c("after")),
+    a(href = "mailto:ufs.contact@education.gov.uk", "ufs.contact@education.gov.uk", .noWS = c("after")),
     ".",
     br(),
     h2("See the source code"),
