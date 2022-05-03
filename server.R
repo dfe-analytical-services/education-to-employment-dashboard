@@ -593,7 +593,8 @@ server <- function(input, output, session) {
       mutate(numbering = dplyr::row_number()) %>%
       filter(numbering <= 10) %>%
       ungroup() %>%
-      mutate(Employees = round(Links.1), digits = 0)
+      mutate(Employees = case_when(volume_students_region_sector < 10 ~ 'u'
+                                   TRUE ~ round_significant(Links.1, -1)))
   })
   
   # Make vectors for colors
