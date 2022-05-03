@@ -1,36 +1,36 @@
 
-datalist <- readRDS("datasets.rds")
+datalist <- readRDS("datasets_random.rds")
 
 # first page --------------------------------------------------------------
 
-stat_subs <- datalist$stat_subs %>%
-  filter(median_income != "u" & 
-           perc_subs != "c" & 
-           number_students_subs != 'low') %>%
-  mutate_at(vars(matches("_")), as.numeric)
+stat_subs <- datalist$stat_subs #%>%
+  # filter(median_income != "u" & 
+  #          perc_subs != "c" & 
+  #          number_students_subs != 'low') %>%
+  # mutate_at(vars(matches("_")), as.numeric)
 
-stat_subs_sub <- datalist$stat_subs_sub %>%
-  filter(median_income != "u" & 
-           perc != "c" & 
-           number_students_sub != 'low') %>%
-  mutate_at(vars(c("median_income", "perc", "number_students_sub")), as.numeric) 
+stat_subs_sub <- datalist$stat_subs_sub #%>%
+  # filter(median_income != "u" & 
+  #          perc != "c" & 
+  #          number_students_sub != 'low') %>%
+  # mutate_at(vars(c("median_income", "perc", "number_students_sub")), as.numeric) 
 
-stat_hq <- datalist$stat_hq %>%
-  filter(median_income != "u" & 
-           perc_hq != "c" & 
-           number_students_hq != 'low') %>%
-  mutate_at(vars(c("median_income", "perc_hq", "number_students_hq")), as.numeric) 
+stat_hq <- datalist$stat_hq #%>%
+  # filter(median_income != "u" & 
+  #          perc_hq != "c" & 
+  #          number_students_hq != 'low') %>%
+  # mutate_at(vars(c("median_income", "perc_hq", "number_students_hq")), as.numeric) 
   
-stat_hq_sub <- datalist$stat_hq_sub %>%
-  filter(median_income != "u" & 
-           perc != "c" & 
-           number_students_qual != 'low') %>%
-  mutate_at(vars(c("median_income", "perc", "number_students_qual")), as.numeric) 
+stat_hq_sub <- datalist$stat_hq_sub #%>%
+  # filter(median_income != "u" & 
+  #          perc != "c" & 
+  #          number_students_qual != 'low') %>%
+  # mutate_at(vars(c("median_income", "perc", "number_students_qual")), as.numeric) 
 
-kpis <- datalist$kpis %>%
-  filter(median_income_sector != "u" & 
-           perc_students_sector != "c") %>%
-  mutate_at(vars(matches("_")), as.numeric)
+kpis <- datalist$kpis #%>%
+  # filter(median_income_sector != "u" & 
+  #          perc_students_sector != "c") %>%
+  # mutate_at(vars(matches("_")), as.numeric)
   
 wf <- datalist$wf
 
@@ -52,13 +52,13 @@ levelsRelabelled <- c("Below level 2 (GCSE grades 1-3)",
 
 # second page -------------------------------------------------------------
 
-qualifications <- datalist$qualifications %>%
-  filter(Links != "low") %>%
-  mutate_at(vars(matches("Links")), as.numeric)
+qualifications <- datalist$qualifications #%>%
+  # filter(Links != "low") %>%
+  # mutate_at(vars(matches("Links")), as.numeric)
 
-students_in_work <- datalist$students_in_work %>%
-  filter(perc != "c") %>%
-  mutate_at(vars(matches("perc")), as.numeric)
+students_in_work <- datalist$students_in_work #%>%
+  # filter(perc != "c") %>%
+  # mutate_at(vars(matches("perc")), as.numeric)
 
 # vector for relabel level of qualification
 sector_v2 <- unique(qualifications$IndustrySector)
