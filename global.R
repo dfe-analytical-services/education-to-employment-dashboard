@@ -16,7 +16,9 @@ shhh(library(NCmisc))
 shhh(library(utils))
 shhh(library(shinyGovstyle))
 shhh(library(shinyjs))
-shhh(library(RColorBrewer))
+shhh(library(readr))
+shhh(library(glue))
+shhh(library(purrr))
 
 # tidy_code_function -------------------------------------------------------------------------------
 # 

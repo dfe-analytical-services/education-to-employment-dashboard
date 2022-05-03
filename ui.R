@@ -141,7 +141,10 @@ navbarPage("",
                               choices = c("No","Yes"),
                               inline = F, 
                               width = "50%"),
-                 br(), 
+                 
+                 
+
+              
                  
                  conditionalPanel(
                    condition="input.subsectorlevel=='Subject and qualification'",
@@ -175,11 +178,17 @@ navbarPage("",
                                 label = "Choose a qualification level:",
                                 choices = levelsRelabelled,
                                 multiple = F,
-                                selected = "All levels")
+                                selected = "All levels"),
                  
-               
+                 ### Download button -------------------------------------------------------------------
+                 
+                 downloadButton(
+                   outputId = "download_btn",
+                   label = "Download",
+                   icon = shiny::icon("download")
                  )
-                 
+                 )
+             
                  ), # end of sidebar
                
               ## Main panel 1============================================================================

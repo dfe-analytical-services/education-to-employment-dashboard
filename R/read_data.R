@@ -1,13 +1,37 @@
 
-datalist <- readRDS("datasets_random.rds")
+datalist <- readRDS("datasets.rds")
 
 # first page --------------------------------------------------------------
 
-stat_subs<- datalist$stat_subs
-stat_subs_sub <- datalist$stat_subs_sub
-stat_hq <- datalist$stat_hq 
-stat_hq_sub <- datalist$stat_hq_sub 
-kpis <- datalist$kpis
+stat_subs <- datalist$stat_subs %>%
+  filter(median_income != "u" & 
+           perc_subs != "c" & 
+           number_students_subs != 'low') %>%
+  mutate_at(vars(matches("_")), as.numeric)
+
+stat_subs_sub <- datalist$stat_subs_sub %>%
+  filter(median_income != "u" & 
+           perc != "c" & 
+           number_students_sub != 'low') %>%
+  mutate_at(vars(c("median_income", "perc", "number_students_sub")), as.numeric) 
+
+stat_hq <- datalist$stat_hq %>%
+  filter(median_income != "u" & 
+           perc_hq != "c" & 
+           number_students_hq != 'low') %>%
+  mutate_at(vars(c("median_income", "perc_hq", "number_students_hq")), as.numeric) 
+  
+stat_hq_sub <- datalist$stat_hq_sub %>%
+  filter(median_income != "u" & 
+           perc != "c" & 
+           number_students_qual != 'low') %>%
+  mutate_at(vars(c("median_income", "perc", "number_students_qual")), as.numeric) 
+
+kpis <- datalist$kpis %>%
+  filter(median_income_sector != "u" & 
+           perc_students_sector != "c") %>%
+  mutate_at(vars(matches("_")), as.numeric)
+  
 wf <- datalist$wf
 
 sectors_v <- unique(stat_subs$Sector)
@@ -28,16 +52,30 @@ levelsRelabelled <- c("Below level 2 (GCSE grades 1-3)",
 
 # second page -------------------------------------------------------------
 
-qualifications <- datalist$qualifications
-students_in_work <- datalist$students_in_work
-t3_subjects <- datalist$subjects_t3
+qualifications <- datalist$qualifications %>%
+  filter(Links != "low") %>%
+  mutate_at(vars(matches("Links")), as.numeric)
+
+students_in_work <- datalist$students_in_work %>%
+  filter(perc != "c") %>%
+  mutate_at(vars(matches("perc")), as.numeric)
 
 # vector for relabel level of qualification
 sector_v2 <- unique(qualifications$IndustrySector)
 region_v2 <- unique(qualifications$Region)
 level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6", "Level 7+")
-subject_v2 <- unique(qualifications$Subject)
 
 
 
+
+# download data -----------------------------------------------------------
+
+subsectors_table <- datalist$stat_subs 
+highest_qualification_table <- datalist$stat_hq 
+qualifications_titles_table <- datalist$stat_subs_sub
+subjects_table <- datalist$stat_hq_sub
+income_proportions_table <- datalist$kpis
+working_futures_table <- datalist$wf
+qualifications_pathways_table <- datalist$qualifications
+progression_to_work_by_level_table <- datalist$students_in_work
 

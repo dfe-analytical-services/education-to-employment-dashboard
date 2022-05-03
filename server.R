@@ -1,9 +1,7 @@
 
-theme_set(theme_hc(base_family = "Helvetica")) 
 
 defaultW <- getOption("warn")
 options(warn = -1)
-
 
 server <- function(input, output, session) {
   
@@ -305,16 +303,6 @@ server <- function(input, output, session) {
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
-      # calculate percentages
-      group_by(Region, Sector, var_to_plot, var_to_show) %>%
-      summarise(students = sum(number_students)) %>%
-      ungroup() %>% 
-      left_join(students_in_work %>% 
-                  group_by(Region, Sector) %>%
-                  summarise(total = sum(number_students)) %>%
-                  ungroup() , 
-                by = c("Region", "Sector")) %>%
-      mutate(perc = students/total) %>%
       filter(Region == input$regionp &
                Sector == input$sectorp )
  })    
@@ -360,16 +348,6 @@ server <- function(input, output, session) {
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
-      # calculate percentages
-      group_by(Region, Sector, var_to_plot, var_to_show) %>%
-      summarise(students = sum(number_students)) %>%
-      ungroup() %>% 
-      left_join(students_in_work %>% 
-                  group_by(Region, Sector) %>%
-                  summarise(total = sum(number_students)) %>%
-                  ungroup() , 
-                by = c("Region", "Sector")) %>%
-      mutate(perc = students/total) %>%
       filter(Region == input$regionp &
                Sector == input$sectorp ) %>%
       select(perc)
@@ -525,13 +503,6 @@ server <- function(input, output, session) {
     qualifications %>% 
       filter(Region == input$regionp & 
                IndustrySector == input$sectorp) %>%
-      select(Region, 
-             IndustrySector, 
-             Level, 
-             Qual, 
-             NextQual,
-             LevelNextQual,
-             Links, perc_qual) %>%
       mutate(ColourLevel = case_when(Level == "Level 2" ~ "#1d70b8",
                                      Level == "Level 3" ~ "#003078",
                                      Level == "Level 4/5" ~ "#912b88",
@@ -564,7 +535,7 @@ server <- function(input, output, session) {
   })
   
   
-  # filter level/subject and self-joins to get next quals on 4 levels
+  # filter level and self-joins to get next quals on 4 levels
   tree_data <- reactive({
     selected_region_sector() %>%
       filter(Level == input$inSelect3) %>% 
@@ -587,14 +558,12 @@ server <- function(input, output, session) {
       mutate_at(vars(matches("Links")), ~replace(., is.na(.), 0)) %>%
       # replace nas for vector colors
       mutate_at(vars(matches("Colour")), ~na_if(., "#ffffff")) %>% 
-      # restrict each next qual the number of nodes to top 5
+      # restrict each next qual the number of nodes to top 10
       group_by(Qual, Level) %>%
       arrange(desc(Links.1), .by_group = T) %>%
       mutate(numbering = dplyr::row_number()) %>%
       filter(numbering <= 10) %>%
-      ungroup() %>%
-      mutate(Employees = case_when(volume_students_region_sector < 10 ~ 'u'
-                                   TRUE ~ round_significant(Links.1, -1)))
+      ungroup() 
   })
   
   # Make vectors for colors
@@ -612,7 +581,7 @@ server <- function(input, output, session) {
   
   
   # Page2: Render treeplot --------------------------------------------------
-  #https://adeelk93.github.io/collapsibleTree/ 
+
   output$treePlot <- renderCollapsibleTree({
     validate(
       need( nrow(tree_data() ) > 0, "There are no employees matching this selection. Please select again.")
@@ -630,43 +599,11 @@ server <- function(input, output, session) {
                     fillByLevel = TRUE,
                     collapsed = TRUE,
                     tooltip = T ,
-                    attribute = "Employees",
                     width = 1200
     )
     
   })
   
-  
-  
-  # Page 2: Render top 3 subjects table --------------------------------------------------
-  
-  output$t3subjectsTable <- renderDataTable({
-    
-    DT::datatable(t3_subjects %>% 
-                    filter(Region == input$regionp &
-                             Sector == input$sectorp &
-                             Level_order == input$inSelect3) %>%
-                    mutate(perc = round(perc, 4)) %>%
-                    select(Subject = Subject2, 
-                           Percentage = perc),
-                  rownames = NULL,
-                  colnames = NULL,
-                  options = list(searching = FALSE,
-                                 pageLength = 3,
-                                 dom = 't',
-                                 bSort = F,
-                                 scrollX = F),
-                  width = '200px',
-                  height = '100px',
-                  style = 'bootstrap', class = 'stripe') %>%
-      formatPercentage(2, digits = 1) %>%
-      formatStyle(0, target = 'row',
-                  color = '#ffffff',
-                  fontSize = '16px',
-                  backgroundColor = '#1d70b8',
-                  lineHeight='60%')
-    
-  })
   
   # Page 1&2: reactive Box & KPIs titles --------------------------------------------------------------
   
@@ -787,6 +724,52 @@ server <- function(input, output, session) {
   output$svglegend <- renderUI({
     HTML(svg_html_legend)
     })
+
+# Download data -----------------------------------------------------------
+
+  to_download <- reactiveValues(
+    subsectors_table = subsectors_table, 
+                highest_qualification_table = highest_qualification_table, 
+                qualifications_titles_table = qualifications_titles_table,
+                subjects_table = subjects_table,
+                income_proportions_table = income_proportions_table,
+                working_futures_table = working_futures_table,
+                qualifications_pathways_table = qualifications_pathways_table,
+                progression_to_work_by_level_table = progression_to_work_by_level_table
+  )
+
+  
+  output$download_btn <- downloadHandler(
+    filename = function(){
+      paste("data_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file) {
+      
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+        
+      
+      reactiveValuesToList(to_download) %>%
+        imap(function(x,y){
+          if(!is.null(x)){
+            file_name <- glue("{y}_data.csv")
+            readr::write_csv(x, file.path(temp_directory, file_name))
+          }
+        })
+      
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+
+        },
+      
+      contentType = "application/zip"
+
+  )
+    
+ 
   
 }
 
