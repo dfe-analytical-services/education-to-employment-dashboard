@@ -45,7 +45,7 @@ server <- function(input, output, session) {
                                                            big.mark = ",")), 
                                 sep = "\n"))) +
         geom_col(aes(y = perc_subs), 
-                 fill = "#28a197")  +
+                 fill = "#1D70B8")  +
         labs(y = "", x = "",
              title = "") +
         theme(legend.position="none", 
@@ -499,23 +499,25 @@ server <- function(input, output, session) {
   
   
   # Page2: Reactive treeplot ------------------------------------------------------
+ 
+  # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
   
   # filter region/sector
   selected_region_sector <- reactive({
     qualifications %>% 
       filter(Region == input$regionp & 
                IndustrySector == input$sectorp) %>%
-      mutate(ColourLevel = case_when(Level == "Level 2" ~ "#1d70b8",
-                                     Level == "Level 3" ~ "#003078",
-                                     Level == "Level 4/5" ~ "#912b88",
-                                     Level == "Level 6" ~ "#4c2c92",
-                                     Level == "Level 7+"~ "#28a197",
+      mutate(ColourLevel = case_when(Level == "Level 2" ~ "#7FCFF2",
+                                     Level == "Level 3" ~ "#62B7E4",
+                                     Level == "Level 4/5" ~ "#489FD6",
+                                     Level == "Level 6" ~ "#3088C8",
+                                     Level == "Level 7+"~ "#1D70B8",
                                      TRUE ~   "#ffffff"),
-             ColourNextLevel = case_when(LevelNextQual == "Level  2" ~ "#1d70b8",
-                                         LevelNextQual == "Level 3" ~ "#003078",
-                                         LevelNextQual == "Level 4/5" ~ "#912b88",
-                                         LevelNextQual == "Level 6" ~ "#4c2c92",
-                                         LevelNextQual == "Level 7+"~ "#28a197",
+             ColourNextLevel = case_when(LevelNextQual == "Level  2" ~ "#7FCFF2",
+                                         LevelNextQual == "Level 3" ~ "#62B7E4",
+                                         LevelNextQual == "Level 4/5" ~ "#489FD6",
+                                         LevelNextQual == "Level 6" ~ "#3088C8",
+                                         LevelNextQual == "Level 7+"~ "#1D70B8",
                                          TRUE ~   "#ffffff"))
   })
   
@@ -704,14 +706,14 @@ server <- function(input, output, session) {
     HTML(paste("Post-16 qualification pathways starting at ", 
                s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
   })
-  
+  # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
   # page 2: treeplot legend
   svg_html_legend <- paste('<svg width="450" height="20">',
-                           '<circle cx="10" cy="10" r="8" style="fill: rgb(29, 112, 184);"></circle>',
-                           '<circle cx="90" cy="10" r="8" style="fill: rgb(0, 48, 120);"></circle>',
-                           '<circle cx="170" cy="10" r="8" style="fill: rgb(145, 43, 136);"></circle>',
-                           '<circle cx="260" cy="10" r="8" style="fill: #4c2c92";></circle>',
-                           '<circle cx="340" cy="10" r="8" style="fill: #28a197";></circle>',
+                           '<circle cx="10" cy="10" r="8" style="fill: #7FCFF2;"></circle>',
+                           '<circle cx="90" cy="10" r="8" style="fill: #62B7E4;"></circle>',
+                           '<circle cx="170" cy="10" r="8" style="fill: #489FD6;"></circle>',
+                           '<circle cx="260" cy="10" r="8" style="fill: #3088C8";></circle>',
+                           '<circle cx="340" cy="10" r="8" style="fill: #1D70B8";></circle>',
                            '<circle cx="10" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
                            '<circle cx="90" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
                            '<circle cx="170" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
