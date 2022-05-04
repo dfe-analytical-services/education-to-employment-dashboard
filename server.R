@@ -1,4 +1,4 @@
-
+theme_set(theme_hc(base_family = "Helvetica"))
 
 defaultW <- getOption("warn")
 options(warn = -1)
@@ -118,7 +118,7 @@ server <- function(input, output, session) {
     if(input$showMedian == 'No'){
       selection() %>%
         ggplot(aes(x = Level_order,
-                   y = perc_hq,
+                   
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
                                                                digits = 0,
                                                                format = "f"), "%"), 
@@ -126,9 +126,12 @@ server <- function(input, output, session) {
                                                            digits = 0, 
                                                            format = "f", 
                                                            big.mark = ",")),
-                                sep = "\n"))) + 
-        geom_col(fill = "#489FD6")  +
-        labs(y = "", x = "",
+                                sep = "\n") 
+               )) + 
+        geom_bar(aes(y = perc_hq), 
+                 fill = "#489FD6", 
+                 stat = "identity")  +
+        labs(y = "Proportion (%)", x = "",
              title = "") + 
         theme(legend.position ="none",
               plot.title = element_text((hjust = 0.5)),
@@ -138,10 +141,9 @@ server <- function(input, output, session) {
               axis.text.x = element_blank(),
               panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
               panel.background = element_blank(),panel.grid.major.y = element_blank(),
-              panel.grid.minor.y = element_blank() +
-              scale_y_continuous(labels = scales::percent) +
-              scale_x_discrete(labels = levelsRelabelled) 
-        )  + 
+              panel.grid.minor.y = element_blank())  +
+        scale_y_continuous(labels = scales::percent) +
+        scale_x_discrete(labels = levelsRelabelled) + 
         coord_flip()
     } else {
       selection() %>%
@@ -739,35 +741,33 @@ server <- function(input, output, session) {
   )
 
   
-  output$download_btn <- downloadHandler(
-    filename = function(){
-      paste("data_", Sys.Date(), ".zip", sep = "")
-    },
-    content = function(file) {
-      
-      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
-      dir.create(temp_directory)
-        
-      
-      reactiveValuesToList(to_download) %>%
-        imap(function(x,y){
-          if(!is.null(x)){
-            file_name <- glue("{y}_data.csv")
-            readr::write_csv(x, file.path(temp_directory, file_name))
-          }
-        })
-      
-      zip::zip(
-        zipfile = file,
-        files = dir(temp_directory),
-        root = temp_directory
-      )
-
-        },
-      
-      contentType = "application/zip"
-
-  )
+ #  output$download_btn <- downloadHandler(
+ #    filename = function(){
+ #      paste("data_", Sys.Date(), ".zip", sep = "")
+ #    },
+ #    content = function(file) {
+ #      
+ #      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+ #      dir.create(temp_directory)
+ #        
+ #      
+ #      reactiveValuesToList(to_download) %>%
+ #        imap(function(x,y){
+ #          if(!is.null(x)){
+ #            file_name <- glue("{y}_data.csv")
+ #            readr::write_csv(x, file.path(temp_directory, file_name))
+ #          }
+ #        })
+ #      
+ #      zip::zip(
+ #        zipfile = file,
+ #        files = dir(temp_directory),
+ #        root = temp_directory
+ #      )
+ # 
+ #        },
+ #      contentType = "application/zip"
+ # )
     
  
   
