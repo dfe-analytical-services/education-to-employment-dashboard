@@ -323,7 +323,7 @@ server <- function(input, output, session) {
            y = "") +
       coord_flip() +
       scale_y_continuous(labels = scales::percent) +
-      scale_fill_manual(values = c("#1D70B8","#7FCFF2", "#f3f2f1")) +
+      scale_fill_manual(values = c("#7FCFF2", "#1D70B8", "#f3f2f1")) +
       theme(legend.position = "none", 
             plot.margin = unit(c(0,0,0,0), "mm"),
             axis.title=element_text(size = 14),
