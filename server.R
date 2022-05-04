@@ -76,10 +76,10 @@ server <- function(input, output, session) {
                    fill = "#4c2c92") + 
         geom_text(data = selection_subs(), 
                   aes(x = Subsector, y = median_income,
-                      label = paste0("£", formatC(signif(median_income/1000, digits = 2), 
+                      label = paste0("£", formatC(median_income, 
                                                   digits = 0, 
                                                   format = "f", 
-                                                  big.mark = ","), "K")),
+                                                  big.mark = ","))),
                   nudge_x = 0.25,
                   nudge_y = -0.5,
                   size = 3,
@@ -89,7 +89,7 @@ server <- function(input, output, session) {
                          y = 0, 
                          yend = median_income),
                      size = 0.5, color = "#4c2c92") +
-        labs(y = "Average Earnings (£)", x = "",
+        labs(y = "", x = "",
              title = "") +
         theme(legend.position="none",
               plot.title = element_text((hjust = 0.5)),
@@ -99,6 +99,7 @@ server <- function(input, output, session) {
               axis.ticks.x = element_blank(),panel.grid.major.y = element_blank(),
               panel.grid.minor.y = element_blank())  + 
         scale_y_continuous(labels = comma_format(big.mark = ",") )+
+        ylim(0,50000) +
         coord_flip()
       
     }
@@ -131,7 +132,7 @@ server <- function(input, output, session) {
         geom_bar(aes(y = perc_hq), 
                  fill = "#489FD6", 
                  stat = "identity")  +
-        labs(y = "Proportion (%)", x = "",
+        labs(y = "", x = "",
              title = "") + 
         theme(legend.position ="none",
               plot.title = element_text((hjust = 0.5)),
@@ -164,10 +165,10 @@ server <- function(input, output, session) {
         geom_text(data = selection(), 
                   aes(x = Level_order, 
                       y = median_income,
-                      label = paste0("£", formatC(signif(median_income, digits = 2)/1000, 
+                      label = paste0("£", formatC(median_income, 
                                                   digits = 0, 
                                                   format = "f", 
-                                                  big.mark = ","), "K")), 
+                                                  big.mark = ","))), 
                   nudge_x = 0.25,
                   nudge_y = -0.5,
                   colour = "#0b0c0c", 
@@ -179,7 +180,7 @@ server <- function(input, output, session) {
                          yend = median_income),
                      size = 0.5, 
                      color = "#4c2c92") +
-        labs(y = "Average Earnings (£)", x = "",
+        labs(y = "", x = "",
              title = "") +
         theme(legend.position="none",
               plot.title = element_text((hjust = 0.5)),
@@ -190,6 +191,7 @@ server <- function(input, output, session) {
               panel.grid.minor.y = element_blank()) +
         scale_y_continuous(labels = comma_format(big.mark = ",") ) +
         scale_x_discrete(labels = levelsRelabelled) +
+        ylim(0,50000) +
         coord_flip()               
       }
     
@@ -244,10 +246,10 @@ server <- function(input, output, session) {
                                               digits = 0, 
                                               format = "f", 
                                               big.mark = ",")),
-                   paste0("Average Earnings: ", "£", formatC(signif(median_income/1000, digits = 2), 
+                   paste0("Average Earnings: ", "£", formatC(median_income, 
                                                              digits = 0, 
                                                              format = "f", 
-                                                             big.mark = ","), "K"),
+                                                             big.mark = ",")),
                    sep = "\n"))) +
       geom_col(fill = "#003078")  +
       labs(title = "", x = "", y = "") +
@@ -407,7 +409,6 @@ server <- function(input, output, session) {
                              Sector == input$sector &
                              Level_order == input$inSelect &
                              Subsector == input$inSelect2) %>%
-                    mutate(median_income = signif(median_income, 2)) %>%
                     # final selection 
                     select(Qualification, 
                            Level = Level_order,
