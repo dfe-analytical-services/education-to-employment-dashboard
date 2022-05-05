@@ -19,7 +19,7 @@ run_set_shinytests <- function(dfinputs, outstring, listrecords) {
   # listrecords: list of input and output variables to record the values of.
   for (i in 1:nrow(dfinputs)) {
     file <- paste0(outstring, "_", i - 1, ".json")
-    eval(parse(text = paste0("app$setInputs(", dfinputs$field[i], '="', dfinputs$value[i], '", wait_ = FALSE, values_ = FALSE)')))
+    eval(parse(text = paste0("app$setInputs(", dfinputs$field[i], '="', dfinputs$value[i], '")')))
     app$snapshot(
       items = listrecords,
       filename = file
@@ -37,7 +37,7 @@ app$snapshotInit("testUI", screenshot = FALSE)
 
 dfLogParams <- list(
   input = c(
-    "navbar", "showMedian",
+    "navbar",
     "showMedian", "qualificationsubject",
     "sector", "region", "sectorp", "regionp", "inSelect3"
   ),
@@ -51,19 +51,19 @@ dfLogParams <- list(
 
 dfTestInputs <- data.frame(
   field = c(
-    "navbar", 
+    "navbar",
     "navbar", "showMedian", "sector", "region",
-    "subsectorlevel","inSelect",
+    "subsectorlevel", "inSelect",
     "navbar", "sectorp", "regionp", "inSelect3",
-    "navbar", 
+    "navbar",
     "navbar"
   ),
   value = c(
-    "homepage", 
-    "overview", "Yes", "Agriculture", "North East", 
-    "Subject and qualification","Crop and animal production",
-    "pathways", "Media","Yorkshire and The Humber","Level 3",
-    "Accessibility", 
+    "homepage",
+    "overview", "Yes", "Agriculture", "North East",
+    "Subject and qualification", "Crop and animal production",
+    "pathways", "Media", "Yorkshire and The Humber", "Level 3",
+    "Accessibility",
     "Support and feedback"
   )
 )
