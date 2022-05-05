@@ -2,38 +2,38 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "pathways",
-    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "qualificationsubject": "Top post-16 qualifications by highest level",
     "region": "North East",
     "regionp": "England",
     "sector": "Agriculture",
     "sectorp": "Construction",
-    "showMedian": "Yes"
+    "showMedian": "Percentage"
   },
   "output": {
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
-    "box4title": "Post-16 qualification pathways starting at  level 2 expand the chart to view selected popular pathways to higher levels of education",
-    "box7title": "7% of employees entered work with a level 2 qualification",
+    "box4title": "Post-16 qualification pathways starting at  level 2",
+    "box7title": "13% of employees have the highest qualification at level 2",
     "directionSector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">-0.3 %<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment decline<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Forecast annual employment decline up to 2027<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
       "deps": [
 
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£19,975.6<\/b>",
       "deps": [
 
       ]
@@ -51,7 +51,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">17%<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">72.8%<\/b>",
       "deps": [
 
       ]
@@ -61,16 +61,41 @@
         "data": [
           {
             "orientation": "h",
-            "width": 0.9,
-            "base": 0.317048346335428,
-            "x": 0.682951653664572,
-            "y": 1,
-            "text": "Higher than level 2: 68%",
+            "width": [
+              0.9,
+              0.9,
+              0.9,
+              0.9
+            ],
+            "base": [
+              0.21646052133292,
+              2.01172931748442,
+              2.07776804524474,
+              1.12002915958874
+            ],
+            "x": [
+              0.90356863825582,
+              0.0660387277603149,
+              0.234561965800822,
+              0.891700157895684
+            ],
+            "y": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "text": [
+              "Higher than level 2: 90%",
+              "Higher than level 2: 7%",
+              "Higher than level 2: 23%",
+              "Higher than level 2: 89%"
+            ],
             "type": "bar",
             "textposition": "none",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(29,112,184,1)",
+              "color": "rgba(127,207,242,1)",
               "line": {
                 "width": 1.88976377952756,
                 "color": "transparent"
@@ -87,15 +112,15 @@
           {
             "orientation": "h",
             "width": 0.9,
-            "base": 0.246927258003833,
-            "x": 0.0701210883315947,
+            "base": 0.0828042726498097,
+            "x": 0.13365624868311,
             "y": 1,
-            "text": "At level 2: 7%",
+            "text": "At level 2: 13%",
             "type": "bar",
             "textposition": "none",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(127,207,242,1)",
+              "color": "rgba(29,112,184,1)",
               "line": {
                 "width": 1.88976377952756,
                 "color": "transparent"
@@ -113,9 +138,9 @@
             "orientation": "h",
             "width": 0.9,
             "base": 0,
-            "x": 0.246927258003833,
+            "x": 0.0828042726498097,
             "y": 1,
-            "text": "Lower than level 2: 25%",
+            "text": "Lower than level 2: 8%",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -157,31 +182,31 @@
             "type": "linear",
             "autorange": false,
             "range": [
-              -0.05,
-              1.05
+              -0.115616500552278,
+              2.42794651159784
             ],
             "tickmode": "array",
             "ticktext": [
               "0%",
-              "25%",
               "50%",
-              "75%",
-              "100%"
+              "100%",
+              "150%",
+              "200%"
             ],
             "tickvals": [
               0,
-              0.25,
               0.5,
-              0.75,
-              1
+              1,
+              1.5,
+              2
             ],
             "categoryorder": "array",
             "categoryarray": [
               "0%",
-              "25%",
               "50%",
-              "75%",
-              "100%"
+              "100%",
+              "150%",
+              "200%"
             ],
             "nticks": null,
             "ticks": "outside",
@@ -420,275 +445,275 @@
         "data": {
           "name": "Your selection:",
           "fill": "#f3f2f1",
-          "WeightOfNode": "24,331",
+          "WeightOfNode": "40",
           "children": [
             {
               "name": "Certificate in Basic Plumbing Studies",
-              "fill": "#1d70b8",
-              "WeightOfNode": "10,648",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
                   "name": "MES Plumbing Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "3,678"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Plumbing and Heating Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,816"
-                },
-                {
-                  "name": "Certificate in Plumbing Studies",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,438"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "NVQ in Mechanical Engineering Services - Plumbing (Domestic)",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,716"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Certificate in Plumbing Studies",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Certificate in Electrotechnical Technology",
-              "fill": "#1d70b8",
-              "WeightOfNode": "4,263",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "Certificate in the Requirements for Electrical Installations (BS 7671 June 2008)",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,788"
-                },
-                {
                   "name": "Certificate in Electrotechnical Technology",
-                  "fill": "#003078",
-                  "WeightOfNode": "946"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "NVQ in Electrotechnical Services",
-                  "fill": "#003078",
-                  "WeightOfNode": "308"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Electrotechnical Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "221"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Certificate in the Requirements for Electrical Installations (BS 7671 June 2008)",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Construction Award",
-              "fill": "#1d70b8",
-              "WeightOfNode": "8,622",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
                   "name": "NVQ in Wood Occupations",
-                  "fill": "#003078",
-                  "WeightOfNode": "4,844"
-                },
-                {
-                  "name": "Advanced Construction Award",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,509"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Construction Skills Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "639"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Advanced Construction Award",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Diploma in Site Carpentry",
-                  "fill": "#003078",
-                  "WeightOfNode": "630"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Construction Skills Apprenticeship",
-              "fill": "#1d70b8",
-              "WeightOfNode": "6,036",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "Diploma in Site Carpentry",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,596"
-                },
-                {
-                  "name": "NVQ in Wood Occupations",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,447"
+                  "name": "Construction Building Apprenticeship",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Construction Skills Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,341"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
-                  "name": "Construction Building Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "652"
+                  "name": "NVQ in Wood Occupations",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Diploma in Site Carpentry",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Engineering Apprenticeship",
-              "fill": "#1d70b8",
-              "WeightOfNode": "2,602",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
+                  "name": "Electrotechnical Apprenticeship",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
                   "name": "Engineering Manufacture(Craft and Technician) Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,006"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Certificate in Electrotechnical Technology",
-                  "fill": "#003078",
-                  "WeightOfNode": "993"
-                },
-                {
-                  "name": "Electrotechnical Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "530"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Engineering Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "73"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Heating, Ventilation, Air Conditioning and Refrigeration Apprenticeship",
-              "fill": "#1d70b8",
-              "WeightOfNode": "4,742",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "Certificate in Heating and Ventilation Installation",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,929"
+                  "name": "NVQ in Mechanical Engineering Services - Heating and Ventilating Installation",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Heating and Ventilating Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,844"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Certificate in Heating and Ventilation Installation",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Heating, Ventilation, Air Conditioning and Refrigeration Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "637"
-                },
-                {
-                  "name": "NVQ in Mechanical Engineering Services - Heating and Ventilating Installation",
-                  "fill": "#003078",
-                  "WeightOfNode": "332"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "MES Plumbing Apprenticeship",
-              "fill": "#1d70b8",
-              "WeightOfNode": "6,765",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
                   "name": "Certificate in Plumbing Studies",
-                  "fill": "#003078",
-                  "WeightOfNode": "4,856"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "MES Plumbing Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,041"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "NVQ in Mechanical Engineering Services - Plumbing (Domestic)",
-                  "fill": "#003078",
-                  "WeightOfNode": "772"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Plumbing and Heating Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "96"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "NVQ in Mechanical Engineering Services - Plumbing",
-              "fill": "#1d70b8",
-              "WeightOfNode": "12,634",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "Certificate in Plumbing Studies",
-                  "fill": "#003078",
-                  "WeightOfNode": "4,901"
+                  "name": "NVQ in Mechanical Engineering Services - Plumbing (Domestic)",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Plumbing and Heating Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "4,338"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
-                  "name": "NVQ in Mechanical Engineering Services - Plumbing (Domestic)",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,599"
+                  "name": "Certificate in Plumbing Studies",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "MES Plumbing Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "796"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "NVQ in Performing Engineering Operations",
-              "fill": "#1d70b8",
-              "WeightOfNode": "10,743",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "Certificate in Electrotechnical Technology",
-                  "fill": "#003078",
-                  "WeightOfNode": "4,360"
-                },
-                {
-                  "name": "Engineering Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,912"
-                },
-                {
                   "name": "Electrotechnical Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,387"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Certificate in the Requirements for Electrical Installations (BS 7671 June 2008)",
-                  "fill": "#003078",
-                  "WeightOfNode": "1,084"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Engineering Apprenticeship",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "Certificate in Electrotechnical Technology",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "NVQ in Wood Occupations",
-              "fill": "#1d70b8",
-              "WeightOfNode": "7,715",
+              "fill": "#7FCFF2",
+              "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "NVQ in Wood Occupations",
-                  "fill": "#003078",
-                  "WeightOfNode": "3,914"
+                  "name": "Construction Skills Apprenticeship",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Advanced Construction Award",
-                  "fill": "#003078",
-                  "WeightOfNode": "2,168"
-                },
-                {
-                  "name": "Construction Skills Apprenticeship",
-                  "fill": "#003078",
-                  "WeightOfNode": "854"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 },
                 {
                   "name": "Diploma in Site Carpentry",
-                  "fill": "#003078",
-                  "WeightOfNode": "779"
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "NVQ in Wood Occupations",
+                  "fill": "#62B7E4",
+                  "WeightOfNode": "1"
                 }
               ]
             }
@@ -702,7 +727,7 @@
             "NextQual.3"
           ],
           "input": null,
-          "attribute": "Employees",
+          "attribute": "leafCount",
           "linkLength": null,
           "fontSize": 12,
           "tooltip": true,

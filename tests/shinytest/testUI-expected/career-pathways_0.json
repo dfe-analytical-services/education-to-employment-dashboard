@@ -2,12 +2,12 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "homepage",
-    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "qualificationsubject": "Top post-16 qualifications by highest level",
     "region": "England",
     "regionp": "England",
     "sector": "Construction",
     "sectorp": "Construction",
-    "showMedian": "No"
+    "showMedian": "Percentage"
   },
   "output": {
 

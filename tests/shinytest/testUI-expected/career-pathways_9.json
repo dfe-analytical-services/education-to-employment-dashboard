@@ -2,38 +2,38 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "pathways",
-    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "qualificationsubject": "Top post-16 qualifications by highest level",
     "region": "North East",
     "regionp": "Yorkshire and The Humber",
     "sector": "Agriculture",
     "sectorp": "Media",
-    "showMedian": "Yes"
+    "showMedian": "Percentage"
   },
   "output": {
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
-    "box4title": "Post-16 qualification pathways starting at  NA expand the chart to view selected popular pathways to higher levels of education",
-    "box7title": "32% of employees entered work with a level 2 qualification",
+    "box4title": "Post-16 qualification pathways starting at  NA",
+    "box7title": "28% of employees have the highest qualification at level 2",
     "directionSector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">-0.3 %<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment decline<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Forecast annual employment decline up to 2027<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
       "deps": [
 
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£19,975.6<\/b>",
       "deps": [
 
       ]
@@ -51,7 +51,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">17%<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">72.8%<\/b>",
       "deps": [
 
       ]
@@ -61,16 +61,41 @@
         "data": [
           {
             "orientation": "h",
-            "width": 0.9,
-            "base": 0.551403544303751,
-            "x": 0.448596455696249,
-            "y": 1,
-            "text": "Higher than level 2: 45%",
+            "width": [
+              0.9,
+              0.9,
+              0.9,
+              0.9
+            ],
+            "base": [
+              2.07765323598869,
+              1.15388482389972,
+              2.01132872258313,
+              2.73149899160489
+            ],
+            "x": [
+              0.653845755616203,
+              0.857443898683414,
+              0.0663245134055614,
+              0.115576363401487
+            ],
+            "y": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "text": [
+              "Higher than level 2: 65%",
+              "Higher than level 2: 86%",
+              "Higher than level 2: 7%",
+              "Higher than level 2: 12%"
+            ],
             "type": "bar",
             "textposition": "none",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(29,112,184,1)",
+              "color": "rgba(127,207,242,1)",
               "line": {
                 "width": 1.88976377952756,
                 "color": "transparent"
@@ -87,15 +112,15 @@
           {
             "orientation": "h",
             "width": 0.9,
-            "base": 0.228100936165417,
-            "x": 0.323302608138334,
+            "base": 0.871177226305008,
+            "x": 0.282707597594708,
             "y": 1,
-            "text": "At level 2: 32%",
+            "text": "At level 2: 28%",
             "type": "bar",
             "textposition": "none",
             "marker": {
               "autocolorscale": false,
-              "color": "rgba(127,207,242,1)",
+              "color": "rgba(29,112,184,1)",
               "line": {
                 "width": 1.88976377952756,
                 "color": "transparent"
@@ -113,9 +138,9 @@
             "orientation": "h",
             "width": 0.9,
             "base": 0,
-            "x": 0.228100936165417,
+            "x": 0.871177226305008,
             "y": 1,
-            "text": "Lower than level 2: 23%",
+            "text": "Lower than level 2: 87%",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -157,31 +182,25 @@
             "type": "linear",
             "autorange": false,
             "range": [
-              -0.05,
-              1.05
+              -0.142353767750319,
+              2.9894291227567
             ],
             "tickmode": "array",
             "ticktext": [
               "0%",
-              "25%",
-              "50%",
-              "75%",
-              "100%"
+              "100%",
+              "200%"
             ],
             "tickvals": [
               0,
-              0.25,
-              0.5,
-              0.75,
-              1
+              1,
+              2
             ],
             "categoryorder": "array",
             "categoryarray": [
               "0%",
-              "25%",
-              "50%",
-              "75%",
-              "100%"
+              "100%",
+              "200%"
             ],
             "nticks": null,
             "ticks": "outside",

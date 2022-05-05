@@ -2,35 +2,35 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "overview",
-    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "qualificationsubject": "Top post-16 qualifications by highest level",
     "region": "England",
     "regionp": "England",
     "sector": "Construction",
     "sectorp": "Construction",
-    "showMedian": "No"
+    "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "directionSector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0.8 %<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0.7%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment growth<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in construction<\/b>",
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">Proportion of employees that work in construction<\/b>",
       "deps": [
 
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£19,988.81<\/b>",
       "deps": [
 
       ]
@@ -42,7 +42,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">93%<\/b>",
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">16.9%<\/b>",
       "deps": [
 
       ]
