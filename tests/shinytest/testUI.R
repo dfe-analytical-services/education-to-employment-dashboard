@@ -51,10 +51,20 @@ dfLogParams <- list(
 
 dfTestInputs <- data.frame(
   field = c(
-    "navbar", "navbar", "navbar", "navbar", "navbar"
+    "navbar", 
+    "navbar", "showMedian", "sector", "region",
+    "subsectorlevel","inSelect",
+    "navbar", "sectorp", "regionp", "inSelect3",
+    "navbar", 
+    "navbar"
   ),
   value = c(
-    "homepage", "overview", "pathways", "Accessibility", "Support and feedback"
+    "homepage", 
+    "overview", "Yes", "Agriculture", "North East", 
+    "Subject and qualification","Crop and animal production",
+    "pathways", "Media","Yorkshire and The Humber","Level 3",
+    "Accessibility", 
+    "Support and feedback"
   )
 )
 

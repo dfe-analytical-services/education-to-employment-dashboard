@@ -1,0 +1,866 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "pathways",
+    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "region": "North East",
+    "regionp": "England",
+    "sector": "Agriculture",
+    "sectorp": "Media",
+    "showMedian": "Yes"
+  },
+  "output": {
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box3title": "Subject and qualification choices for employees at NA working in NA",
+    "box4title": "Post-16 qualification pathways starting at  level 2 expand the chart to view selected popular pathways to higher levels of education",
+    "box7title": "28% of employees entered work with a level 2 qualification",
+    "directionSector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">-0.3 %<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiChange": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment decline<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiSector": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in agriculture<\/b>",
+      "deps": [
+
+      ]
+    },
+    "median_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "deps": [
+
+      ]
+    },
+    "page1title": {
+      "html": "<b style=\"font-size: 24px;\">Agriculture in the North East: overview of employee education levels and qualification choices<\/b>",
+      "deps": [
+
+      ]
+    },
+    "page2title": {
+      "html": "<b style=\"font-size: 24px;\">Media in England: post-16 qualification pathways<\/b>",
+      "deps": [
+
+      ]
+    },
+    "perc_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">17%<\/b>",
+      "deps": [
+
+      ]
+    },
+    "studinWorkChart": {
+      "x": {
+        "data": [
+          {
+            "orientation": "h",
+            "width": 0.9,
+            "base": 0.589875114457751,
+            "x": 0.410124885542249,
+            "y": 1,
+            "text": "Higher than level 2: 41%",
+            "type": "bar",
+            "textposition": "none",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(29,112,184,1)",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "transparent"
+              }
+            },
+            "name": "Higher than level",
+            "legendgroup": "Higher than level",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          },
+          {
+            "orientation": "h",
+            "width": 0.9,
+            "base": 0.312727123803771,
+            "x": 0.27714799065398,
+            "y": 1,
+            "text": "At level 2: 28%",
+            "type": "bar",
+            "textposition": "none",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(127,207,242,1)",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "transparent"
+              }
+            },
+            "name": "At level",
+            "legendgroup": "At level",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          },
+          {
+            "orientation": "h",
+            "width": 0.9,
+            "base": 0,
+            "x": 0.312727123803771,
+            "y": 1,
+            "text": "Lower than level 2: 31%",
+            "type": "bar",
+            "textposition": "none",
+            "marker": {
+              "autocolorscale": false,
+              "color": "rgba(243,242,241,1)",
+              "line": {
+                "width": 1.88976377952756,
+                "color": "transparent"
+              }
+            },
+            "name": "Lower than level",
+            "legendgroup": "Lower than level",
+            "showlegend": true,
+            "xaxis": "x",
+            "yaxis": "y",
+            "hoverinfo": "text",
+            "frame": null
+          }
+        ],
+        "layout": {
+          "margin": {
+            "t": 16,
+            "r": 0,
+            "b": 19.5931921959319,
+            "l": 3.65296803652968
+          },
+          "paper_bgcolor": "rgba(255,255,255,1)",
+          "font": {
+            "color": "rgba(0,0,0,1)",
+            "family": "Helvetica",
+            "size": 15.9402241594022
+          },
+          "xaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              -0.05,
+              1.05
+            ],
+            "tickmode": "array",
+            "ticktext": [
+              "0%",
+              "25%",
+              "50%",
+              "75%",
+              "100%"
+            ],
+            "tickvals": [
+              0,
+              0.25,
+              0.5,
+              0.75,
+              1
+            ],
+            "categoryorder": "array",
+            "categoryarray": [
+              "0%",
+              "25%",
+              "50%",
+              "75%",
+              "100%"
+            ],
+            "nticks": null,
+            "ticks": "outside",
+            "tickcolor": "rgba(51,51,51,1)",
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0.66417600664176,
+            "showticklabels": true,
+            "tickfont": {
+              "color": "rgba(11,12,12,1)",
+              "family": "Helvetica",
+              "size": 15.9402241594022
+            },
+            "tickangle": 0,
+            "showline": false,
+            "linecolor": null,
+            "linewidth": 0,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "y",
+            "title": {
+              "text": "",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "Helvetica",
+                "size": 18.5969281859693
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "yaxis": {
+            "domain": [
+              0,
+              1
+            ],
+            "automargin": true,
+            "type": "linear",
+            "autorange": false,
+            "range": [
+              0.4,
+              1.6
+            ],
+            "tickmode": "array",
+            "ticktext": "Media",
+            "tickvals": 1,
+            "categoryorder": "array",
+            "categoryarray": "Media",
+            "nticks": null,
+            "ticks": "",
+            "tickcolor": null,
+            "ticklen": 3.65296803652968,
+            "tickwidth": 0,
+            "showticklabels": false,
+            "tickfont": {
+              "color": null,
+              "family": null,
+              "size": 0
+            },
+            "tickangle": 0,
+            "showline": false,
+            "linecolor": null,
+            "linewidth": 0,
+            "showgrid": false,
+            "gridcolor": null,
+            "gridwidth": 0,
+            "zeroline": false,
+            "anchor": "x",
+            "title": {
+              "text": "",
+              "font": {
+                "color": "rgba(0,0,0,1)",
+                "family": "Helvetica",
+                "size": 18.5969281859693
+              }
+            },
+            "hoverformat": ".2f"
+          },
+          "shapes": [
+            {
+              "type": "rect",
+              "fillcolor": null,
+              "line": {
+                "color": null,
+                "width": 0,
+                "linetype": [
+
+                ]
+              },
+              "yref": "paper",
+              "xref": "paper",
+              "x0": 0,
+              "x1": 1,
+              "y0": 0,
+              "y1": 1
+            }
+          ],
+          "showlegend": false,
+          "legend": {
+            "bgcolor": "rgba(255,255,255,1)",
+            "bordercolor": "transparent",
+            "borderwidth": 1.88976377952756,
+            "font": {
+              "color": "rgba(0,0,0,1)",
+              "family": "Helvetica",
+              "size": 12.7521793275218
+            }
+          },
+          "hovermode": "closest",
+          "barmode": "relative"
+        },
+        "config": {
+          "doubleClick": "reset",
+          "modeBarButtonsToAdd": [
+            "hoverclosest",
+            "hovercompare"
+          ],
+          "showSendToCloud": false
+        },
+        "source": "A",
+        "highlight": {
+          "on": "plotly_click",
+          "persistent": false,
+          "dynamic": false,
+          "selectize": false,
+          "opacityDim": 0.2,
+          "selected": {
+            "opacity": 1
+          },
+          "debounce": 0
+        },
+        "shinyEvents": [
+          "plotly_hover",
+          "plotly_click",
+          "plotly_selected",
+          "plotly_relayout",
+          "plotly_brushed",
+          "plotly_brushing",
+          "plotly_clickannotation",
+          "plotly_doubleclick",
+          "plotly_deselect",
+          "plotly_afterplot",
+          "plotly_sunburstclick"
+        ],
+        "base_url": "https://plot.ly"
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+        {
+          "name": "setprototypeof",
+          "version": "0.1",
+          "src": {
+            "href": "setprototypeof-0.1"
+          },
+          "meta": null,
+          "script": "setprototypeof.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "typedarray",
+          "version": "0.1",
+          "src": {
+            "href": "typedarray-0.1"
+          },
+          "meta": null,
+          "script": "typedarray.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "jquery",
+          "version": "3.5.1",
+          "src": {
+            "href": "jquery-3.5.1"
+          },
+          "meta": null,
+          "script": "jquery.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "crosstalk",
+          "version": "1.2.0",
+          "src": {
+            "href": "crosstalk-1.2.0"
+          },
+          "meta": null,
+          "script": "js/crosstalk.min.js",
+          "stylesheet": "css/crosstalk.min.css",
+          "head": null,
+          "attachment": null,
+          "all_files": true
+        },
+        {
+          "name": "plotly-htmlwidgets-css",
+          "version": "2.5.1",
+          "src": {
+            "href": "plotly-htmlwidgets-css-2.5.1"
+          },
+          "meta": null,
+          "script": null,
+          "stylesheet": "plotly-htmlwidgets.css",
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        },
+        {
+          "name": "plotly-main",
+          "version": "2.5.1",
+          "src": {
+            "href": "plotly-main-2.5.1"
+          },
+          "meta": null,
+          "script": "plotly-latest.min.js",
+          "stylesheet": null,
+          "head": null,
+          "attachment": null,
+          "all_files": false
+        }
+      ]
+    },
+    "treePlot": {
+      "x": {
+        "data": {
+          "name": "Your selection:",
+          "fill": "#f3f2f1",
+          "WeightOfNode": "29,153",
+          "children": [
+            {
+              "name": "BTEC First Diploma for ICT Practitioners",
+              "fill": "#1d70b8",
+              "WeightOfNode": "4,681",
+              "children": [
+                {
+                  "name": "BTEC National Diploma for IT Practitioners",
+                  "fill": "#003078",
+                  "WeightOfNode": "4,025"
+                },
+                {
+                  "name": "BTEC National Award for IT Practitioners",
+                  "fill": "#003078",
+                  "WeightOfNode": "538"
+                },
+                {
+                  "name": "BTEC National Certificate for IT Practitioners",
+                  "fill": "#003078",
+                  "WeightOfNode": "118"
+                }
+              ]
+            },
+            {
+              "name": "BTEC First Diploma in Public Services",
+              "fill": "#1d70b8",
+              "WeightOfNode": "6,713",
+              "children": [
+                {
+                  "name": "GCE A Level Mathematics",
+                  "fill": "#003078",
+                  "WeightOfNode": "11,944",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,986"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,986",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Computer Science",
+                          "fill": "#28a197",
+                          "WeightOfNode": "2,986"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Economics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,986",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Economics",
+                          "fill": "#28a197",
+                          "WeightOfNode": "2,986"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,986"
+                    }
+                  ]
+                },
+                {
+                  "name": "GCE A Level History",
+                  "fill": "#003078",
+                  "WeightOfNode": "2,541"
+                },
+                {
+                  "name": "GCE A Level English Literature",
+                  "fill": "#003078",
+                  "WeightOfNode": "1,186",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "1,186"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Certificate for IT Users (CLAiT Plus)",
+              "fill": "#1d70b8",
+              "WeightOfNode": "6,085",
+              "children": [
+                {
+                  "name": "GCE A Level English Literature",
+                  "fill": "#003078",
+                  "WeightOfNode": "14,964",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "7,482",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Journalism",
+                          "fill": "#28a197",
+                          "WeightOfNode": "3,741"
+                        },
+                        {
+                          "name": "Master's Degree in English Studies",
+                          "fill": "#28a197",
+                          "WeightOfNode": "3,741"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "3,741"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "3,741"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "3,741"
+                    }
+                  ]
+                },
+                {
+                  "name": "GCE A Level Art and Design",
+                  "fill": "#003078",
+                  "WeightOfNode": "4,688",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Design Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,344"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,344"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Certificate for IT users (ECDL Part 2)",
+              "fill": "#1d70b8",
+              "WeightOfNode": "1,625",
+              "children": [
+                {
+                  "name": "GCE A Level Mathematics",
+                  "fill": "#003078",
+                  "WeightOfNode": "3,420",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "855"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "855",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Computer Science",
+                          "fill": "#28a197",
+                          "WeightOfNode": "855"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Economics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "855",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Economics",
+                          "fill": "#28a197",
+                          "WeightOfNode": "855"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "855"
+                    }
+                  ]
+                },
+                {
+                  "name": "GCE A Level English Literature",
+                  "fill": "#003078",
+                  "WeightOfNode": "770",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "770",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Journalism",
+                          "fill": "#28a197",
+                          "WeightOfNode": "770"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Certificate in Enterprise (Young Enterprise)",
+              "fill": "#1d70b8",
+              "WeightOfNode": "7,850",
+              "children": [
+                {
+                  "name": "GCE A Level Economics",
+                  "fill": "#003078",
+                  "WeightOfNode": "19,368",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Economics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "4,842",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Economics",
+                          "fill": "#28a197",
+                          "WeightOfNode": "4,842"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "4,842"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "9,684",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Journalism",
+                          "fill": "#28a197",
+                          "WeightOfNode": "4,842"
+                        },
+                        {
+                          "name": "Master's Degree in English Studies",
+                          "fill": "#28a197",
+                          "WeightOfNode": "4,842"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Management Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "4,842"
+                    }
+                  ]
+                },
+                {
+                  "name": "GCE A Level Mathematics",
+                  "fill": "#003078",
+                  "WeightOfNode": "3,008",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "3,008"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Certificate in Swimming Pool Supervision and Rescue (National Pool Lifeguard Qualification - NPLQ)",
+              "fill": "#1d70b8",
+              "WeightOfNode": "7,170",
+              "children": [
+                {
+                  "name": "GCE A Level History",
+                  "fill": "#003078",
+                  "WeightOfNode": "3,404"
+                },
+                {
+                  "name": "GCE A Level Physical Education",
+                  "fill": "#003078",
+                  "WeightOfNode": "2,327"
+                },
+                {
+                  "name": "GCE A Level English Literature",
+                  "fill": "#003078",
+                  "WeightOfNode": "5,756",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,878",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Journalism",
+                          "fill": "#28a197",
+                          "WeightOfNode": "1,439"
+                        },
+                        {
+                          "name": "Master's Degree in English Studies",
+                          "fill": "#28a197",
+                          "WeightOfNode": "1,439"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "1,439"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "1,439"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "1,439"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Customer Service Apprenticeship",
+              "fill": "#1d70b8",
+              "WeightOfNode": "4,078",
+              "children": [
+                {
+                  "name": "Management Apprenticeship",
+                  "fill": "#003078",
+                  "WeightOfNode": "4,078"
+                }
+              ]
+            },
+            {
+              "name": "Intermediate Certificate in Personal Finance",
+              "fill": "#1d70b8",
+              "WeightOfNode": "7,340",
+              "children": [
+                {
+                  "name": "GCE A Level Sociology",
+                  "fill": "#003078",
+                  "WeightOfNode": "4,199"
+                },
+                {
+                  "name": "GCE A Level English Literature",
+                  "fill": "#003078",
+                  "WeightOfNode": "9,468",
+                  "children": [
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "4,734",
+                      "children": [
+                        {
+                          "name": "Master's Degree in Journalism",
+                          "fill": "#28a197",
+                          "WeightOfNode": "2,367"
+                        },
+                        {
+                          "name": "Master's Degree in English Studies",
+                          "fill": "#28a197",
+                          "WeightOfNode": "2,367"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,367"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,367"
+                    },
+                    {
+                      "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
+                      "fill": "#4c2c92",
+                      "WeightOfNode": "2,367"
+                    }
+                  ]
+                },
+                {
+                  "name": "GCE A Level Business Studies",
+                  "fill": "#003078",
+                  "WeightOfNode": "774"
+                }
+              ]
+            }
+          ]
+        },
+        "options": {
+          "hierarchy": [
+            "Qual",
+            "NextQual",
+            "NextQual.2",
+            "NextQual.3"
+          ],
+          "input": null,
+          "attribute": "Employees",
+          "linkLength": null,
+          "fontSize": 12,
+          "tooltip": true,
+          "collapsed": true,
+          "zoomable": false,
+          "margin": {
+            "top": 20,
+            "bottom": 20,
+            "left": 115,
+            "right": 235
+          }
+        }
+      },
+      "evals": [
+
+      ],
+      "jsHooks": [
+
+      ],
+      "deps": [
+
+      ]
+    }
+  }
+}
