@@ -21,7 +21,7 @@ shhh(library(glue))
 shhh(library(purrr))
 
 # tidy_code_function -------------------------------------------------------------------------------
-# 
+#
 tidy_code_function <- function() {
   message("----------------------------------------")
   message("App scripts")
@@ -38,4 +38,3 @@ tidy_code_function <- function() {
 }
 
 source("R/read_data.R")
-
