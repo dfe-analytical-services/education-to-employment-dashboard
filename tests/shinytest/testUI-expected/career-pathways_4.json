@@ -1,0 +1,51 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "overview",
+    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "region": "North East",
+    "regionp": "England",
+    "sector": "Agriculture",
+    "sectorp": "Construction",
+    "showMedian": "Yes"
+  },
+  "output": {
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "directionSector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">-0.3 %<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiChange": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment decline<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiSector": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in agriculture<\/b>",
+      "deps": [
+
+      ]
+    },
+    "median_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "deps": [
+
+      ]
+    },
+    "page1title": {
+      "html": "<b style=\"font-size: 24px;\">Agriculture in the North East: overview of employee education levels and qualification choices<\/b>",
+      "deps": [
+
+      ]
+    },
+    "perc_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">17%<\/b>",
+      "deps": [
+
+      ]
+    }
+  }
+}
