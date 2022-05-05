@@ -1,9 +1,7 @@
-
-theme_set(theme_hc(base_family = "Helvetica")) 
+theme_set(theme_hc(base_family = "Helvetica"))
 
 defaultW <- getOption("warn")
 options(warn = -1)
-
 
 server <- function(input, output, session) {
   
@@ -47,7 +45,7 @@ server <- function(input, output, session) {
                                                            big.mark = ",")), 
                                 sep = "\n"))) +
         geom_col(aes(y = perc_subs), 
-                 fill = "#28a197")  +
+                 fill = "#1D70B8")  +
         labs(y = "", x = "",
              title = "") +
         theme(legend.position="none", 
@@ -78,10 +76,10 @@ server <- function(input, output, session) {
                    fill = "#4c2c92") + 
         geom_text(data = selection_subs(), 
                   aes(x = Subsector, y = median_income,
-                      label = paste0("£", formatC(signif(median_income/1000, digits = 2), 
+                      label = paste0("£", formatC(median_income, 
                                                   digits = 0, 
                                                   format = "f", 
-                                                  big.mark = ","), "K")),
+                                                  big.mark = ","))),
                   nudge_x = 0.25,
                   nudge_y = -0.5,
                   size = 3,
@@ -91,7 +89,7 @@ server <- function(input, output, session) {
                          y = 0, 
                          yend = median_income),
                      size = 0.5, color = "#4c2c92") +
-        labs(y = "Average Earnings (£)", x = "",
+        labs(y = "", x = "",
              title = "") +
         theme(legend.position="none",
               plot.title = element_text((hjust = 0.5)),
@@ -101,6 +99,7 @@ server <- function(input, output, session) {
               axis.ticks.x = element_blank(),panel.grid.major.y = element_blank(),
               panel.grid.minor.y = element_blank())  + 
         scale_y_continuous(labels = comma_format(big.mark = ",") )+
+        ylim(0,50000) +
         coord_flip()
       
     }
@@ -120,7 +119,7 @@ server <- function(input, output, session) {
     if(input$showMedian == 'No'){
       selection() %>%
         ggplot(aes(x = Level_order,
-                   y = perc_hq,
+                   
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
                                                                digits = 0,
                                                                format = "f"), "%"), 
@@ -128,8 +127,11 @@ server <- function(input, output, session) {
                                                            digits = 0, 
                                                            format = "f", 
                                                            big.mark = ",")),
-                                sep = "\n"))) + 
-        geom_col(fill = "#489FD6")  +
+                                sep = "\n") 
+               )) + 
+        geom_bar(aes(y = perc_hq), 
+                 fill = "#489FD6", 
+                 stat = "identity")  +
         labs(y = "", x = "",
              title = "") + 
         theme(legend.position ="none",
@@ -140,10 +142,9 @@ server <- function(input, output, session) {
               axis.text.x = element_blank(),
               panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
               panel.background = element_blank(),panel.grid.major.y = element_blank(),
-              panel.grid.minor.y = element_blank() +
-              scale_y_continuous(labels = scales::percent) +
-              scale_x_discrete(labels = levelsRelabelled) 
-        )  + 
+              panel.grid.minor.y = element_blank())  +
+        scale_y_continuous(labels = scales::percent) +
+        scale_x_discrete(labels = levelsRelabelled) + 
         coord_flip()
     } else {
       selection() %>%
@@ -164,10 +165,10 @@ server <- function(input, output, session) {
         geom_text(data = selection(), 
                   aes(x = Level_order, 
                       y = median_income,
-                      label = paste0("£", formatC(signif(median_income, digits = 2)/1000, 
+                      label = paste0("£", formatC(median_income, 
                                                   digits = 0, 
                                                   format = "f", 
-                                                  big.mark = ","), "K")), 
+                                                  big.mark = ","))), 
                   nudge_x = 0.25,
                   nudge_y = -0.5,
                   colour = "#0b0c0c", 
@@ -179,7 +180,7 @@ server <- function(input, output, session) {
                          yend = median_income),
                      size = 0.5, 
                      color = "#4c2c92") +
-        labs(y = "Average Earnings (£)", x = "",
+        labs(y = "", x = "",
              title = "") +
         theme(legend.position="none",
               plot.title = element_text((hjust = 0.5)),
@@ -190,6 +191,7 @@ server <- function(input, output, session) {
               panel.grid.minor.y = element_blank()) +
         scale_y_continuous(labels = comma_format(big.mark = ",") ) +
         scale_x_discrete(labels = levelsRelabelled) +
+        ylim(0,50000) +
         coord_flip()               
       }
     
@@ -244,10 +246,10 @@ server <- function(input, output, session) {
                                               digits = 0, 
                                               format = "f", 
                                               big.mark = ",")),
-                   paste0("Average Earnings: ", "£", formatC(signif(median_income/1000, digits = 2), 
+                   paste0("Average Earnings: ", "£", formatC(median_income, 
                                                              digits = 0, 
                                                              format = "f", 
-                                                             big.mark = ","), "K"),
+                                                             big.mark = ",")),
                    sep = "\n"))) +
       geom_col(fill = "#003078")  +
       labs(title = "", x = "", y = "") +
@@ -305,16 +307,6 @@ server <- function(input, output, session) {
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
-      # calculate percentages
-      group_by(Region, Sector, var_to_plot, var_to_show) %>%
-      summarise(students = sum(number_students)) %>%
-      ungroup() %>% 
-      left_join(students_in_work %>% 
-                  group_by(Region, Sector) %>%
-                  summarise(total = sum(number_students)) %>%
-                  ungroup() , 
-                by = c("Region", "Sector")) %>%
-      mutate(perc = students/total) %>%
       filter(Region == input$regionp &
                Sector == input$sectorp )
  })    
@@ -333,7 +325,7 @@ server <- function(input, output, session) {
            y = "") +
       coord_flip() +
       scale_y_continuous(labels = scales::percent) +
-      scale_fill_manual(values = c("#1D70B8","#7FCFF2", "#f3f2f1")) +
+      scale_fill_manual(values = c("#7FCFF2", "#1D70B8", "#f3f2f1")) +
       theme(legend.position = "none", 
             plot.margin = unit(c(0,0,0,0), "mm"),
             axis.title=element_text(size = 14),
@@ -360,16 +352,6 @@ server <- function(input, output, session) {
                                      new_level < level_reac() ~ "Lower than level", 
                                      TRUE ~ "Higher than level")) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
-      # calculate percentages
-      group_by(Region, Sector, var_to_plot, var_to_show) %>%
-      summarise(students = sum(number_students)) %>%
-      ungroup() %>% 
-      left_join(students_in_work %>% 
-                  group_by(Region, Sector) %>%
-                  summarise(total = sum(number_students)) %>%
-                  ungroup() , 
-                by = c("Region", "Sector")) %>%
-      mutate(perc = students/total) %>%
       filter(Region == input$regionp &
                Sector == input$sectorp ) %>%
       select(perc)
@@ -427,7 +409,6 @@ server <- function(input, output, session) {
                              Sector == input$sector &
                              Level_order == input$inSelect &
                              Subsector == input$inSelect2) %>%
-                    mutate(median_income = signif(median_income, 2)) %>%
                     # final selection 
                     select(Qualification, 
                            Level = Level_order,
@@ -519,30 +500,25 @@ server <- function(input, output, session) {
   
   
   # Page2: Reactive treeplot ------------------------------------------------------
+ 
+  # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
   
   # filter region/sector
   selected_region_sector <- reactive({
     qualifications %>% 
       filter(Region == input$regionp & 
                IndustrySector == input$sectorp) %>%
-      select(Region, 
-             IndustrySector, 
-             Level, 
-             Qual, 
-             NextQual,
-             LevelNextQual,
-             Links, perc_qual) %>%
-      mutate(ColourLevel = case_when(Level == "Level 2" ~ "#1d70b8",
-                                     Level == "Level 3" ~ "#003078",
-                                     Level == "Level 4/5" ~ "#912b88",
-                                     Level == "Level 6" ~ "#4c2c92",
-                                     Level == "Level 7+"~ "#28a197",
+      mutate(ColourLevel = case_when(Level == "Level 2" ~ "#7FCFF2",
+                                     Level == "Level 3" ~ "#62B7E4",
+                                     Level == "Level 4/5" ~ "#489FD6",
+                                     Level == "Level 6" ~ "#3088C8",
+                                     Level == "Level 7+"~ "#1D70B8",
                                      TRUE ~   "#ffffff"),
-             ColourNextLevel = case_when(LevelNextQual == "Level  2" ~ "#1d70b8",
-                                         LevelNextQual == "Level 3" ~ "#003078",
-                                         LevelNextQual == "Level 4/5" ~ "#912b88",
-                                         LevelNextQual == "Level 6" ~ "#4c2c92",
-                                         LevelNextQual == "Level 7+"~ "#28a197",
+             ColourNextLevel = case_when(LevelNextQual == "Level  2" ~ "#7FCFF2",
+                                         LevelNextQual == "Level 3" ~ "#62B7E4",
+                                         LevelNextQual == "Level 4/5" ~ "#489FD6",
+                                         LevelNextQual == "Level 6" ~ "#3088C8",
+                                         LevelNextQual == "Level 7+"~ "#1D70B8",
                                          TRUE ~   "#ffffff"))
   })
   
@@ -564,7 +540,7 @@ server <- function(input, output, session) {
   })
   
   
-  # filter level/subject and self-joins to get next quals on 4 levels
+  # filter level and self-joins to get next quals on 4 levels
   tree_data <- reactive({
     selected_region_sector() %>%
       filter(Level == input$inSelect3) %>% 
@@ -587,13 +563,12 @@ server <- function(input, output, session) {
       mutate_at(vars(matches("Links")), ~replace(., is.na(.), 0)) %>%
       # replace nas for vector colors
       mutate_at(vars(matches("Colour")), ~na_if(., "#ffffff")) %>% 
-      # restrict each next qual the number of nodes to top 5
+      # restrict each next qual the number of nodes to top 10
       group_by(Qual, Level) %>%
       arrange(desc(Links.1), .by_group = T) %>%
       mutate(numbering = dplyr::row_number()) %>%
       filter(numbering <= 10) %>%
-      ungroup() %>%
-      mutate(Employees = round(Links.1), digits = 0)
+      ungroup() 
   })
   
   # Make vectors for colors
@@ -611,7 +586,7 @@ server <- function(input, output, session) {
   
   
   # Page2: Render treeplot --------------------------------------------------
-  #https://adeelk93.github.io/collapsibleTree/ 
+
   output$treePlot <- renderCollapsibleTree({
     validate(
       need( nrow(tree_data() ) > 0, "There are no employees matching this selection. Please select again.")
@@ -629,43 +604,11 @@ server <- function(input, output, session) {
                     fillByLevel = TRUE,
                     collapsed = TRUE,
                     tooltip = T ,
-                    attribute = "Employees",
                     width = 1200
     )
     
   })
   
-  
-  
-  # Page 2: Render top 3 subjects table --------------------------------------------------
-  
-  output$t3subjectsTable <- renderDataTable({
-    
-    DT::datatable(t3_subjects %>% 
-                    filter(Region == input$regionp &
-                             Sector == input$sectorp &
-                             Level_order == input$inSelect3) %>%
-                    mutate(perc = round(perc, 4)) %>%
-                    select(Subject = Subject2, 
-                           Percentage = perc),
-                  rownames = NULL,
-                  colnames = NULL,
-                  options = list(searching = FALSE,
-                                 pageLength = 3,
-                                 dom = 't',
-                                 bSort = F,
-                                 scrollX = F),
-                  width = '200px',
-                  height = '100px',
-                  style = 'bootstrap', class = 'stripe') %>%
-      formatPercentage(2, digits = 1) %>%
-      formatStyle(0, target = 'row',
-                  color = '#ffffff',
-                  fontSize = '16px',
-                  backgroundColor = '#1d70b8',
-                  lineHeight='60%')
-    
-  })
   
   # Page 1&2: reactive Box & KPIs titles --------------------------------------------------------------
   
@@ -764,14 +707,14 @@ server <- function(input, output, session) {
     HTML(paste("Post-16 qualification pathways starting at ", 
                s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
   })
-  
+  # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
   # page 2: treeplot legend
   svg_html_legend <- paste('<svg width="450" height="20">',
-                           '<circle cx="10" cy="10" r="8" style="fill: rgb(29, 112, 184);"></circle>',
-                           '<circle cx="90" cy="10" r="8" style="fill: rgb(0, 48, 120);"></circle>',
-                           '<circle cx="170" cy="10" r="8" style="fill: rgb(145, 43, 136);"></circle>',
-                           '<circle cx="260" cy="10" r="8" style="fill: #4c2c92";></circle>',
-                           '<circle cx="340" cy="10" r="8" style="fill: #28a197";></circle>',
+                           '<circle cx="10" cy="10" r="8" style="fill: #7FCFF2;"></circle>',
+                           '<circle cx="90" cy="10" r="8" style="fill: #62B7E4;"></circle>',
+                           '<circle cx="170" cy="10" r="8" style="fill: #489FD6;"></circle>',
+                           '<circle cx="260" cy="10" r="8" style="fill: #3088C8";></circle>',
+                           '<circle cx="340" cy="10" r="8" style="fill: #1D70B8";></circle>',
                            '<circle cx="10" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
                            '<circle cx="90" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
                            '<circle cx="170" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
@@ -786,6 +729,84 @@ server <- function(input, output, session) {
   output$svglegend <- renderUI({
     HTML(svg_html_legend)
     })
+
+# Download data -----------------------------------------------------------
+
+  to_download_pg1 <- reactiveValues(
+    subsectors_table = subsectors_table, 
+                highest_qualification_table = highest_qualification_table, 
+                qualifications_titles_table = qualifications_titles_table,
+                subjects_table = subjects_table,
+                income_proportions_table = income_proportions_table,
+                working_futures_table = working_futures_table
+                #qualifications_pathways_table = qualifications_pathways_table,
+                #progression_to_work_by_level_table = progression_to_work_by_level_table
+  )
+
+  
+  output$download_btn1 <- downloadHandler(
+    filename = function(){
+      paste("data_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file) {
+
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+
+
+      reactiveValuesToList(to_download_pg1) %>%
+        imap(function(x,y){
+          if(!is.null(x)){
+            file_name <- glue("{y}_data.csv")
+            write.csv(x, file.path(temp_directory, file_name), row.names = F)
+          }
+        })
+
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+
+        },
+      contentType = "application/zip"
+ )
+    
+  
+  to_download_pg2 <- reactiveValues(
+    qualifications_pathways_table = qualifications_pathways_table,
+    progression_to_work_by_level_table = progression_to_work_by_level_table
+  )
+  
+  
+  output$download_btn2 <- downloadHandler(
+    filename = function(){
+      paste("data_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file) {
+      
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+      
+      
+      reactiveValuesToList(to_download_pg2) %>%
+        imap(function(x,y){
+          if(!is.null(x)){
+            file_name <- glue("{y}_data.csv")
+            write.csv(x, file.path(temp_directory, file_name), row.names = F)
+          }
+        })
+      
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+      
+    },
+    contentType = "application/zip"
+  )
+ 
   
 }
 
