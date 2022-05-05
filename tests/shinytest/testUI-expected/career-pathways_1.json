@@ -1,0 +1,51 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "overview",
+    "qualificationsubject": "Highest post-16 qualifications held by employees: top 20 by volume",
+    "region": "England",
+    "regionp": "England",
+    "sector": "Construction",
+    "sectorp": "Construction",
+    "showMedian": "No"
+  },
+  "output": {
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
+    "directionSector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0.8 %<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiChange": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">forecast annual employment growth<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiSector": {
+      "html": "<b style=\"font-size: 16px; color: #ffffff\">of employees work in construction<\/b>",
+      "deps": [
+
+      ]
+    },
+    "median_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£20,000<\/b>",
+      "deps": [
+
+      ]
+    },
+    "page1title": {
+      "html": "<b style=\"font-size: 24px;\">Construction in England: overview of employee education levels and qualification choices<\/b>",
+      "deps": [
+
+      ]
+    },
+    "perc_in_sector": {
+      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">93%<\/b>",
+      "deps": [
+
+      ]
+    }
+  }
+}
