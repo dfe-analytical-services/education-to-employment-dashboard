@@ -33,11 +33,11 @@ server <- function(input, output, session) {
   })
   
   subsVolMedianChart <- reactive({
-    if(input$showMedian == 'No'){ 
+    if(input$showMedian == 'Percentage'){ 
       selection_subs() %>%
         ggplot(aes(x = Subsector, 
                    text = paste(paste0("Percentage: ", formatC(perc_subs*100,
-                                                               digits = 0,
+                                                               digits = 1,
                                                                format = "f"), "%"), 
                                 paste0("Volume: ", formatC(number_students_subs, 
                                                            digits = 0, 
@@ -62,7 +62,7 @@ server <- function(input, output, session) {
       selection_subs() %>%
         ggplot(aes(x = Subsector,
                    text = paste(paste0("Percentage: ", formatC(perc_subs*100,
-                                                               digits = 0,
+                                                               digits = 1,
                                                                format = "f"), "%"), 
                                 paste0("Volume: ", formatC(number_students_subs, 
                                                            digits = 0, 
@@ -116,12 +116,12 @@ server <- function(input, output, session) {
 
   highestQualVolMedianChart <- reactive({
 
-    if(input$showMedian == 'No'){
+    if(input$showMedian == 'Percentage'){
       selection() %>%
         ggplot(aes(x = Level_order,
                    
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
-                                                               digits = 0,
+                                                               digits = 1,
                                                                format = "f"), "%"), 
                                 paste0("Volume: ", formatC(number_students_hq, 
                                                            digits = 0, 
@@ -150,7 +150,7 @@ server <- function(input, output, session) {
       selection() %>%
         ggplot(aes(x = Level_order,
                    text = paste(paste0("Percentage: ", formatC(perc_hq*100,
-                                                               digits = 0,
+                                                               digits = 1,
                                                                format = "f"), "%"), 
                                 paste0("Volume: ", formatC(number_students_hq, 
                                                            digits = 0, 
@@ -205,7 +205,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, 
                       "inSelect2",
                       choices = subsector_v, 
-                      selected = "All subsectors")
+                      selected = "All sub-sectors")
     
     updateSelectInput(session, 
                       "inSelect",
@@ -240,7 +240,7 @@ server <- function(input, output, session) {
       ggplot(aes(x = reorder(Subject, -perc), y = perc,
                  text = paste(
                    paste0("Percentage: ", formatC(perc*100,
-                                                  digits = 0,
+                                                  digits = 1,
                                                   format = "f"), "%"),
                    paste0("Volume: ", formatC(number_students_sub, 
                                               digits = 0, 
@@ -286,7 +286,7 @@ server <- function(input, output, session) {
       distinct(new_level, .keep_all = FALSE) %>%
       unlist(use.names = F) 
   })
-  
+ 
   # title for stacked chart page 2 -- gives the level
   inWorkChartLevel <- reactive({
     s <- students_in_work %>% 
@@ -400,7 +400,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, 
                       "inSelect2",
                       choices = sect_sub_v(), 
-                      selected = "All subsectors")
+                      selected = "All sub-sectors")
   })
   
   output$hqSubTable <- renderDataTable({
@@ -411,9 +411,9 @@ server <- function(input, output, session) {
                              Subsector == input$inSelect2) %>%
                     # final selection 
                     select(Qualification, 
-                           Level = Level_order,
+                           Level = Level_order_UI,
                            Percentage = perc, 
-                           "Average Earnings" = median_income),
+                           "Average earnings" = median_income),
                   rownames = FALSE,
                   options = list(searching = FALSE,
                                  pageLength = 10,
@@ -453,7 +453,7 @@ server <- function(input, output, session) {
     updateSelectInput(session, 
                       "inSelect2",
                       choices = sect_sub_v(), 
-                      selected = "All subsectors")
+                      selected = "All sub-sectors")
    
   }) 
   
@@ -467,7 +467,7 @@ server <- function(input, output, session) {
       filter(Sector == input$sector, 
              Region == input$region) %>%
       select(perc_students_sector)
-    perc <- round(perc, digits = 2) 
+    perc <- round(perc, digits = 3) 
     
     tags$b(paste0(perc[[1]]*100, "%"), 
            style = "font-size:20px; text-align:center; color:	#ffffff")
@@ -480,7 +480,7 @@ server <- function(input, output, session) {
       filter(Sector == input$sector, 
              Region == input$region) %>%
       select(median_income_sector) 
-    median_inc <- signif(median_inc[[1]], digits = 2) 
+    median_inc <- median_inc[[1]]
     median_inc <- prettyNum(median_inc, big.mark = ",")
     
     tags$b(paste0("£", median_inc), 
@@ -493,7 +493,7 @@ server <- function(input, output, session) {
       filter(Sector == input$sector,
              Region == input$region) %>%
       select(direction = Years2022.2027)
-    tags$b(paste(round(wf$direction[[1]], digits = 1), "%"), 
+    tags$b(paste0(round(wf$direction[[1]], digits = 1), "%"), 
            style = "font-size:20px; text-align:center; color:	#ffffff")
     
   })
@@ -647,7 +647,7 @@ server <- function(input, output, session) {
   output$kpiSector <- renderUI({
     s <- selection() 
     
-    tags$b(paste0("of employees work in ", tolower(s$Sector[1])), 
+    tags$b(paste0("Proportion of employees that work in ", tolower(s$Sector[1])), 
            style = "font-size: 16px; color: #ffffff")
     
   })
@@ -659,7 +659,7 @@ server <- function(input, output, session) {
              Region == input$region) %>%
       select(direction = Years2022.2027)
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
-    tags$b(paste0("forecast annual employment ", changeS), 
+    tags$b(paste0("Forecast annual employment ", changeS, " up to 2027"), 
            style = "font-size: 16px; color: #ffffff")
   })
   
@@ -695,8 +695,8 @@ server <- function(input, output, session) {
     HTML(paste0(formatC(percInWork()$perc[2]*100,
                         digits = 0,
                         format = "f"), "% ",
-                "of employees entered work with a ",
-                inWorkChartLevel(), " qualification"))
+                "of employees have the highest qualification at ",
+                inWorkChartLevel()))
   })
   
   # page 2: treeplot
@@ -705,7 +705,7 @@ server <- function(input, output, session) {
       filter( Level == input$inSelect3)
     s[c('Level')] <- sapply(s[c('Level')], function(x) tolower(x))
     HTML(paste("Post-16 qualification pathways starting at ", 
-               s$Level[1], "expand the chart to view selected popular pathways to higher levels of education"))
+               s$Level[1]))
   })
   # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
   # page 2: treeplot legend
