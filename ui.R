@@ -186,8 +186,7 @@ navbarPage("",
             
               mainPanel(
                 width = 10,
-                style = "height: 100vh; overflow-y: auto;",
-              
+
                  ### TITLE 1-----------------------------------------------------------------------------
               
                 uiOutput("page1title"),
@@ -367,7 +366,7 @@ navbarPage("",
                           br(),
                            uiOutput("svglegend"),
                  
-                          collapsibleTreeOutput("treePlot")
+                          box(width=12,collapsibleTreeOutput("treePlot"))
 
 
            ) # end of main panel
