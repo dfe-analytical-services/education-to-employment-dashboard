@@ -287,14 +287,6 @@ server <- function(input, output, session) {
       unlist(use.names = F) 
   })
  
-  # students_in_work %>% 
-  #   filter(Region == "London" &
-  #            Sector == "Construction" & 
-  #            Level_order == "Level 2") %>%
-  #   distinct(new_level, .keep_all = FALSE) %>%
-  #   unlist(use.names = F)   %>% View
-  # 
-  
   # title for stacked chart page 2 -- gives the level
   inWorkChartLevel <- reactive({
     s <- students_in_work %>% 
