@@ -97,8 +97,7 @@ subjects_table <- datalist$stat_hq_sub %>%
 
 income_proportions_table <- datalist$kpis %>%
   rename('Median Earnings' = median_income_sector, 
-         'Proportion' = perc_students_sector,
-         'Volume employees' = volume_students_region_sector)
+         'Proportion' = perc_students_sector)
 
 working_futures_table <- datalist$wf %>%
   rename('Region code' = RegionCode,

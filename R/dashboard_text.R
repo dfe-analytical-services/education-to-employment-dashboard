@@ -5,23 +5,27 @@
 welcome_text <- function() {
   div(
     h2("Welcome"),
-    "The longitudinal education outcomes (LEO) study now includes information 
-    on the industry sector of employment for Pay As You Earn (PAYE) employees. 
-    Using LEO, we can link the industry sector of young employees with the 
-    education achievements that helped guide them there. ",
-    br(), 
-    "The data in the career pathways dashboard aims to utilise this development to:",
+    "The longitudinal education outcomes (LEO) study now includes information on the industry sector of employment for Pay As You Earn (PAYE) employees. Using LEO, we can link the industry sector of young employees with the education achievements that helped guide them there.  ",
+    br(),
+    br(),
+    "The data in the career pathways dashboard aims to use this development to:",
     tags$ul(
-      tags$li("Explore how LEO can be used to understand the education pathways of 
-              employees in different sectors and different regions of England "),
-      tags$li("Demonstrate how LEO data could contribute to an interactive careers information tool")
+      tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors"),
+      tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard")
     ),
-    "For the accompanying statistical release, see: ",
+    "This dashboard has been produced to support the aims of the Unit for Future Skills",
+    a(href = "https://explore-education-statistics.service.gov.uk/find-statistics/", 
+      "Add link to UFS",
+      .noWS = c("after")
+    ),
+    ".",
+    "The complete underlying data for the dashboard is published alongside the accompanying statistical release",
     a(href = "https://explore-education-statistics.service.gov.uk/find-statistics/", 
       "https://explore-education-statistics.service.gov.uk/find-statistics/",
       .noWS = c("after")
     ),
-    "."
+    ".",
+    "You can access specific cuts of data by using the ‘download’ buttons on each page of this dashboard."
   )
 }
 
@@ -31,10 +35,7 @@ welcome_text <- function() {
 
 industry_overview_text <- function() {
   div(
-    "This tab provides a region-specific overview of employees who work in each industry sector, 
-    including information on their overall levels of education and average earnings, the 
-    sub-sectors of their work, and their subject and qualification choices. 
-    It also includes an indicator for whether the selected industry sector is forecast to grow in future years.",
+    "This tab provides a region-specific overview of employees who work in each industry sector. It includes information on overall levels of education and average earnings, the sub-sectors of work, and subject and qualification choices. It also includes a forecast of annual employment growth in the sector between 2022 and 2027. ",
     br(), br(),
     "Data included on the page are for employees who turn age 25-30 in the 2018-19 tax year. 
     Specifically, the dashboard covers employees born between September 1988 and August 1993 
@@ -45,38 +46,40 @@ industry_overview_text <- function() {
       "https://explore-education-statistics.service.gov.uk/find-statistics/",
       .noWS = c("after")
     ),
-    ".", 
+    ".",
+    br(),br(),
+    
     tags$h4("Working Futures employment forecasts"),
 
-    "The forecast for annual change in employment for each sector and region group 
+    "The forecast for annual change in employment for each sector  
     between 2022 and 2027 is sourced from: ",
     a(href = "https://warwick.ac.uk/fac/soc/ier/wf7downloads/",
       "Working Futures",
      .noWS = c("after")),
     ".",
     "Working Futures is a quantitative assessment of employment prospects in the UK 
-    abour market undertaken by Warwick Institute for Employment Research.",
+    labour market undertaken by Warwick Institute for Employment Research.",
+br(),br(),
 
     tags$h4("Education level, subject, and qualification"),
 
-    "Education level and subject are based on highest qualification achievement 
-    at the start of the 2018-19 tax year. The subject categories used are Sector Subject Area (SSA) tier 1 sourced from: ",
-    a(href = "https://www.gov.uk/government/publications/types-of-regulated-qualifications/qualification-descriptions/",
-      .noWS = c("after")),
-    "Level and subject are based on an employee’s full history of education achievements, 
-    from qualifications achieved at school and into post-16 and adult education.",
-    "The table of top 20 qualifications for each region, sector and level group 
-    is restricted to qualifications achieved in post 16 education at level 2 or higher. 
-    This table does not include qualifications achieved at school, such as GCSEs.",
-
+    "Education level and subject are based on highest qualification achievement at the start of the 2018-19 tax year. 
+The subject categories used are Sector Subject Area (SSA). Level and subject are based on the full history of education 
+achievements for each employee, from qualifications achieved at school and into post-16 and adult education. 
+The table of top qualifications for each region, sector and level group is restricted to qualifications achieved in post-16 
+education at level 2 or higher. A maximum of 20 qualifications are included for each selection, depending on availability of data.
+This table does not include qualifications achieved at school, such as GCSEs.",
+br(), br(),
+"Qualifications achieved in higher education institutions use the Joint Academic Coding System (JACs). The JACs subject categories
+for these qualifications have been mapped to SSA tier 1. The titles for these qualifications are a combination of the 
+qualification type and the JACs principal subject code. See the accompanying statistics release for more detail.",
+br(), br(),
     tags$h4("Median annual earnings"),
 
-    "Earnings estimates are based on information recorded through the PAYE system 
-    used to collect Income Tax and National Insurance from employment 
-    by Her Majesty’s Revenue and Customs (HMRC).",
+    "Earnings estimates are based on information recorded through the PAYE system.",
     "The PAYE records from HMRC do not include reliable information on the hours 
     worked in employment so it is not possible to accurately distinguish between 
-    employees in full time and part time employment. The earnings in this 
+    employees in full time and part time employment. The median earnings in this 
     dashboard are presented as raw figures. They do not seek to control for 
     differences in employee characteristics that may influence earnings over 
     time or across different employee populations."
@@ -87,25 +90,30 @@ industry_overview_text <- function() {
 
 qualification_pathways_text <- function() {
   div(
-    "This tab provides a summary of potential common qualification pathways followed by employees 
-    of each industry sector and in each region. The pathways are constructed from looking across 
-    all qualifications achieved by employees in post-16 education at level 2 and above.",
-    "The pathways are constructed from piecing together popular combinations 
-    of qualifications that show progression from:",
+    "This tab provides a summary of common qualification pathways followed by top earning employees of each industry sector and in each region. 
+    This analysis is designed to show potential qualification pathways that could lead to employment in an industry sector of 
+    interest.",
+    br(), br(),
+    "Qualification pathways are constructed from regulated qualifications achieved by employees in post-16 education at 
+    level 2 and above. Basic skills qualifications, unregulated provision and qualifications achieved at school, 
+    such as GCSEs, are excluded. The pathways are constructed by pairing qualifications from the achievements of 
+    each employee. Qualification pairs must show progression from:",
     br(), br(),
     tags$ul(
       tags$li("Level 2 to level 3"),
       tags$li("Level 3 to either level 4/5, level 6 or level 7"),
       tags$li("Level 4/5 to either level 6 or level 7"),
       tags$li("Level 6 to level 7+")
-      
     ),
-  "Pathways showing progression between more than two qualifications are simulated
-  as the data do not show the same cohort of employees moving between each 
-  possible combination of qualifications from level 2 to Level 7. 
-  Each individual combination of qualifications is based on actual numbers 
-  of students who move between them. These combinations are then combined to 
-  build the full collapsible chart for each sector, region and starting level selection."
+  "The pathways are modelled; data do not show the same cohort of employees moving through the entire pathway. 
+  Each qualification pair is based on the numbers of students who move between them, and the analysis takes 
+  the end qualification of a pair as the starting qualification of a new pair. 
+  The combining of qualification pairs in this way builds the full collapsible tree chart in the dashboard. 
+  For more information, please see the methodology pages in the statistical release:",
+  a(href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
+    "Link to methodology EES",
+    .noWS = c("after")),
+  "."
   )
 }
 
@@ -145,8 +153,8 @@ sic_groups_text <- function() {
                             tags$col(span = 2, width = 175),
                            tags$tr(
                              tags$td(align = "left", strong("Sector")),
-                             tags$td(align = "center", strong("SIC", tags$br(), "2007", tags$br(), "Section")),
-                             tags$td(align = "left", strong("SIC",  tags$br(), "2007", tags$br(), "Division"))
+                             tags$td(align = "center", strong("SIC 2007", tags$br(), "Section")),
+                             tags$td(align = "left", strong("SIC 2007", tags$br(), "Division"))
                            ),
                            tags$tr( height = 10, 
                              tags$td(align = "left", 
@@ -266,7 +274,7 @@ sic_groups_text <- function() {
                              tags$td(align = "center", 
                                      "S"), 
                              tags$td(align = "left", 
-                                     "94-96")
+                                     "94-99")
                            ),
                            tags$tr( height = 10, 
                              tags$td(align = "left", 

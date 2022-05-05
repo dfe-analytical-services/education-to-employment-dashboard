@@ -50,7 +50,7 @@ navbarPage("",
                fluidRow(
                  column(
                    12,
-                   h1("Post-16 Career Pathway Explorer: employees aged 25-30 in sustained employment, Tax year 2018-19"),
+                   h1("Career pathways: post-16 qualifications held by employees"),
                    welcome_text(), # defined in R/dashboard_text.R
                    br(),
                    br()
@@ -107,7 +107,7 @@ navbarPage("",
            # Industry Sector Overview tab ==========================================================           
            
            tabPanel(
-             value = "overview", title = "Industry Sector Overview",
+             value = "overview", title = "Industry sector overview",
              
              ## Side bar ===========================================================================
              sidebarLayout(
@@ -135,22 +135,18 @@ navbarPage("",
                  ### Show earnings button --------------------------------------------------------------------
                  
                  radioButtons("showMedian",
-                              selected = "No",
+                              selected = "Percentage",
                               label = div(style = "white-space: nowrap; ", 
-                                          "Show Average Earnings:"), 
-                              choices = c("No","Yes"),
+                                          "Choose a metric to show:"), 
+                              choices = c("Percentage","Average earnings"),
                               inline = F, 
                               width = "50%"),
-                 
-                 
-
-              
-                 
+  
                  conditionalPanel(
                    condition="input.subsectorlevel=='Subject and qualification'",
                    
                    ### Help text ---------------------------------------------------------------------
-                 helpText("Choose an industry sub-sector and qualification level for detail on subject and qualifications choices."),
+                 helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
                  br(),
                  
                  ### Reset button -------------------------------------------------------------------
@@ -169,7 +165,7 @@ navbarPage("",
                                 choices = subsector_v,
                                 multiple = F,
                                 width = "100%",
-                                selected = "All subsectors"),
+                                selected = "All sub-sectors"),
   
                  
                  ### Level input -------------------------------------------------------------------
@@ -229,7 +225,7 @@ navbarPage("",
                              width = 3,
                              style='height:10vh; padding:5px; word-wrap: break-word;', 
                              uiOutput("median_in_sector"),
-                             tags$b("annual average earnings", 
+                             tags$b("Annual average earnings", 
                                     style = "font-size: 16px; color: #ffffff")
                       ), 
                       column(
@@ -264,11 +260,10 @@ navbarPage("",
                            details(
                            inputId = "SubsLev",
                            label = "How to read these tabs",
-                           help_text = "Select the Sub-sector and level tab for a
-                           breakdown of employee numbers and median earnings by highest 
-                           level of education and detailed industry sector. 
-                           Select the Subject and qualification tab for more information 
-                           about the highest qualifications employees hold."
+                           help_text = "Select the ‘sub-sector and level’ tab for information on employee 
+                           numbers and average earnings by highest level of education and detailed industry sector.
+                           Select the ‘subject and qualification’ tab for more information about the highest 
+                           qualifications held by employees."
                             ),
                            
                         div(textOutput("box2title"), style =  "font-size: 20px; font-weight: bold; margin-top: 15px;"),
@@ -285,23 +280,44 @@ navbarPage("",
                     #### Qualification table & Subject Chart ----------------------------------------------------------------------------
               
                 tabPanel("Subject and qualification", 
-                         div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
-                          details(
+                         br(),
+                         details(
                           inputId = "SubjectQualification",
                           label = "How to read these tabs",
-                          help_text = "Select the Highest post-16 qualifications held by employees tab for a
-                           breakdown of employee proportions and median earnings by qualification titles. 
-                           Select the Distribution of employees by subject of highest qualification tab for a breakdown of employee proportions and
-                           median earnings by subject areas studied."),
+                          help_text = "Select the ‘sub-sector and level’ tab for information on employee 
+                           numbers and average earnings by highest level of education and detailed industry sector.
+                           Select the ‘subject and qualification’ tab for more information about the highest 
+                           qualifications held by employees."), 
+                         div(textOutput("box3title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
+
                   
                   tabsetPanel(id = "qualificationsubject",
-                    tabPanel("Highest post-16 qualifications held by employees: top 20 by volume",
-                             column(id = "third", width = 12,
-                                    DT::dataTableOutput("hqSubTable"))
+       
+                    tabPanel("Top post-16 qualifications by highest level", 
+                             br(),
+                             details(
+                                inputId = "SubjectQualification",
+                                label = "How to read these tabs",
+                                help_text = "Select the ‘top post-16 qualifications by highest level’ tab for 
+                                the most popular qualifications held by employees and their average earnings.
+                                Select the ‘distribution of employees by subject area of highest qualification’ 
+                                tab for a breakdown of subject areas studied by employees and their average earnings.
+                                Charts can be filtered by qualification level and sub-sector using the drop down 
+                                selectors in the left pane."),
+                                    DT::dataTableOutput("hqSubTable")
                     ), 
-                    tabPanel("Distribution of employees by subject of highest qualification", 
-                             column(id = "third", width = 12,
-                                    div(plotlyOutput("indSubChart"), align = "center"))
+                    tabPanel("Distribution of employees by subject area of highest post-16 qualification", 
+                             br(),
+                             details(
+                               inputId = "SubjectQualification",
+                               label = "How to read these tabs",
+                               help_text = "Select the ‘top post-16 qualifications by highest level’ tab for 
+                                the most popular qualifications held by employees and their average earnings.
+                                Select the ‘distribution of employees by subject area of highest qualification’ 
+                                tab for a breakdown of subject areas studied by employees and their average earnings.
+                                Charts can be filtered by qualification level and sub-sector using the drop down 
+                                selectors in the left pane."),
+                                    div(plotlyOutput("indSubChart"), align = "center")
                     )
                   )
                 )
@@ -313,7 +329,7 @@ navbarPage("",
             # Qualification Pathway  tab ==========================================================           
 
             tabPanel(
-              value = "pathways", title = "Qualification Pathways",
+              value = "pathways", title = "Qualification pathways",
   
               ## Side bar ===========================================================================
               sidebarLayout(
@@ -321,7 +337,7 @@ navbarPage("",
                   width = 2,
                   
                  ### Help text ---------------------------------------------------------------------
-                helpText("Choose an industry sector, a region and a qualification level to view the most common career pathways of employees."),
+                helpText("Choose an industry sector, region and qualification level to view the most common career pathways of employees."),
       
                  ### Sector to work input -------------------------------------------------------------------
                 selectInput(
@@ -340,7 +356,7 @@ navbarPage("",
                  ### Level to study input -------------------------------------------------------------------
               selectInput(
                 "inSelect3", 
-                label = "Choose a level of study:",
+                label = "Choose a qualification level:",
                 choices = level_v2,
                 selected = "Level 2"), 
               
@@ -378,9 +394,12 @@ navbarPage("",
                       #### Tree plot --------------------------------------------------------------- 
                  
                           div(textOutput("box4title"), style =  "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
-    
-                          div("This chart shows the most common career pathways taken by employees in sustained employment 
-                              in the tax year 2018-19. Please note that it is not a complete list.", style = "font-size: 16px; font-style: italic;"),
+                 
+                          div("This chart shows the most common education pathways taken by the 
+                          highest earning employees in sustained employment
+                          in the tax year 2018-19. 
+                          Click on the qualification names to expand the chart and explore different pathways to higher level qualifications. 
+                           Please note that this it is not a complete list.", style = "font-size: 16px; font-style: italic;"),
                           br(),
                            uiOutput("svglegend"),
                  
