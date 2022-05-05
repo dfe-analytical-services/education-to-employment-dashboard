@@ -732,46 +732,80 @@ server <- function(input, output, session) {
 
 # Download data -----------------------------------------------------------
 
-  to_download <- reactiveValues(
+  to_download_pg1 <- reactiveValues(
     subsectors_table = subsectors_table, 
                 highest_qualification_table = highest_qualification_table, 
                 qualifications_titles_table = qualifications_titles_table,
                 subjects_table = subjects_table,
                 income_proportions_table = income_proportions_table,
-                working_futures_table = working_futures_table,
-                qualifications_pathways_table = qualifications_pathways_table,
-                progression_to_work_by_level_table = progression_to_work_by_level_table
+                working_futures_table = working_futures_table
+                #qualifications_pathways_table = qualifications_pathways_table,
+                #progression_to_work_by_level_table = progression_to_work_by_level_table
   )
 
   
- #  output$download_btn <- downloadHandler(
- #    filename = function(){
- #      paste("data_", Sys.Date(), ".zip", sep = "")
- #    },
- #    content = function(file) {
- #      
- #      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
- #      dir.create(temp_directory)
- #        
- #      
- #      reactiveValuesToList(to_download) %>%
- #        imap(function(x,y){
- #          if(!is.null(x)){
- #            file_name <- glue("{y}_data.csv")
- #            readr::write_csv(x, file.path(temp_directory, file_name))
- #          }
- #        })
- #      
- #      zip::zip(
- #        zipfile = file,
- #        files = dir(temp_directory),
- #        root = temp_directory
- #      )
- # 
- #        },
- #      contentType = "application/zip"
- # )
+  output$download_btn1 <- downloadHandler(
+    filename = function(){
+      paste("data_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file) {
+
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+
+
+      reactiveValuesToList(to_download_pg1) %>%
+        imap(function(x,y){
+          if(!is.null(x)){
+            file_name <- glue("{y}_data.csv")
+            write.csv(x, file.path(temp_directory, file_name), row.names = F)
+          }
+        })
+
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+
+        },
+      contentType = "application/zip"
+ )
     
+  
+  to_download_pg2 <- reactiveValues(
+    qualifications_pathways_table = qualifications_pathways_table,
+    progression_to_work_by_level_table = progression_to_work_by_level_table
+  )
+  
+  
+  output$download_btn2 <- downloadHandler(
+    filename = function(){
+      paste("data_", Sys.Date(), ".zip", sep = "")
+    },
+    content = function(file) {
+      
+      temp_directory <- file.path(tempdir(), as.integer(Sys.time()))
+      dir.create(temp_directory)
+      
+      
+      reactiveValuesToList(to_download_pg2) %>%
+        imap(function(x,y){
+          if(!is.null(x)){
+            file_name <- glue("{y}_data.csv")
+            write.csv(x, file.path(temp_directory, file_name), row.names = F)
+          }
+        })
+      
+      zip::zip(
+        zipfile = file,
+        files = dir(temp_directory),
+        root = temp_directory
+      )
+      
+    },
+    contentType = "application/zip"
+  )
  
   
 }

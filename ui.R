@@ -183,7 +183,7 @@ navbarPage("",
                  ### Download button -------------------------------------------------------------------
                  
                  downloadButton(
-                   outputId = "download_btn",
+                   outputId = "download_btn1",
                    label = "Download",
                    icon = shiny::icon("download")
                  )
@@ -342,7 +342,15 @@ navbarPage("",
                 "inSelect3", 
                 label = "Choose a level of study:",
                 choices = level_v2,
-                selected = "Level 2")
+                selected = "Level 2"), 
+              
+              ### Download button -------------------------------------------------------------------
+              
+              downloadButton(
+                outputId = "download_btn2",
+                label = "Download",
+                icon = shiny::icon("download")
+              )
               ), # end of sidebar
 
               ## Main panel 2============================================================================
