@@ -67,8 +67,7 @@ level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6", "Level 7+")
 # download data -----------------------------------------------------------
 
 subsectors_table <- datalist$stat_subs %>%
-  rename( 
-         'Median Earnings' = median_income, 
+  rename('Median Earnings' = median_income, 
          'Proportion' = perc_subs,
          'Volume employees' = number_students_subs)
 
