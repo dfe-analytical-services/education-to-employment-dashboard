@@ -7,7 +7,7 @@ clean_json <- function(file, parent_script = "testUI", basedir = "./", iteration
   shinytest_json <- readr::read_lines(filepath)
   for (i in 1:length(shinytest_json)) {
     shinytest_json[i] <- gsub('ey\": \".*\"', 'ey\": "random_key"', shinytest_json[i])
-    shinytest_json[i] <- gsub("\r\n", "\n", shinytest_json[i])
+    shinytest_json[i] <- gsub(" \n", " \r\n", shinytest_json[i])
   }
   readr::write_lines(shinytest_json, filepath)
 }
