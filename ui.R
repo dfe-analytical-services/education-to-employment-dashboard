@@ -235,7 +235,7 @@ fluidPage(
               style = "height:10vh; padding:5px; word-wrap: break-word;",
               uiOutput("median_in_sector"),
               tags$b("Annual average earnings",
-                style = "font-size: 16px; color: #ffffff"
+                style = "font-size: 10px; color: #ffffff"
               )
             ),
             column(
