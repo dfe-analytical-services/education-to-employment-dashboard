@@ -34,11 +34,21 @@ kpis <- datalist$kpis %>%
 
 wf <- datalist$wf
 
-sectors_v <- unique(stat_subs$Sector)
-regions_v <- unique(stat_subs$Region)
+sectors_v <- stat_subs %>%
+  distinct(Sector, .keep_all = F) %>%
+  unlist(use.names = F)
 
-subsector_v <- unique(stat_subs_sub$Subsector)
-levels_v <- unique(stat_hq_sub$Level_order)
+regions_v <- stat_subs %>%
+  distinct(Region, .keep_all = F) %>%
+  unlist(use.names = F)
+
+subsector_v <- stat_subs_sub %>%
+  distinct(Subsector, .keep_all = F) %>%
+  unlist(use.names = F)
+
+levels_v <- stat_hq_sub %>% 
+  distinct(Level_order, .keep_all = F) %>%
+  unlist(use.names = F)
 
 # vector for relabel level of qualification
 
@@ -62,8 +72,15 @@ students_in_work <- datalist$students_in_work %>%
   mutate_at(vars(matches("perc")), as.numeric)
 
 # vector for relabel level of qualification
-sector_v2 <- unique(qualifications$IndustrySector)
-region_v2 <- unique(qualifications$Region)
+
+sector_v2 <- qualifications %>% 
+  distinct(IndustrySector, .keep_all = F) %>%
+  unlist(use.names = F)
+  
+region_v2 <- qualifications %>%
+  distinct(Region, .keep_all = F) %>%
+  unlist(use.names = F)
+  
 level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6", "Level 7+")
 
 # download data -----------------------------------------------------------
