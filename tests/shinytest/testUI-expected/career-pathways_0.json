@@ -1,0 +1,15 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "homepage",
+    "qualificationsubject": "Top post-16 qualifications by highest level",
+    "region": "England",
+    "regionp": "England",
+    "sector": "Construction",
+    "sectorp": "Construction",
+    "showMedian": "Percentage"
+  },
+  "output": {
+
+  }
+}
