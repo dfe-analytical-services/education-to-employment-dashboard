@@ -37,4 +37,4 @@ tidy_code_function <- function() {
   return(script_changes)
 }
 
-source("R/read_data.R")
+#source("R/read_data.R")
