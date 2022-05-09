@@ -69,43 +69,50 @@ level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6", "Level 7+")
 # download data -----------------------------------------------------------
 
 subsectors_table <- datalist$stat_subs %>%
-  rename(
-    "Median Earnings" = median_income,
+  select(Region, 
+         Sector,
+         "Sub sector" = Subsector,
+    "Median earnings" = median_income,
     "Proportion" = perc_subs,
     "Volume employees" = number_students_subs
   )
 
 highest_qualification_table <- datalist$stat_hq %>%
-  rename(
+  select(Region, 
+         Sector,
     "Qualification level" = Level_order,
-    "Median Earnings" = median_income,
+    "Median earnings" = median_income,
     "Proportion" = perc_hq,
     "Volume employees" = number_students_hq
   )
 
-qualifications_titles_table <- datalist$stat_subs_sub %>%
-  rename(
-    "Qualification level" = Level_order,
-    "Median Earnings" = median_income,
-    "Proportion" = perc,
-    "Volume employees" = number_students_sub
-  )
-
-subjects_table <- datalist$stat_hq_sub %>%
-  select(Region,
-    Sector,
-    Subsector,
-    Qualification,
+qualifications_titles_table <- datalist$stat_hq_sub %>%
+  select(Region, 
+         Sector, 
+         "Sub sector" = Subsector,
+         Qualification,
     "Qualification level" = Level_order_UI,
-    "Subject studied" = Subject,
-    "Median Earnings" = median_income,
+    "Qualification level in selection filter" = Level_order,
+    "Subject studied" = Subject, 
+    "Median earnings" = median_income,
     "Proportion" = perc,
     "Volume employees" = number_students_qual
   )
 
+subjects_table <- datalist$stat_subs_sub %>%
+  select(Region,
+    Sector,
+    "Sub sector" = Subsector,
+    "Qualification level" = Level_order,
+    "Subject studied" = Subject,
+    "Median earnings" = median_income,
+    "Proportion" = perc,
+    "Volume employees" = number_students_sub
+  )
+
 income_proportions_table <- datalist$kpis %>%
   rename(
-    "Median Earnings" = median_income_sector,
+    "Median earnings" = median_income_sector,
     "Proportion" = perc_students_sector
   )
 
@@ -113,8 +120,8 @@ working_futures_table <- datalist$wf %>%
   rename(
     "Region code" = RegionCode,
     "Sector" = IndustrySector,
-    "Subsector" = Sector,
-    "Period 2022-2027" = Years2022.2027
+    "Sub sector" = Sector,
+    "Change in employment expected during 2022-2027" = Years2022.2027
   )
 
 qualifications_pathways_table <- datalist$qualifications %>%
