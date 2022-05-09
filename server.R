@@ -50,7 +50,7 @@ server <- function(input, output, session) {
           )
         )) +
         geom_col(aes(y = perc_subs),
-          fill = "#1D70B8"
+          fill = "#28a197"
         ) +
         labs(
           y = "", x = "",
@@ -394,7 +394,7 @@ server <- function(input, output, session) {
         y = perc,
         x = Sector,
         text = paste0(var_to_show, ": ", formatC(perc * 100,
-          digits = 0,
+          digits = 1,
           format = "f"
         ), "%")
       )) +
@@ -835,7 +835,7 @@ server <- function(input, output, session) {
     s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
     HTML(paste0(
       formatC(percInWork()$perc[2] * 100,
-        digits = 0,
+        digits = 1,
         format = "f"
       ), "% ",
       "of employees have the highest qualification at ",
