@@ -220,7 +220,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:10vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; padding:5px; word-wrap: break-word;",
               uiOutput("perc_in_sector"),
               uiOutput("kpiSector")
             ),
@@ -232,10 +232,10 @@ fluidPage(
               id = "first",
               align = "left",
               width = 3,
-              style = "height:10vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; padding:5px; word-wrap: break-word;",
               uiOutput("median_in_sector"),
               tags$b("Annual average earnings",
-                style = "font-size: 16px; color: #ffffff"
+                style = "font-size: 12px; color: #ffffff"
               )
             ),
             column(
@@ -246,7 +246,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:10vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; padding:5px; word-wrap: break-word;",
               uiOutput("directionSector"),
               uiOutput("kpiChange")
             ),

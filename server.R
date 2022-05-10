@@ -572,7 +572,7 @@ server <- function(input, output, session) {
     perc <- round(perc, digits = 3)
 
     tags$b(paste0(perc[[1]] * 100, "%"),
-      style = "font-size:20px; text-align:center; color:	#ffffff"
+      style = "font-size:36px; text-align:center; color:	#ffffff"
     )
   })
 
@@ -588,7 +588,7 @@ server <- function(input, output, session) {
     median_inc <- prettyNum(median_inc, big.mark = ",")
 
     tags$b(paste0("£", median_inc),
-      style = "font-size:20px; text-align:center; color:	#ffffff"
+      style = "font-size:36px; text-align:center; color:	#ffffff"
     )
   })
 
@@ -601,7 +601,7 @@ server <- function(input, output, session) {
       ) %>%
       select(direction = Years2022.2027)
     tags$b(paste0(round(wf$direction[[1]], digits = 1), "%"),
-      style = "font-size:20px; text-align:center; color:	#ffffff"
+      style = "font-size:36x; text-align:center; color:	#ffffff"
     )
   })
 
@@ -783,7 +783,7 @@ server <- function(input, output, session) {
     s <- selection()
 
     tags$b(paste0("Proportion of employees that work in ", tolower(s$Sector[1])),
-      style = "font-size: 16px; color: #ffffff"
+      style = "font-size: 12px; color: #ffffff"
     )
   })
 
@@ -797,7 +797,7 @@ server <- function(input, output, session) {
       select(direction = Years2022.2027)
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
     tags$b(paste0("Forecast annual employment ", changeS, " up to 2027"),
-      style = "font-size: 16px; color: #ffffff"
+      style = "font-size: 12px; color: #ffffff"
     )
   })
 
