@@ -272,6 +272,7 @@ fluidPage(
             id = "subsectorlevel",
             tabPanel(
               "Sub-sector and level",
+              box(width=12,
               br(),
               details(
                 inputId = "SubsLev",
@@ -281,17 +282,21 @@ fluidPage(
                            Select the ‘subject and qualification’ tab for more information about the highest
                            qualifications held by employees."
               ),
-              div(textOutput("box2title"), style = "font-size: 20px; font-weight: bold; margin-top: 15px;"),
-              column(
+              div(
+                textOutput("box2title"), 
+                  style = "font-size: 20px; font-weight: bold; margin-top: 15px;"
+              ),
+                  column(
                 width = 6,
-                style = "height:20vh; padding:5px;",
+                style = "padding:5px;",
                 plotlyOutput("subsVolMedianChart")
               ),
               column(
                 width = 6,
-                style = "height:20vh; padding:5px;",
+                style = "padding:5px;",
                 plotlyOutput("highestQualVolMedianChart")
               )
+)
             ),
 
             #### Qualification table & Subject Chart ----------------------------------------------------------------------------
