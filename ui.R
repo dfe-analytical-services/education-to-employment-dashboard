@@ -272,31 +272,32 @@ fluidPage(
             id = "subsectorlevel",
             tabPanel(
               "Sub-sector and level",
-              box(width=12,
-              br(),
-              details(
-                inputId = "SubsLev",
-                label = "How to read these tabs",
-                help_text = "Select the ‘sub-sector and level’ tab for information on employee
+              box(
+                width = 12,
+                br(),
+                details(
+                  inputId = "SubsLev",
+                  label = "How to read these tabs",
+                  help_text = "Select the ‘sub-sector and level’ tab for information on employee
                            numbers and average earnings by highest level of education and detailed industry sector.
                            Select the ‘subject and qualification’ tab for more information about the highest
                            qualifications held by employees."
-              ),
-              div(
-                textOutput("box2title"), 
+                ),
+                div(
+                  textOutput("box2title"),
                   style = "font-size: 20px; font-weight: bold; margin-top: 15px;"
-              ),
-                  column(
-                width = 6,
-                style = "padding:5px;",
-                plotlyOutput("subsVolMedianChart")
-              ),
-              column(
-                width = 6,
-                style = "padding:5px;",
-                plotlyOutput("highestQualVolMedianChart")
+                ),
+                column(
+                  width = 6,
+                  style = "padding:5px;",
+                  plotlyOutput("subsVolMedianChart")
+                ),
+                column(
+                  width = 6,
+                  style = "padding:5px;",
+                  plotlyOutput("highestQualVolMedianChart")
+                )
               )
-)
             ),
 
             #### Qualification table & Subject Chart ----------------------------------------------------------------------------
