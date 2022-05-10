@@ -13,27 +13,27 @@
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 3",
-    "box7title": "28% of employees have the highest qualification at level 3",
+    "box7title": "14.5% of employees have the highest qualification at level 3",
     "directionSector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">Forecast annual employment decline up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
       "deps": [
 
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£19,975.6<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,988.19<\/b>",
       "deps": [
 
       ]
@@ -51,7 +51,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">72.8%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">50.1%<\/b>",
       "deps": [
 
       ]
@@ -67,14 +67,14 @@
               0.9
             ],
             "base": [
-              1.80773057951592,
-              2.66517447819933,
-              2.73149899160489
+              1.74694260698743,
+              2.43549959082156,
+              0.856601920677349
             ],
             "x": [
-              0.857443898683414,
-              0.0663245134055614,
-              0.115576363401487
+              0.688556983834133,
+              0.568643211387098,
+              0.890340686310083
             ],
             "y": [
               1,
@@ -82,9 +82,9 @@
               1
             ],
             "text": [
-              "Higher than level 3: 86%",
-              "Higher than level 3: 7%",
-              "Higher than level 3: 12%"
+              "Higher than level 3: 68.9%",
+              "Higher than level 3: 56.9%",
+              "Higher than level 3: 89.0%"
             ],
             "type": "bar",
             "textposition": "none",
@@ -107,10 +107,10 @@
           {
             "orientation": "h",
             "width": 0.9,
-            "base": 1.15388482389972,
-            "x": 0.653845755616203,
+            "base": 0.704926145728678,
+            "x": 0.151675774948671,
             "y": 1,
-            "text": "At level 3: 65%",
+            "text": "At level 3: 15.2%",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -137,19 +137,19 @@
             ],
             "base": [
               0,
-              0.871177226305008
+              0.560328992782161
             ],
             "x": [
-              0.871177226305008,
-              0.282707597594708
+              0.560328992782161,
+              0.144597152946517
             ],
             "y": [
               1,
               1
             ],
             "text": [
-              "Lower than level 3: 87%",
-              "Lower than level 3: 28%"
+              "Lower than level 3: 56.0%",
+              "Lower than level 3: 14.5%"
             ],
             "type": "bar",
             "textposition": "none",
@@ -192,25 +192,28 @@
             "type": "linear",
             "autorange": false,
             "range": [
-              -0.142353767750319,
-              2.9894291227567
+              -0.150207140110433,
+              3.1543499423191
             ],
             "tickmode": "array",
             "ticktext": [
               "0%",
               "100%",
-              "200%"
+              "200%",
+              "300%"
             ],
             "tickvals": [
               0,
               1,
-              2
+              2,
+              3
             ],
             "categoryorder": "array",
             "categoryarray": [
               "0%",
               "100%",
-              "200%"
+              "200%",
+              "300%"
             ],
             "nticks": null,
             "ticks": "outside",
@@ -457,7 +460,7 @@
               "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Design Studies",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
@@ -479,7 +482,7 @@
                   ]
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Design Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -513,22 +516,22 @@
               "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
-                {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
-                {
                   "name": "First Degree (excluding Integrated Master's Degree) in Hospitality, Leisure, Sport, Tourism & Transport",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
                 {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
                   "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -539,11 +542,6 @@
               "fill": "#62B7E4",
               "WeightOfNode": "4",
               "children": [
-                {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Chemistry",
                   "fill": "#3088C8",
@@ -556,6 +554,11 @@
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Physics",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -584,12 +587,12 @@
                   ]
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -600,11 +603,6 @@
               "fill": "#62B7E4",
               "WeightOfNode": "4",
               "children": [
-                {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
                   "fill": "#3088C8",
@@ -618,12 +616,17 @@
                   ]
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                  "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -635,7 +638,7 @@
               "WeightOfNode": "3",
               "children": [
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Economics",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
@@ -645,7 +648,7 @@
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Economics",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -691,7 +694,7 @@
               "WeightOfNode": "4",
               "children": [
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Physics",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
@@ -701,12 +704,12 @@
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Physics",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -717,16 +720,6 @@
               "fill": "#62B7E4",
               "WeightOfNode": "4",
               "children": [
-                {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
-                {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
-                  "WeightOfNode": "1"
-                },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
                   "fill": "#3088C8",
@@ -740,7 +733,17 @@
                   ]
                 },
                 {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
                   "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
+                  "fill": "#3088C8",
+                  "WeightOfNode": "1"
+                },
+                {
+                  "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
@@ -752,12 +755,12 @@
               "WeightOfNode": "3",
               "children": [
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Physics",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Physics",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
@@ -786,7 +789,7 @@
                   ]
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 },
@@ -796,7 +799,7 @@
                   "WeightOfNode": "1"
                 },
                 {
-                  "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
+                  "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
                   "fill": "#3088C8",
                   "WeightOfNode": "1"
                 }
