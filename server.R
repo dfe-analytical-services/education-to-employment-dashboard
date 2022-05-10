@@ -601,7 +601,7 @@ server <- function(input, output, session) {
       ) %>%
       select(direction = Years2022.2027)
     tags$b(paste0(round(wf$direction[[1]], digits = 1), "%"),
-      style = "font-size:36x; text-align:center; color:	#ffffff"
+      style = "font-size:36px; text-align:center; color:	#ffffff"
     )
   })
 
