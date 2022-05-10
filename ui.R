@@ -421,6 +421,7 @@ fluidPage(
                           highest earning employees in sustained employment
                           in the tax year 2018-19.
                           Click on the qualification names to expand the chart and explore different pathways to higher level qualifications.
+                          In the tooltip, the leaf count shows how many different qualification end points can be reached by expanding the chart. 
                            Please note that this it is not a complete list.", style = "font-size: 16px; font-style: italic;"),
           br(),
           uiOutput("svglegend"),
