@@ -803,7 +803,7 @@ server <- function(input, output, session) {
 
   # page 1: subsector/qualification level chart
   output$box2title <- renderText({
-    if (input$showMedian == "No") {
+    if (input$showMedian == "Percentage") {
       paste0("Distribution of employees by industry sub-sector and highest level of education")
     } else {
       paste0("Employee earnings by industry sub-sector and highest level of education")
