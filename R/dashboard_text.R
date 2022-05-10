@@ -13,17 +13,17 @@ welcome_text <- function() {
       tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors"),
       tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard")
     ),
-    "This dashboard has been produced to support the aims of the Unit for Future Skills",
+    "This dashboard has been produced to support the aims of the Unit for Future Skills: ",
     a(
-      href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
-      "Add link to UFS",
+      href = "https://www.gov.uk/government/groups/unit-for-future-skills",
+      "https://www.gov.uk/government/groups/unit-for-future-skills",
       .noWS = c("after")
     ),
     ".",
-    "The complete underlying data for the dashboard is published alongside the accompanying statistical release",
+    "The complete underlying data for the dashboard is published alongside the accompanying statistical release: ",
     a(
-      href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/",
+      href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
       .noWS = c("after")
     ),
     ".",
@@ -43,17 +43,17 @@ industry_overview_text <- function() {
     Specifically, the dashboard covers employees born between September 1988 and August 1993
     who were schooled in England. Employees must be in sustained employment and must not be
     studying at a higher education institution.
-    For more information, please see the methodology pages in the statistical release:",
+    For more information, please see the methodology pages in the statistical release: ",
     a(
-      href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/",
+      href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
       .noWS = c("after")
     ),
     ".",
     br(), br(),
     tags$h4("Working Futures employment forecasts"),
     "The forecast for annual change in employment for each sector
-    between 2022 and 2027 is sourced from: ",
+    between 2022 and 2027 is sourced from ",
     a(
       href = "https://warwick.ac.uk/fac/soc/ier/wf7downloads/",
       "Working Futures",
@@ -109,10 +109,10 @@ qualification_pathways_text <- function() {
   Each qualification pair is based on the numbers of students who move between them, and the analysis takes
   the end qualification of a pair as the starting qualification of a new pair.
   The combining of qualification pairs in this way builds the full collapsible tree chart in the dashboard.
-  For more information, please see the methodology pages in the statistical release:",
+  For more information, please see the methodology pages in the statistical release: ",
     a(
-      href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
-      "Link to methodology EES",
+      href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
       .noWS = c("after")
     ),
     "."
@@ -150,8 +150,8 @@ sic_groups_text <- function() {
     "See below for a description of the sectors included in the dashboard and how they relate to the SIC codes,
     and see the methodology pages in the statistical release for more detail about the SIC groupings: ",
     a(
-      href = "https://explore-education-statistics.service.gov.uk/find-statistics/",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/",
+      href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
       .noWS = c("after")
     ),
     br(),
