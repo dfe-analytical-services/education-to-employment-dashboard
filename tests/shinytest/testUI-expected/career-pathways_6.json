@@ -13,25 +13,25 @@
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "directionSector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">0%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">Forecast annual employment decline up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 16px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
       "deps": [
 
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">£19,975.6<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,988.19<\/b>",
       "deps": [
 
       ]
@@ -43,7 +43,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:20px; text-align:center; color:\t#ffffff\">72.8%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">50.1%<\/b>",
       "deps": [
 
       ]
