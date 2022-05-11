@@ -10,10 +10,10 @@
     "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 2",
-    "box7title": "58.9% of employees have the highest qualification at level 2",
+    "box7title": "58.9% of employees have a highest qualification at level 2",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
@@ -68,10 +68,10 @@
               0.9
             ],
             "base": [
-              2.67953965160996,
               1.17268456052989,
-              1.90108342887834,
-              2.31206399365328
+              1.41872197575867,
+              2.14712084410712,
+              2.55810140888207
             ],
             "x": [
               0.246037415228784,
@@ -85,12 +85,7 @@
               1,
               1
             ],
-            "text": [
-              "Higher than level 2: 24.6%",
-              "Higher than level 2: 72.8%",
-              "Higher than level 2: 41.1%",
-              "Higher than level 2: 36.7%"
-            ],
+            "text": "Higher than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -115,7 +110,7 @@
             "base": 0.583293771138415,
             "x": 0.589390789391473,
             "y": 1,
-            "text": "At level 2: 58.9%",
+            "text": "At level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -140,7 +135,7 @@
             "base": 0,
             "x": 0.583293771138415,
             "y": 1,
-            "text": "Lower than level 2: 58.3%",
+            "text": "Lower than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {

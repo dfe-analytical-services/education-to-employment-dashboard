@@ -10,10 +10,10 @@
     "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 3",
-    "box7title": "14.5% of employees have the highest qualification at level 3",
+    "box7title": "15.2% of employees have a highest qualification at level 3",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
@@ -67,9 +67,9 @@
               0.9
             ],
             "base": [
-              1.74694260698743,
-              2.43549959082156,
-              0.856601920677349
+              0.856601920677349,
+              1.54515890451148,
+              2.11380211589858
             ],
             "x": [
               0.688556983834133,
@@ -81,11 +81,7 @@
               1,
               1
             ],
-            "text": [
-              "Higher than level 3: 68.9%",
-              "Higher than level 3: 56.9%",
-              "Higher than level 3: 89.0%"
-            ],
+            "text": "Higher than level 3",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -110,7 +106,7 @@
             "base": 0.704926145728678,
             "x": 0.151675774948671,
             "y": 1,
-            "text": "At level 3: 15.2%",
+            "text": "At level 3",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -147,10 +143,7 @@
               1,
               1
             ],
-            "text": [
-              "Lower than level 3: 56.0%",
-              "Lower than level 3: 14.5%"
-            ],
+            "text": "Lower than level 3",
             "type": "bar",
             "textposition": "none",
             "marker": {

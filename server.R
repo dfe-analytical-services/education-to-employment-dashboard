@@ -803,9 +803,9 @@ server <- function(input, output, session) {
 
 
   # page 2: title for stacked chart box
-  
+
   # select percentage of people in work
-  
+
   selection_in_work <- reactive({
     students_in_work %>%
       mutate(
@@ -822,24 +822,25 @@ server <- function(input, output, session) {
       ) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
       filter(Region == input$regionp &
-               Sector == input$sectorp)
+        Sector == input$sectorp)
   })
-  
-  
-  
+
+
+
   output$box7title <- renderText({
-    
+
     # s <- selected_region_sector() %>%
     #   filter(Level == input$inSelect3)
-    # 
+    #
     # s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
-    
-    percInWork  <- reactive({
-      selection_in_work() %>% 
-      filter(Level_order == input$inSelect3) %>%
-      select(perc) })
-   
-     HTML(paste0(
+
+    percInWork <- reactive({
+      selection_in_work() %>%
+        filter(Level_order == input$inSelect3) %>%
+        select(perc)
+    })
+
+    HTML(paste0(
       formatC((percInWork()$perc[1]) * 100,
         digits = 1,
         format = "f"

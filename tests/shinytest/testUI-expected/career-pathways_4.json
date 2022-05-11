@@ -10,7 +10,7 @@
     "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [

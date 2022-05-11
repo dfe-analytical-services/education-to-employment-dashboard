@@ -10,10 +10,10 @@
     "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 2",
-    "box7title": "30.7% of employees have the highest qualification at level 2",
+    "box7title": "30.7% of employees have a highest qualification at level 2",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
@@ -68,10 +68,10 @@
               0.9
             ],
             "base": [
-              2.31871057138778,
               1.25642662774771,
-              2.73839197098278,
-              2.22177875530906
+              1.67610802734271,
+              2.64146015490405,
+              2.89509525313042
             ],
             "x": [
               0.419681399594992,
@@ -85,12 +85,7 @@
               1,
               1
             ],
-            "text": [
-              "Higher than level 2: 42.0%",
-              "Higher than level 2: 96.5%",
-              "Higher than level 2: 25.4%",
-              "Higher than level 2: 9.7%"
-            ],
+            "text": "Higher than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -115,7 +110,7 @@
             "base": 0.949588391929865,
             "x": 0.30683823581785,
             "y": 1,
-            "text": "At level 2: 30.7%",
+            "text": "At level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -140,7 +135,7 @@
             "base": 0,
             "x": 0.949588391929865,
             "y": 1,
-            "text": "Lower than level 2: 95.0%",
+            "text": "Lower than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
