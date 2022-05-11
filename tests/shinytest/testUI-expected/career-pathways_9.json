@@ -10,10 +10,10 @@
     "showMedian": "Percentage"
   },
   "output": {
-    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  NA",
-    "box7title": "14.5% of employees have the highest qualification at level 2",
+    "box7title": "14.5% of employees have a highest qualification at level 2",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
@@ -68,10 +68,10 @@
               0.9
             ],
             "base": [
-              2.85246702725999,
-              1.59526683203876,
-              2.28382381587289,
-              0.704926145728678
+              0.704926145728678,
+              0.856601920677349,
+              1.54515890451148,
+              2.11380211589858
             ],
             "x": [
               0.151675774948671,
@@ -85,12 +85,7 @@
               1,
               1
             ],
-            "text": [
-              "Higher than level 2: 15.2%",
-              "Higher than level 2: 68.9%",
-              "Higher than level 2: 56.9%",
-              "Higher than level 2: 89.0%"
-            ],
+            "text": "Higher than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -115,7 +110,7 @@
             "base": 0.560328992782161,
             "x": 0.144597152946517,
             "y": 1,
-            "text": "At level 2: 14.5%",
+            "text": "At level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {
@@ -140,7 +135,7 @@
             "base": 0,
             "x": 0.560328992782161,
             "y": 1,
-            "text": "Lower than level 2: 56.0%",
+            "text": "Lower than level 2",
             "type": "bar",
             "textposition": "none",
             "marker": {

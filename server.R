@@ -393,10 +393,7 @@ server <- function(input, output, session) {
         fill = var_to_plot,
         y = perc,
         x = Sector,
-        text = paste0(var_to_show, ": ", formatC(perc * 100,
-          digits = 1,
-          format = "f"
-        ), "%")
+        text = paste0(var_to_show)
       )) +
       geom_bar(position = "stack", stat = "identity") +
       labs(
@@ -423,29 +420,6 @@ server <- function(input, output, session) {
         panel.grid.major.y = element_blank(),
         panel.grid.minor.y = element_blank()
       )
-  })
-
-
-  # select percentage of people in work
-
-  percInWork <- reactive({
-    students_in_work %>%
-      mutate(
-        var_to_show = case_when(
-          new_level == level_reac() ~ paste("At", inWorkChartLevel()),
-          new_level < level_reac() ~ paste("Lower than", inWorkChartLevel()),
-          TRUE ~ paste("Higher than", inWorkChartLevel())
-        ),
-        var_to_plot = case_when(
-          new_level == level_reac() ~ "At level",
-          new_level < level_reac() ~ "Lower than level",
-          TRUE ~ "Higher than level"
-        )
-      ) %>%
-      mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
-      filter(Region == input$regionp &
-        Sector == input$sectorp) %>%
-      select(perc)
   })
 
 
@@ -829,16 +803,49 @@ server <- function(input, output, session) {
 
 
   # page 2: title for stacked chart box
+
+  # select percentage of people in work
+
+  selection_in_work <- reactive({
+    students_in_work %>%
+      mutate(
+        var_to_show = case_when(
+          new_level == level_reac() ~ paste("At", inWorkChartLevel()),
+          new_level < level_reac() ~ paste("Lower than", inWorkChartLevel()),
+          TRUE ~ paste("Higher than", inWorkChartLevel())
+        ),
+        var_to_plot = case_when(
+          new_level == level_reac() ~ "At level",
+          new_level < level_reac() ~ "Lower than level",
+          TRUE ~ "Higher than level"
+        )
+      ) %>%
+      mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
+      filter(Region == input$regionp &
+        Sector == input$sectorp)
+  })
+
+
+
   output$box7title <- renderText({
-    s <- selected_region_sector() %>%
-      filter(Level == input$inSelect3)
-    s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
+
+    # s <- selected_region_sector() %>%
+    #   filter(Level == input$inSelect3)
+    #
+    # s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
+
+    percInWork <- reactive({
+      selection_in_work() %>%
+        filter(Level_order == input$inSelect3) %>%
+        select(perc)
+    })
+
     HTML(paste0(
-      formatC(percInWork()$perc[2] * 100,
+      formatC((percInWork()$perc[1]) * 100,
         digits = 1,
         format = "f"
-      ), "% ",
-      "of employees have the highest qualification at ",
+      ), "%",
+      " of employees have a highest qualification at ",
       inWorkChartLevel()
     ))
   })

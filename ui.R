@@ -69,10 +69,10 @@ fluidPage(
                 ),
                 div(
                   class = "panel-body",
-                  h3(actionLink("link_to_industryOverview_tab", "Industry Sector Overview")),
+                  h3(actionLink("link_to_industryOverview_tab", "Industry sector overview")),
                   industry_overview_text(), # defined in R/dashboard_text.R
                   br(),
-                  h3(actionLink("link_to_qualificationPathways_tab", "Qualification Pathways")),
+                  h3(actionLink("link_to_qualificationPathways_tab", "Qualification pathways")),
                   qualification_pathways_text(), # defined in R/dashboard_text.R
                   br()
                 )
@@ -408,17 +408,16 @@ fluidPage(
           ### TITLE 2-----------------------------------------------------------------------------
 
           uiOutput("page2title"),
-          br(),
-          div("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year", style = "font-size: 16px; font-style: italic;"),
-          br(),
+          div("Data for employees aged 25-30 in sustained employment in the 2018-19 tax year", style = "font-size: 16px; font-style: italic; margin-top: 15px;"),
+
 
           ### Sections ------------------------------------------------------------------------------
 
           #### Stacked bar chart ---------------------------------------------------------------
 
           div(textOutput("box7title"), style = "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
-          div(plotlyOutput("studinWorkChart", height = 150), style = "align-content: left;"),
-          hr(),
+          div(plotlyOutput("studinWorkChart", height = 100), style = "align-content: left;"),
+
 
           #### Tree plot ---------------------------------------------------------------
 

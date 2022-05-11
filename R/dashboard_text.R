@@ -13,17 +13,17 @@ welcome_text <- function() {
       tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors"),
       tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard")
     ),
-    "This dashboard has been produced to support the aims of the Unit for Future Skills: ",
+    "This dashboard has been produced to support the aims of the ",
     a(
       href = "https://www.gov.uk/government/groups/unit-for-future-skills",
-      "https://www.gov.uk/government/groups/unit-for-future-skills",
+      "Unit for Future Skills",
       .noWS = c("after")
     ),
     ".",
-    "The complete underlying data for the dashboard is published alongside the accompanying statistical release: ",
+    "The complete underlying data for the dashboard is published alongside the accompanying ",
     a(
       href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "statistical release",
       .noWS = c("after")
     ),
     ".",
@@ -43,10 +43,10 @@ industry_overview_text <- function() {
     Specifically, the dashboard covers employees born between September 1988 and August 1993
     who were schooled in England. Employees must be in sustained employment and must not be
     studying at a higher education institution.
-    For more information, please see the methodology pages in the statistical release: ",
+    For more information, please see the methodology pages in the ",
     a(
       href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "statistical release",
       .noWS = c("after")
     ),
     ".",
@@ -73,7 +73,7 @@ This table does not include qualifications achieved at school, such as GCSEs.",
     br(), br(),
     "Qualifications achieved in higher education institutions use the Joint Academic Coding System (JACs). The JACs subject categories
 for these qualifications have been mapped to SSA tier 1. The titles for these qualifications are a combination of the
-qualification type and the JACs principal subject code. See the accompanying statistics release for more detail.",
+qualification type and the JACs principal subject code.",
     br(), br(),
     tags$h4("Median annual earnings"),
     "Earnings estimates are based on information recorded through the PAYE system.",
@@ -109,10 +109,10 @@ qualification_pathways_text <- function() {
   Each qualification pair is based on the numbers of students who move between them, and the analysis takes
   the end qualification of a pair as the starting qualification of a new pair.
   The combining of qualification pairs in this way builds the full collapsible tree chart in the dashboard.
-  For more information, please see the methodology pages in the statistical release: ",
+  For more information, please see the methodology pages in the ",
     a(
       href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "statistical release",
       .noWS = c("after")
     ),
     "."
@@ -138,22 +138,21 @@ sic_groups_text <- function() {
       href = "https://onsdigital.github.io/dp-classification-tools/standard-industrial-classification/ONS_SIC_hierarchy_view.html",
       "ONS interactive SIC hierarchy", .noWS = c("after")
     ),
-    h3("SIC Groups and sections"),
-    "Using the ONS Standard Industrial Classification (SIC) of economic activities, there are over 700 detailed industry codes
-    at the five digit level, which are then grouped hierarchically at the four, three and two digit level before being grouped into
-    21 broad industry sections. This dashboard includes two aggregations of SIC codes: Sector and sub-sector.
-    Sector is a slight adjustment of the ONS 21 industry sections The adjustment is based on the approach used in ",
+    h3("SIC sector and sub-sector"),
+    "This dashboard includes two aggregations of SIC codes: sector and sub-sector.
+    Sector is an adjustment of the ONS 21 industry sections. The adjustment is based on the approach used in ",
     a(href = "https://warwick.ac.uk/fac/soc/ier/wf7downloads/", "Working Futures"),
     "and allows a direct link to forecast changes in employment.
     Sub-sector is a custom grouping of SIC 2 to 5 digit codes designed to add extra layers
     of detail to some of the broader sectors.",
     "See below for a description of the sectors included in the dashboard and how they relate to the SIC codes,
-    and see the methodology pages in the statistical release for more detail about the SIC groupings: ",
+    and see the methodology pages in the ",
     a(
       href = "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
-      "https://explore-education-statistics.service.gov.uk/find-statistics/career-pathways-post-16-qualifications-held-by-employees/2018-19",
+      "statistical release",
       .noWS = c("after")
     ),
+    " for more detail about the SIC groupings.",
     br(),
     tags$table(
       border = 0,
