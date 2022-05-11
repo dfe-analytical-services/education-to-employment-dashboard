@@ -81,7 +81,7 @@ region_v2 <- qualifications %>%
   distinct(Region, .keep_all = F) %>%
   unlist(use.names = F)
 
-level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6", "Level 7+")
+level_v2 <- c("Level 2", "Level 3", "Level 4/5", "Level 6")
 
 # download data -----------------------------------------------------------
 
