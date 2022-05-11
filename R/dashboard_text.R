@@ -138,7 +138,7 @@ sic_groups_text <- function() {
       href = "https://onsdigital.github.io/dp-classification-tools/standard-industrial-classification/ONS_SIC_hierarchy_view.html",
       "ONS interactive SIC hierarchy", .noWS = c("after")
     ),
-    h3("SIC Groups and sections"),
+    h3("SIC groups and sections"),
     "Using the ONS Standard Industrial Classification (SIC) of economic activities, there are over 700 detailed industry codes
     at the five digit level, which are then grouped hierarchically at the four, three and two digit level before being grouped into
     21 broad industry sections. This dashboard includes two aggregations of SIC codes: Sector and sub-sector.

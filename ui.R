@@ -69,10 +69,10 @@ fluidPage(
                 ),
                 div(
                   class = "panel-body",
-                  h3(actionLink("link_to_industryOverview_tab", "Industry Sector Overview")),
+                  h3(actionLink("link_to_industryOverview_tab", "Industry sector overview")),
                   industry_overview_text(), # defined in R/dashboard_text.R
                   br(),
-                  h3(actionLink("link_to_qualificationPathways_tab", "Qualification Pathways")),
+                  h3(actionLink("link_to_qualificationPathways_tab", "Qualification pathways")),
                   qualification_pathways_text(), # defined in R/dashboard_text.R
                   br()
                 )
