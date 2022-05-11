@@ -838,7 +838,7 @@ server <- function(input, output, session) {
         digits = 1,
         format = "f"
       ), "% ",
-      "of employees have the highest qualification at ",
+      "of employees have a highest qualification at ",
       inWorkChartLevel()
     ))
   })
