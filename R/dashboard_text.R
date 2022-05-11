@@ -13,10 +13,10 @@ welcome_text <- function() {
       tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors"),
       tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard")
     ),
-    "This dashboard has been produced to support the aims of the Unit for Future Skills: ",
+    "This dashboard has been produced to support the aims of the ",
     a(
       href = "https://www.gov.uk/government/groups/unit-for-future-skills",
-      "https://www.gov.uk/government/groups/unit-for-future-skills",
+      "Unit for Future Skills",
       .noWS = c("after")
     ),
     ".",
