@@ -1,19 +1,13 @@
 # History files
 .Rhistory
 .Rapp.history
-
 # Session Data files
 .RData
-
 # RStudio files
 .Rproj.user/
-
 # knitr and R markdown default cache directories
 /*_cache/
 /cache/
-
 # Renv libraries
 # renv/lib*/
-
-
-
+datasets.rds
