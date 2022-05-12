@@ -1,7 +1,7 @@
 accessibility_statement <- function() {
   div(
-    h2("Accessibility statement for LEO Graduate Industry dashboard"),
-    "This accessibility statement applies to the Longitudinal Education Outcomes (LEO) graduate industry dashboard.",
+    h2("Accessibility statement for career pathways dashboard"),
+    "This accessibility statement applies to the career pathways: post-16 qualifications held by employees dashboard.",
     "This application is run by the Department for Education. We want as many people as possible to be able to use this application,
             and have actively developed this application with accessibilty in mind.",
     br(),
