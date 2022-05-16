@@ -588,22 +588,22 @@ server <- function(input, output, session) {
   selected_region_sector <- reactive({
     qualifications %>%
       filter(Region == input$regionp &
-        IndustrySector == input$sectorp) %>%
+               IndustrySector == input$sectorp) %>%
       mutate(
         ColourLevel = case_when(
-          Level == "Level 2" ~ "#7FCFF2",
-          Level == "Level 3" ~ "#62B7E4",
+          Level == "Level 2" ~ "#f3f2f1",
+          Level == "Level 3" ~ "#7FCFF2",
           Level == "Level 4/5" ~ "#489FD6",
-          Level == "Level 6" ~ "#3088C8",
-          Level == "Level 7+" ~ "#1D70B8",
+          Level == "Level 6" ~ "#1D70B8",
+          Level == "Level 7+" ~ "#0b0c0c",
           TRUE ~ "#ffffff"
         ),
         ColourNextLevel = case_when(
-          LevelNextQual == "Level  2" ~ "#7FCFF2",
-          LevelNextQual == "Level 3" ~ "#62B7E4",
+          LevelNextQual == "Level  2" ~ "#f3f2f1",
+          LevelNextQual == "Level 3" ~ "#7FCFF2",
           LevelNextQual == "Level 4/5" ~ "#489FD6",
-          LevelNextQual == "Level 6" ~ "#3088C8",
-          LevelNextQual == "Level 7+" ~ "#1D70B8",
+          LevelNextQual == "Level 6" ~ "#1D70B8", 
+          LevelNextQual == "Level 7+" ~ "#0b0c0c", 
           TRUE ~ "#ffffff"
         )
       )
@@ -755,10 +755,29 @@ server <- function(input, output, session) {
   # page 1: kpi percentage employees
   output$kpiSector <- renderUI({
     s <- selection()
-
-    tags$b(paste0("Proportion of employees that work in ", tolower(s$Sector[1])),
-      style = "font-size: 12px; color: #ffffff"
-    )
+    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Proportion of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    } else {
+      tags$b(paste0("Proportion of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    }
+  })
+    
+  # page 1: kpi percentage earnings
+  output$kpiEarn <- renderUI({
+    s <- selection()
+    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Annual average earnings of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    } else {
+      tags$b(paste0("Annual average earnings of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    }
   })
 
   # page 1: kpi growth
@@ -770,9 +789,16 @@ server <- function(input, output, session) {
       ) %>%
       select(direction = Years2022.2027)
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
-    tags$b(paste0("Forecast annual employment ", changeS, " up to 2027"),
-      style = "font-size: 12px; color: #ffffff"
-    )
+    s <- selection()
+    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Projected annual ", changeS, " in employment in ",tolower(s$Sector[1]), " in ", s$Region[1], " up to 2027 (Working Futures)"),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    } else {
+      tags$b(paste0("Projected annual ", changeS, " in employment in ",tolower(s$Sector[1]), " in the ", s$Region[1], " up to 2027 (Working Futures)"),
+             style = "font-size: 12px; color: #ffffff"
+      )
+    }
   })
 
   # page 1: subsector/qualification level chart
@@ -864,11 +890,11 @@ server <- function(input, output, session) {
   # page 2: treeplot legend
   svg_html_legend <- paste(
     '<svg width="450" height="20">',
-    '<circle cx="10" cy="10" r="8" style="fill: #7FCFF2;"></circle>',
-    '<circle cx="90" cy="10" r="8" style="fill: #62B7E4;"></circle>',
+    '<circle cx="10" cy="10" r="8" style="fill: #f3f2f1;"></circle>',
+    '<circle cx="90" cy="10" r="8" style="fill: #7FCFF2;"></circle>',
     '<circle cx="170" cy="10" r="8" style="fill: #489FD6;"></circle>',
-    '<circle cx="260" cy="10" r="8" style="fill: #3088C8";></circle>',
-    '<circle cx="340" cy="10" r="8" style="fill: #1D70B8";></circle>',
+    '<circle cx="260" cy="10" r="8" style="fill: #1D70B8";></circle>',
+    '<circle cx="340" cy="10" r="8" style="fill: #0b0c0c;></circle>',
     '<circle cx="10" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
     '<circle cx="90" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
     '<circle cx="170" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
