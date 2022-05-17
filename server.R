@@ -855,11 +855,6 @@ server <- function(input, output, session) {
 
   output$box7title <- renderText({
 
-    # s <- selected_region_sector() %>%
-    #   filter(Level == input$inSelect3)
-    #
-    # s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
-
     percInWork <- reactive({
       selection_in_work() %>%
         filter(Level_order == input$inSelect3) %>%
@@ -886,7 +881,7 @@ server <- function(input, output, session) {
       s$Level[1]
     ))
   })
-  # "#7FCFF2","#62B7E4","#489FD6","#3088C8","#1D70B8"
+
   # page 2: treeplot legend
   svg_html_legend <- paste(
     '<svg width="450" height="20">',
