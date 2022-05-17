@@ -2,15 +2,15 @@
   "input": {
     "inSelect3": "Level 3",
     "navbar": "Accessibility",
-    "qualificationsubject": "Top post-16 qualifications by highest level",
+    "qualificationsubject": "Top 20 post-16 qualifications",
     "region": "North East",
     "regionp": "Yorkshire and The Humber",
     "sector": "Agriculture",
     "sectorp": "Media",
-    "showMedian": "Percentage"
+    "showMedian": "Average earnings"
   },
   "output": {
-    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 3",
     "box7title": "15.2% of employees have a highest qualification at level 3",
@@ -21,13 +21,13 @@
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees aged 25-30 in the North East that work in agriculture<\/b>",
       "deps": [
 
       ]
@@ -449,351 +449,351 @@
           "children": [
             {
               "name": "GCE A Level Art and Design",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Design Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Biology",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "3",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Business Studies",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Hospitality, Leisure, Sport, Tourism & Transport",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Chemistry",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Chemistry",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Physics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level English Language",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level English Literature",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Geography",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "3",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Human & Social Geography",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Economics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level History",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Politics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Mathematics",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Physics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Economics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Media Studies",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Marketing",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Physics",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "3",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Physics",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "GCE A Level Psychology",
-              "fill": "#62B7E4",
+              "fill": "#7FCFF2",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "Master's Degree in Journalism",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "First Degree (excluding Integrated Master's Degree) in Psychology",
-                  "fill": "#3088C8",
+                  "fill": "#1D70B8",
                   "WeightOfNode": "1"
                 }
               ]

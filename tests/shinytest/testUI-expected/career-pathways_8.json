@@ -2,15 +2,15 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "pathways",
-    "qualificationsubject": "Top post-16 qualifications by highest level",
+    "qualificationsubject": "Top 20 post-16 qualifications",
     "region": "North East",
     "regionp": "England",
     "sector": "Agriculture",
     "sectorp": "Media",
-    "showMedian": "Percentage"
+    "showMedian": "Average earnings"
   },
   "output": {
-    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "box3title": "Subject and qualification choices for employees at NA working in NA",
     "box4title": "Post-16 qualification pathways starting at  level 2",
     "box7title": "30.7% of employees have a highest qualification at level 2",
@@ -21,13 +21,13 @@
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees aged 25-30 in the North East that work in agriculture<\/b>",
       "deps": [
 
       ]
@@ -441,100 +441,100 @@
           "children": [
             {
               "name": "Award for Personal Licence Holders",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1"
             },
             {
               "name": "BTEC First Diploma for ICT Practitioners",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "3",
               "children": [
                 {
                   "name": "BTEC National Diploma for IT Practitioners",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "BTEC National Certificate for IT Practitioners",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "BTEC National Award for IT Practitioners",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "BTEC First Diploma in Business",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1",
               "children": [
                 {
                   "name": "BTEC National Certificate in Business",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "BTEC First Diploma in Public Services",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "6",
               "children": [
                 {
                   "name": "GCE A Level Physics",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "4",
                   "children": [
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1",
                       "children": [
                         {
                           "name": "Master's Degree in Computer Science",
-                          "fill": "#1D70B8",
+                          "fill": "#0b0c0c",
                           "WeightOfNode": "1"
                         }
                       ]
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Physics",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     },
                     {
                       "name": "Integrated Master's Degree in Physics",
-                      "fill": "#1D70B8",
+                      "fill": "#0b0c0c",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "GCE A Level Mathematics",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "2",
                   "children": [
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Mathematics",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Computer Science",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1",
                       "children": [
                         {
                           "name": "Master's Degree in Computer Science",
-                          "fill": "#1D70B8",
+                          "fill": "#0b0c0c",
                           "WeightOfNode": "1"
                         }
                       ]
@@ -545,97 +545,97 @@
             },
             {
               "name": "Business Administration Apprenticeship",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1",
               "children": [
                 {
                   "name": "Business Administration Apprenticeship",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Certificate in Coaching",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1"
             },
             {
               "name": "Certificate in Fitness Instructing",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1",
               "children": [
                 {
                   "name": "Certificate in Personal Training",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Customer Service Apprenticeship",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1",
               "children": [
                 {
                   "name": "Management Apprenticeship",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
             },
             {
               "name": "Intermediate Certificate in Personal Finance",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "6",
               "children": [
                 {
                   "name": "GCE A Level English Literature",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "5",
                   "children": [
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in English Studies",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "2",
                       "children": [
                         {
                           "name": "Master's Degree in Journalism",
-                          "fill": "#1D70B8",
+                          "fill": "#0b0c0c",
                           "WeightOfNode": "1"
                         },
                         {
                           "name": "Master's Degree in English Studies",
-                          "fill": "#1D70B8",
+                          "fill": "#0b0c0c",
                           "WeightOfNode": "1"
                         }
                       ]
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in History by Period",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Media Studies",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     },
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Journalism",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     }
                   ]
                 },
                 {
                   "name": "GCE A Level Business Studies",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1",
                   "children": [
                     {
                       "name": "First Degree (excluding Integrated Master's Degree) in Business Studies",
-                      "fill": "#3088C8",
+                      "fill": "#1D70B8",
                       "WeightOfNode": "1"
                     }
                   ]
@@ -644,32 +644,32 @@
             },
             {
               "name": "National Certificate for Personal Licence Holders",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "1"
             },
             {
               "name": "NVQ in Accounting",
-              "fill": "#7FCFF2",
+              "fill": "#f3f2f1",
               "WeightOfNode": "4",
               "children": [
                 {
                   "name": "Certificate in Financial Studies",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "Diploma in Accounting",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "Accountancy Apprenticeship",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 },
                 {
                   "name": "NVQ in Accounting",
-                  "fill": "#62B7E4",
+                  "fill": "#7FCFF2",
                   "WeightOfNode": "1"
                 }
               ]
