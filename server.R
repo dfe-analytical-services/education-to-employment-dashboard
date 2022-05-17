@@ -588,7 +588,7 @@ server <- function(input, output, session) {
   selected_region_sector <- reactive({
     qualifications %>%
       filter(Region == input$regionp &
-               IndustrySector == input$sectorp) %>%
+        IndustrySector == input$sectorp) %>%
       mutate(
         ColourLevel = case_when(
           Level == "Level 2" ~ "#f3f2f1",
@@ -602,8 +602,8 @@ server <- function(input, output, session) {
           LevelNextQual == "Level  2" ~ "#f3f2f1",
           LevelNextQual == "Level 3" ~ "#7FCFF2",
           LevelNextQual == "Level 4/5" ~ "#489FD6",
-          LevelNextQual == "Level 6" ~ "#1D70B8", 
-          LevelNextQual == "Level 7+" ~ "#0b0c0c", 
+          LevelNextQual == "Level 6" ~ "#1D70B8",
+          LevelNextQual == "Level 7+" ~ "#0b0c0c",
           TRUE ~ "#ffffff"
         )
       )
@@ -757,25 +757,25 @@ server <- function(input, output, session) {
     s <- selection()
     if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0("Proportion of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
       tags$b(paste0("Proportion of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
-    
+
   # page 1: kpi percentage earnings
   output$kpiEarn <- renderUI({
     s <- selection()
     if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0("Annual average earnings of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
       tags$b(paste0("Annual average earnings of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
@@ -791,12 +791,12 @@ server <- function(input, output, session) {
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
     s <- selection()
     if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0("Projected annual ", changeS, " in employment in ",tolower(s$Sector[1]), " in ", s$Region[1], " up to 2027 (Working Futures)"),
-             style = "font-size: 12px; color: #ffffff"
+      tags$b(paste0("Projected annual ", changeS, " in employment in ", tolower(s$Sector[1]), " in ", s$Region[1], " up to 2027 (Working Futures)"),
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
-      tags$b(paste0("Projected annual ", changeS, " in employment in ",tolower(s$Sector[1]), " in the ", s$Region[1], " up to 2027 (Working Futures)"),
-             style = "font-size: 12px; color: #ffffff"
+      tags$b(paste0("Projected annual ", changeS, " in employment in ", tolower(s$Sector[1]), " in the ", s$Region[1], " up to 2027 (Working Futures)"),
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
@@ -854,7 +854,6 @@ server <- function(input, output, session) {
 
 
   output$box7title <- renderText({
-
     percInWork <- reactive({
       selection_in_work() %>%
         filter(Level_order == input$inSelect3) %>%

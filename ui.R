@@ -276,8 +276,8 @@ fluidPage(
                 details(
                   inputId = "SubsLev",
                   label = "How to read these tabs",
-                  help_text = "The boxes at the top of the page show summary data for the selected region and sector.  
-                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail. 
+                  help_text = "The boxes at the top of the page show summary data for the selected region and sector.
+                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail.
                   Select the ‘sub-sector and level’ tab for information on employee numbers and average earnings by highest level of education and detailed industry sector. Select ‘Percentage’ in the side panel to display employee numbers and ‘Average earnings’ to display earnings.
                   Select the ‘subject and qualification’ tab for more information about the highest qualifications held by employees."
                 ),
@@ -306,8 +306,8 @@ fluidPage(
               details(
                 inputId = "SubjectQualification",
                 label = "How to read these tabs",
-                help_text = "The boxes at the top of the page show summary data for the selected region and sector.  
-                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail. 
+                help_text = "The boxes at the top of the page show summary data for the selected region and sector.
+                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail.
                   Select the ‘sub-sector and level’ tab for information on employee numbers and average earnings by highest level of education and detailed industry sector. Select ‘Percentage’ in the side panel to display employee numbers and ‘Average earnings’ to display earnings.
                   Select the ‘subject and qualification’ tab for more information about the highest qualifications held by employees."
               ),
@@ -320,10 +320,10 @@ fluidPage(
                   details(
                     inputId = "SubjectQualification",
                     label = "How to read these tabs",
-                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings. 
-                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings. 
-                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel. 
-                    The table displays up to 20 qualifications, ordered by the number of employees who hold them. 
+                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings.
+                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
+                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
+                    The table displays up to 20 qualifications, ordered by the number of employees who hold them.
                     Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
                   ),
                   DT::dataTableOutput("hqSubTable")
@@ -334,10 +334,10 @@ fluidPage(
                   details(
                     inputId = "SubjectQualification",
                     label = "How to read these tabs",
-                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings. 
-                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings. 
-                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel. 
-                    The table displays up to 20 qualifications, ordered by the number of employees who hold them. 
+                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings.
+                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
+                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
+                    The table displays up to 20 qualifications, ordered by the number of employees who hold them.
                     Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
                   ),
                   div(plotlyOutput("indSubChart"), align = "center")

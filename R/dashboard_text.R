@@ -63,9 +63,9 @@ industry_overview_text <- function() {
     "Working Futures is a quantitative assessment of employment prospects in the UK
     labour market undertaken by Warwick Institute for Employment Research.",
     br(), br(),
-    "Please note that these projections are based on employment estimates derived from published labour market data. 
-    They are not precise predictions of future employment levels, but represent the most likely trajectory of labour market change, given long-term trends in the economy and explicit assumptions about likely future economic change. 
-    The projections were created when it was expected there would be a negotiated Brexit and before the Covid-19 pandemic, which may result in considerable disruption to the UK and world economic system. 
+    "Please note that these projections are based on employment estimates derived from published labour market data.
+    They are not precise predictions of future employment levels, but represent the most likely trajectory of labour market change, given long-term trends in the economy and explicit assumptions about likely future economic change.
+    The projections were created when it was expected there would be a negotiated Brexit and before the Covid-19 pandemic, which may result in considerable disruption to the UK and world economic system.
     These projections indicate what the labour market might have looked like before the pandemic. They, therefore, can be used to provide a measure of how the labour market has changed and the implications of the pandemic.",
     br(), br(),
     tags$h4("Education level, subject, and qualification"),
