@@ -713,7 +713,7 @@ server <- function(input, output, session) {
 
 
   # Page 1&2: reactive Box & KPIs titles --------------------------------------------------------------
-  
+
   # page titles
   output$page1title <- renderUI({
     if (input$region %in% c("England", "Yorkshire and The Humber")) {
@@ -732,21 +732,21 @@ server <- function(input, output, session) {
       )
     }
   })
-  
+
   output$page2title <- renderUI({
     if (input$regionp %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(input$sectorp, " in ", input$regionp, ": post-16 qualification pathways"),
-             style = "font-size: 24px;"
+        style = "font-size: 24px;"
       )
     } else {
       tags$b(paste0(input$sectorp, " in the ", input$regionp, ": post-16 qualification pathways"),
-             style = "font-size: 24px;"
+        style = "font-size: 24px;"
       )
     }
   })
-  
-  
-  
+
+
+
   # KPIs selection
   selection_kpis <- reactive({
     kpis %>%
@@ -755,7 +755,7 @@ server <- function(input, output, session) {
         Region == input$region
       )
   })
-  
+
   # IT is an acronym so it's written in upper case
   sector_to_show <- reactive({
     if (selection_kpis()$Sector[1] == "IT") {
@@ -764,34 +764,34 @@ server <- function(input, output, session) {
       tolower(selection_kpis()$Sector[1])
     }
   })
-  
+
   # page 1: kpi percentage employees
   output$kpiSector <- renderUI({
     if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0("Proportion of employees aged 25-30 in ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
       tags$b(paste0("Proportion of employees aged 25-30 in the ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
-  
-  
+
+
   # page 1: kpi percentage earnings
   output$kpiEarn <- renderUI({
     if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0("Annual average earnings of employees aged 25-30 in ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
       tags$b(paste0("Annual average earnings of employees aged 25-30 in the ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
-  
+
   # page 1: kpi growth
   output$kpiChange <- renderUI({
     wf <- wf %>%
@@ -800,20 +800,20 @@ server <- function(input, output, session) {
         Region == input$region
       ) %>%
       select(direction = Years2022.2027)
-    
+
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
-    
+
     if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0("Projected annual ", changeS, " in employment in ", sector_to_show(), " in ", selection_kpis()$Region[1], " up to 2027 (Working Futures)"),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     } else {
       tags$b(paste0("Projected annual ", changeS, " in employment in ", sector_to_show(), " in the ", selection_kpis()$Region[1], " up to 2027 (Working Futures)"),
-             style = "font-size: 12px; color: #ffffff"
+        style = "font-size: 12px; color: #ffffff"
       )
     }
   })
-  
+
   # page 1: subsector/qualification level chart
   output$box2title <- renderText({
     if (input$showMedian == "Percentage") {
@@ -822,7 +822,7 @@ server <- function(input, output, session) {
       paste0("Employee earnings by industry sub-sector and highest level of education")
     }
   })
-  
+
   # page 1: subject chart and qualification table
   output$box3title <- renderText({
     HTML(
@@ -832,12 +832,12 @@ server <- function(input, output, session) {
       )
     )
   })
-  
-  
+
+
   # page 2: title for stacked chart box
-  
+
   # select percentage of people in work
-  
+
   selection_in_work <- reactive({
     students_in_work %>%
       mutate(
@@ -854,28 +854,28 @@ server <- function(input, output, session) {
       ) %>%
       mutate(var_to_plot = factor(var_to_plot, levels = c("Higher than level", "At level", "Lower than level"), ordered = T)) %>%
       filter(Region == input$regionp &
-               Sector == input$sectorp)
+        Sector == input$sectorp)
   })
-  
-  
-  
+
+
+
   output$box7title <- renderText({
     percInWork <- reactive({
       selection_in_work() %>%
         filter(Level_order == input$inSelect3) %>%
         select(perc)
     })
-    
+
     HTML(paste0(
       formatC((percInWork()$perc[1]) * 100,
-              digits = 1,
-              format = "f"
+        digits = 1,
+        format = "f"
       ), "%",
       " of employees have a highest qualification at ",
       inWorkChartLevel()
     ))
   })
-  
+
   # page 2: treeplot
   output$box4title <- renderText({
     s <- selected_region_sector() %>%
@@ -885,7 +885,7 @@ server <- function(input, output, session) {
       tolower(s$Level[[1]])
     ))
   })
-  
+
   # page 2: treeplot legend
   svg_html_legend <- paste(
     '<svg width="450" height="20">',
@@ -905,11 +905,11 @@ server <- function(input, output, session) {
     '<text x="275" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 6</text>',
     '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>'
   )
-  
+
   output$svglegend <- renderUI({
     HTML(svg_html_legend)
   })
-  
+
   # Download data -----------------------------------------------------------
 
   to_download_pg1 <- reactiveValues(
