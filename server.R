@@ -7,7 +7,7 @@ server <- function(input, output, session) {
 
   # Close session after closing app --------------------------
 
-  session$onSessionEnded(stopApp) # commenting out to test using lighthouse
+#  session$onSessionEnded(stopApp) # commenting out to test using lighthouse
 
   # Links to tabs --------------------------------------------
 

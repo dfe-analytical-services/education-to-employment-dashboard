@@ -1,7 +1,7 @@
 accessibility_statement <- function() {
   div(
     h2("Accessibility statement for career pathways dashboard"),
-    "This accessibility statement applies to the career pathways: post-16 qualifications held by employees dashboard.",
+    "This accessibility statement applies to the Career Pathways: post-16 qualifications held by employees dashboard.",
     "This application is run by the Department for Education. We want as many people as possible to be able to use this application,
             and have actively developed this application with accessibilty in mind.",
     br(),
@@ -49,10 +49,10 @@ accessibility_statement <- function() {
     "List of any non-compliances", # TODO: List the non-compliances using the appropriate template
 
     h3("Preparation of this accessibility statement"),
-    "This statement was prepared on [date when it was first published].", # TODO: Add date
+    "This statement was prepared on 24th May 2022.", # TODO: Add date
     br(),
     br(),
-    "This website was last tested on [date]. The test was carried out by Department for Education.", # TODO: Add date
+    "This website was last tested on 18th May 2022. The test was carried out by Department for Education.", # TODO: Add date
     br(),
     br(),
     br()

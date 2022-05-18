@@ -1,11 +1,12 @@
-
+#library(shinya11y)
 
 fluidPage(
+#  use_tota11y(),
   shinyjs::useShinyjs(),
   includeCSS("www/dfe_shiny_gov_style.css"),
   title = "Unit for Future Skills - Career Explorer Dashboard",
 
-
+  
 
   # Set metadata for browser ===============================================================
 
@@ -220,7 +221,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("perc_in_sector"),
               uiOutput("kpiSector")
             ),
@@ -232,7 +233,7 @@ fluidPage(
               id = "first",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("median_in_sector"),
               tags$b("Annual average earnings",
                 style = "font-size: 12px; color: #ffffff"
@@ -246,7 +247,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("directionSector"),
               uiOutput("kpiChange")
             ),
@@ -427,7 +428,7 @@ fluidPage(
                           in the tax year 2018-19.
                           Click on the qualification names to expand the chart and explore different pathways to higher level qualifications.
                           In the tooltip, the leaf count shows how many different qualification end points can be reached by expanding the chart.
-                           Please note that this it is not a complete list.", style = "font-size: 16px; font-style: italic;"),
+                          Please note that this it is not a complete list.", style = 'font-size: 16px; font-style: italic;'),
           br(),
           uiOutput("svglegend"),
           box(width = 12, collapsibleTreeOutput("treePlot"))
@@ -439,7 +440,7 @@ fluidPage(
 
     tabPanel(
       "Accessibility",
-      warning_text(inputId = "accessWarn", text = "THIS IS A DRAFT STATEMENT - NEEDS UPDATING AFTER TESTING"),
+      # warning_text(inputId = "accessWarn", text = "THIS IS A DRAFT STATEMENT - NEEDS UPDATING AFTER TESTING"),
       accessibility_statement() # defined in R/accessibility_statement.R
     ),
 

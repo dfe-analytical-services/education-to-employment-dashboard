@@ -10,8 +10,8 @@ welcome_text <- function() {
     br(),
     "The data in the career pathways dashboard aims to use this development to:",
     tags$ul(
-      tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors"),
-      tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard")
+      tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors;"),
+      tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard.")
     ),
     "This dashboard has been produced to support the aims of the ",
     a(
