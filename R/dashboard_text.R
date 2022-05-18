@@ -129,7 +129,9 @@ qualification_pathways_text <- function() {
 sic_groups_text <- function() {
   div(
     h3("IDBR (Inter-Departmental Business Register)"),
-    "IDBR data is a comprehensive list of UK businesses used by government for statistical purposes.",
+    "IDBR data is a comprehensive list of UK businesses used by government for statistical purposes.
+    The IDBR data used in this dashboard is from datasets owned by the Office of National Statistics (ONS).
+    The ONS does not accept responsibility for any inferences or conclusions derived from the IDBR data by third parties.",
     h3("UK SIC (Standard Industrial Classification) code"),
     "The UK Standard Industrial Classification (SIC) of economic activities is used to classify
     businesses by the type of activity they do.",

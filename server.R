@@ -716,17 +716,16 @@ server <- function(input, output, session) {
 
   # page titles
   output$page1title <- renderUI({
-    s <- selection()
-    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+    if (input$region %in% c("England", "Yorkshire and The Humber")) {
       tags$b(paste0(
-        s$Sector[1], " in ", s$Region[1],
+        input$sector, " in ", input$region,
         ": overview of employee education levels and qualification choices"
       ),
       style = "font-size: 24px;"
       )
     } else {
       tags$b(paste0(
-        s$Sector[1], " in the ", s$Region[1],
+        input$sector, " in the ", input$region,
         ": overview of employee education levels and qualification choices"
       ),
       style = "font-size: 24px;"
@@ -735,46 +734,59 @@ server <- function(input, output, session) {
   })
 
   output$page2title <- renderUI({
-    sr <- selected_region_sector() %>%
-      distinct(Region, .keep_all = FALSE) %>%
-      unlist(use.names = F)
-    sis <- selected_region_sector() %>%
-      distinct(IndustrySector, .keep_all = FALSE) %>%
-      unlist(use.names = F)
-    if (sr[[1]] %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0(sis[[1]], " in ", sr[[1]], ": post-16 qualification pathways"),
+    if (input$regionp %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0(input$sectorp, " in ", input$regionp, ": post-16 qualification pathways"),
         style = "font-size: 24px;"
       )
     } else {
-      tags$b(paste0(sis[[1]], " in the ", sr[[1]], ": post-16 qualification pathways"),
+      tags$b(paste0(input$sectorp, " in the ", input$regionp, ": post-16 qualification pathways"),
         style = "font-size: 24px;"
       )
+    }
+  })
+
+
+
+  # KPIs selection
+  selection_kpis <- reactive({
+    kpis %>%
+      filter(
+        Sector == input$sector,
+        Region == input$region
+      )
+  })
+
+  # IT is an acronym so it's written in upper case
+  sector_to_show <- reactive({
+    if (selection_kpis()$Sector[1] == "IT") {
+      selection_kpis()$Sector[1]
+    } else {
+      tolower(selection_kpis()$Sector[1])
     }
   })
 
   # page 1: kpi percentage employees
   output$kpiSector <- renderUI({
-    s <- selection()
-    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0("Proportion of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+    if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Proportion of employees aged 25-30 in ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
         style = "font-size: 12px; color: #ffffff"
       )
     } else {
-      tags$b(paste0("Proportion of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+      tags$b(paste0("Proportion of employees aged 25-30 in the ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
         style = "font-size: 12px; color: #ffffff"
       )
     }
   })
 
+
   # page 1: kpi percentage earnings
   output$kpiEarn <- renderUI({
-    s <- selection()
-    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0("Annual average earnings of employees aged 25-30 in ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+    if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Annual average earnings of employees aged 25-30 in ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
         style = "font-size: 12px; color: #ffffff"
       )
     } else {
-      tags$b(paste0("Annual average earnings of employees aged 25-30 in the ", s$Region[1], " that work in ", tolower(s$Sector[1])),
+      tags$b(paste0("Annual average earnings of employees aged 25-30 in the ", selection_kpis()$Region[1], " that work in ", sector_to_show()),
         style = "font-size: 12px; color: #ffffff"
       )
     }
@@ -788,14 +800,15 @@ server <- function(input, output, session) {
         Region == input$region
       ) %>%
       select(direction = Years2022.2027)
+
     changeS <- ifelse(wf$direction[[1]] >= 0, "growth", "decline")
-    s <- selection()
-    if (s$Region[1] %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0("Projected annual ", changeS, " in employment in ", tolower(s$Sector[1]), " in ", s$Region[1], " up to 2027 (Working Futures)"),
+
+    if (selection_kpis()$Region[1] %in% c("England", "Yorkshire and The Humber")) {
+      tags$b(paste0("Projected annual ", changeS, " in employment in ", sector_to_show(), " in ", selection_kpis()$Region[1], " up to 2027 (Working Futures)"),
         style = "font-size: 12px; color: #ffffff"
       )
     } else {
-      tags$b(paste0("Projected annual ", changeS, " in employment in ", tolower(s$Sector[1]), " in the ", s$Region[1], " up to 2027 (Working Futures)"),
+      tags$b(paste0("Projected annual ", changeS, " in employment in ", sector_to_show(), " in the ", selection_kpis()$Region[1], " up to 2027 (Working Futures)"),
         style = "font-size: 12px; color: #ffffff"
       )
     }
@@ -812,17 +825,10 @@ server <- function(input, output, session) {
 
   # page 1: subject chart and qualification table
   output$box3title <- renderText({
-    s <- selection()
-    ss <- stat_subs_sub %>%
-      filter(Region == input$region &
-        Sector == input$sector &
-        Subsector == input$inSelect2 &
-        Level_order == input$inSelect)
-    ss[c("Level_order", "Subsector")] <- sapply(ss[c("Level_order", "Subsector")], function(x) tolower(x))
     HTML(
       paste0(
-        "Subject and qualification choices for employees at ", ss$Level_order[1],
-        " working in ", ss$Subsector[1]
+        "Subject and qualification choices for employees at ", tolower(input$inSelect),
+        " working in ", tolower(input$inSelect2)
       )
     )
   })
@@ -874,10 +880,9 @@ server <- function(input, output, session) {
   output$box4title <- renderText({
     s <- selected_region_sector() %>%
       filter(Level == input$inSelect3)
-    s[c("Level")] <- sapply(s[c("Level")], function(x) tolower(x))
     HTML(paste(
       "Post-16 qualification pathways starting at ",
-      s$Level[1]
+      tolower(s$Level[[1]])
     ))
   })
 
