@@ -39,6 +39,7 @@ sectors_v <- stat_subs %>%
   unlist(use.names = F)
 
 regions_v <- stat_subs %>%
+  arrange(Region) %>%
   distinct(Region, .keep_all = F) %>%
   unlist(use.names = F)
 
