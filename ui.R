@@ -140,7 +140,7 @@ fluidPage(
           ### Show earnings button --------------------------------------------------------------------
 
           radioButtons("showMedian",
-            selected = "Percentage",
+            selected = "Average earnings",
             label = div(
               style = "white-space: nowrap; ",
               "Choose a metric to show:"
@@ -235,9 +235,7 @@ fluidPage(
               width = 3,
               style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("median_in_sector"),
-              tags$b("Annual average earnings",
-                style = "font-size: 12px; color: #ffffff"
-              )
+              uiOutput("kpiEarn")
             ),
             column(
               id = "third",
@@ -279,10 +277,10 @@ fluidPage(
                 details(
                   inputId = "SubsLev",
                   label = "How to read these tabs",
-                  help_text = "Select the ‘sub-sector and level’ tab for information on employee
-                           numbers and average earnings by highest level of education and detailed industry sector.
-                           Select the ‘subject and qualification’ tab for more information about the highest
-                           qualifications held by employees."
+                  help_text = "The boxes at the top of the page show summary data for the selected region and sector.
+                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail.
+                  Select the ‘sub-sector and level’ tab for information on employee numbers and average earnings by highest level of education and detailed industry sector. Select ‘Percentage’ in the side panel to display employee numbers and ‘Average earnings’ to display earnings.
+                  Select the ‘subject and qualification’ tab for more information about the highest qualifications held by employees."
                 ),
                 div(
                   textOutput("box2title"),
@@ -309,41 +307,39 @@ fluidPage(
               details(
                 inputId = "SubjectQualification",
                 label = "How to read these tabs",
-                help_text = "Select the ‘sub-sector and level’ tab for information on employee
-                           numbers and average earnings by highest level of education and detailed industry sector.
-                           Select the ‘subject and qualification’ tab for more information about the highest
-                           qualifications held by employees."
+                help_text = "The boxes at the top of the page show summary data for the selected region and sector.
+                  The employment projections are for total employment in the region and sector between 2022 and 2027; they are not restricted to employees aged 25-30. See the homepage for more detail.
+                  Select the ‘sub-sector and level’ tab for information on employee numbers and average earnings by highest level of education and detailed industry sector. Select ‘Percentage’ in the side panel to display employee numbers and ‘Average earnings’ to display earnings.
+                  Select the ‘subject and qualification’ tab for more information about the highest qualifications held by employees."
               ),
               div(textOutput("box3title"), style = "font-size: 20px; font-weight: bold;  margin-top: 15px; margin-bottom: 15px;"),
               tabsetPanel(
                 id = "qualificationsubject",
                 tabPanel(
-                  "Top post-16 qualifications by highest level",
+                  "Top 20 post-16 qualifications",
                   br(),
                   details(
                     inputId = "SubjectQualification",
                     label = "How to read these tabs",
-                    help_text = "Select the ‘top post-16 qualifications by highest level’ tab for
-                                the most popular qualifications held by employees and their average earnings.
-                                Select the ‘distribution of employees by subject area of highest qualification’
-                                tab for a breakdown of subject areas studied by employees and their average earnings.
-                                Charts can be filtered by qualification level and sub-sector using the drop down
-                                selectors in the left pane."
+                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings.
+                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
+                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
+                    The table displays up to 20 qualifications, ordered by the number of employees who hold them.
+                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
                   ),
                   DT::dataTableOutput("hqSubTable")
                 ),
                 tabPanel(
-                  "Distribution of employees by subject area of highest post-16 qualification",
+                  "Subject area of highest post-16 qualification",
                   br(),
                   details(
                     inputId = "SubjectQualification",
                     label = "How to read these tabs",
-                    help_text = "Select the ‘top post-16 qualifications by highest level’ tab for
-                                the most popular qualifications held by employees and their average earnings.
-                                Select the ‘distribution of employees by subject area of highest qualification’
-                                tab for a breakdown of subject areas studied by employees and their average earnings.
-                                Charts can be filtered by qualification level and sub-sector using the drop down
-                                selectors in the left pane."
+                    help_text = "Select the ‘top 20 post-16 qualifications’ tab for the most popular highest qualifications held by employees and their average earnings.
+                    Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
+                    Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
+                    The table displays up to 20 qualifications, ordered by the number of employees who hold them.
+                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
                   ),
                   div(plotlyOutput("indSubChart"), align = "center")
                 )
@@ -426,9 +422,9 @@ fluidPage(
           div("This chart shows the most common education pathways taken by the
                           highest earning employees in sustained employment
                           in the tax year 2018-19.
-                          Click on the qualification names to expand the chart and explore different pathways to higher level qualifications.
+                          Click on the qualification names or nodes to expand the chart and explore different pathways to higher level qualifications.
                           In the tooltip, the leaf count shows how many different qualification end points can be reached by expanding the chart.
-                          Please note that this it is not a complete list.", style = 'font-size: 16px; font-style: italic;'),
+                           Please note that this it is not a complete list of pathways.", style = "font-size: 16px; font-style: italic;"),
           br(),
           uiOutput("svglegend"),
           box(width = 12, collapsibleTreeOutput("treePlot"))

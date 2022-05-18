@@ -63,6 +63,11 @@ industry_overview_text <- function() {
     "Working Futures is a quantitative assessment of employment prospects in the UK
     labour market undertaken by Warwick Institute for Employment Research.",
     br(), br(),
+    "Please note that these projections are based on employment estimates derived from published labour market data.
+    They are not precise predictions of future employment levels, but represent the most likely trajectory of labour market change, given long-term trends in the economy and explicit assumptions about likely future economic change.
+    The projections were created when it was expected there would be a negotiated Brexit and before the Covid-19 pandemic, which may result in considerable disruption to the UK and world economic system.
+    These projections indicate what the labour market might have looked like before the pandemic. They, therefore, can be used to provide a measure of how the labour market has changed and the implications of the pandemic.",
+    br(), br(),
     tags$h4("Education level, subject, and qualification"),
     "Education level and subject are based on highest qualification achievement at the start of the 2018-19 tax year.
 The subject categories used are Sector Subject Area (SSA). Level and subject are based on the full history of education
@@ -124,7 +129,9 @@ qualification_pathways_text <- function() {
 sic_groups_text <- function() {
   div(
     h3("IDBR (Inter-Departmental Business Register)"),
-    "IDBR data is a comprehensive list of UK businesses used by government for statistical purposes.",
+    "IDBR data is a comprehensive list of UK businesses used by government for statistical purposes.
+    The IDBR data used in this dashboard is from datasets owned by the Office of National Statistics (ONS).
+    The ONS does not accept responsibility for any inferences or conclusions derived from the IDBR data by third parties.",
     h3("UK SIC (Standard Industrial Classification) code"),
     "The UK Standard Industrial Classification (SIC) of economic activities is used to classify
     businesses by the type of activity they do.",

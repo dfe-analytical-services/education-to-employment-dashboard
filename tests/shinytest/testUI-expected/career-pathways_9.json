@@ -2,17 +2,21 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "pathways",
-    "qualificationsubject": "Top post-16 qualifications by highest level",
+    "qualificationsubject": "Top 20 post-16 qualifications",
     "region": "North East",
     "regionp": "Yorkshire and The Humber",
     "sector": "Agriculture",
     "sectorp": "Media",
-    "showMedian": "Percentage"
+    "showMedian": "Average earnings"
   },
   "output": {
-    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
-    "box3title": "Subject and qualification choices for employees at NA working in NA",
-    "box4title": "Post-16 qualification pathways starting at  NA",
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "box3title": "Subject and qualification choices for employees at  working in all sub-sectors",
+    "box4title": {
+      "message": "subscript out of bounds",
+      "call": "s$Level[[1]]",
+      "type": null
+    },
     "box7title": "14.5% of employees have a highest qualification at level 2",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
@@ -21,13 +25,13 @@
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment growth up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees aged 25-30 in the North East that work in agriculture<\/b>",
       "deps": [
 
       ]

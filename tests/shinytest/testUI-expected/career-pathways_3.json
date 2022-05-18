@@ -2,15 +2,15 @@
   "input": {
     "inSelect3": "Level 2",
     "navbar": "overview",
-    "qualificationsubject": "Top post-16 qualifications by highest level",
+    "qualificationsubject": "Top 20 post-16 qualifications",
     "region": "England",
     "regionp": "England",
     "sector": "Agriculture",
     "sectorp": "Construction",
-    "showMedian": "Percentage"
+    "showMedian": "Average earnings"
   },
   "output": {
-    "box2title": "Distribution of employees by industry sub-sector and highest level of education",
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">-0.3%<\/b>",
       "deps": [
@@ -18,13 +18,13 @@
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Forecast annual employment decline up to 2027<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual decline in employment in agriculture in England up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
     },
     "kpiSector": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees that work in agriculture<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees aged 25-30 in England that work in agriculture<\/b>",
       "deps": [
 
       ]
