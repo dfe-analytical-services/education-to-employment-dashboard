@@ -40,7 +40,7 @@ accessibility_statement <- function() {
     "Department for Education is committed to making its website accessible, in accordance with the Public Sector Bodies
       (Websites and Mobile Applications) (No. 2) Accessibility Regulations 2018.",
     h3("Preparation of this accessibility statement"),
-    "This statement was prepared on 19th May 2022 and this website was last tested on 19th May 2022. The test was carried out by the Department for Education.", # TODO: Add date
+    "This statement was prepared on 19th May 2022 and this website was last tested on 19th May 2022 in advance of publication on 25th May 2022. The test was carried out by the Department for Education.", # TODO: Add date
     br(),
     br(),
   )
