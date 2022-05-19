@@ -150,6 +150,22 @@ fluidPage(
             width = "50%"
           ),
           uiOutput("SubjQualInputPanel"),
+          br(),
+          actionButton("reset", "Reset",
+                       style = "color: #0b0c0c;
+                                             font-size: 12px;
+                                             font-weight: bold;
+                                             background-color: #ffffff"
+          ),
+          br(),
+          br(),
+          downloadButton(
+            outputId = "download_btn1",
+            label = "Download",
+            icon = shiny::icon("download")
+          ),
+          br(),
+          br()
         ), # end of sidebar
 
         ## Main panel 1============================================================================

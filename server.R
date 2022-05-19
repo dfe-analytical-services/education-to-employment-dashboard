@@ -637,16 +637,11 @@ server <- function(input, output, session) {
 
   observe({
     if (input$subsectorlevel=='Subject and qualification'){
+      # Render the specific ui elements for the sidebar when the Subject and 
+      # Qualification tab is selected.
       output$SubjQualInputPanel <- renderUI({
         tagList(
           helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
-          br(),
-          actionButton("reset", "Reset",
-                       style = "color: #0b0c0c;
-                                             font-size: 12px;
-                                             font-weight: bold;
-                                             background-color: #ffffff"
-          ),
           br(),
           br(),
           selectizeInput("inSelect2",
@@ -664,11 +659,8 @@ server <- function(input, output, session) {
                          multiple = F,
                          selected = "All levels"
           ),
-              downloadButton(
-            outputId = "download_btn1",
-            label = "Download",
-            icon = shiny::icon("download")
-          ))
+          br()
+)
     }
     )
       observe({
@@ -732,46 +724,50 @@ server <- function(input, output, session) {
                           selected = "All sub-sectors"
         )
       })
+      output$hqSubTable <- renderDataTable({
+        validate(need(!is.null(input$inSelect),"Table will go here."))
+        data <- stat_hq_sub %>%
+          filter(Region == input$region,
+                 Sector == input$sector,
+                 Level_order == input$inSelect,
+                 Subsector == input$inSelect2) %>%
+          select(Qualification,
+                 Level = Level_order_UI,
+                 Percentage = perc,
+                 "Average earnings" = median_income)
+        DT::datatable(data,
+                      rownames = FALSE,
+                      options = list(
+                        searching = FALSE,
+                        pageLength = 10,
+                        lengthMenu = c(10, 20),
+                        searchHighlight = TRUE,
+                        dom = "p",
+                        scrollX = TRUE
+                      ),
+                      width = "625px",
+                      height = "350px",
+                      style = "bootstrap", class = "table-bordered table-condensed align-center"
+        ) %>%
+          formatPercentage(3, digits = 1) %>%
+          formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
+          formatStyle(0,
+                      target = "row",
+                      color = "black",
+                      fontSize = "14px",
+                      backgroundColor = "white",
+                      lineHeight = "100%"
+          )
+      })
       
       
+    } else {
+      output$SubjQualInputPanel <- renderUI({
+        tagList(br())
+      })
     }
   })
   
-  output$hqSubTable <- renderDataTable({
-    validate(need(!is.null(input$inSelect),"Table will go here."))
-    data <- stat_hq_sub %>%
-      filter(Region == input$region,
-             Sector == input$sector,
-             Level_order == input$inSelect,
-             Subsector == input$inSelect2) %>%
-      select(Qualification,
-             Level = Level_order_UI,
-             Percentage = perc,
-             "Average earnings" = median_income)
-    DT::datatable(data,
-                  rownames = FALSE,
-                  options = list(
-                    searching = FALSE,
-                    pageLength = 10,
-                    lengthMenu = c(10, 20),
-                    searchHighlight = TRUE,
-                    dom = "p",
-                    scrollX = TRUE
-                  ),
-                  width = "625px",
-                  height = "350px",
-                  style = "bootstrap", class = "table-bordered table-condensed align-center"
-    ) %>%
-      formatPercentage(3, digits = 1) %>%
-      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
-      formatStyle(0,
-                  target = "row",
-                  color = "black",
-                  fontSize = "14px",
-                  backgroundColor = "white",
-                  lineHeight = "100%"
-      )
-  })
   
   # KPIs selection
   selection_kpis <- reactive({
