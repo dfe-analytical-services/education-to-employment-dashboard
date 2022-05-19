@@ -1,6 +1,7 @@
-
+# library(shinya11y)
 
 fluidPage(
+  #  use_tota11y(),
   shinyjs::useShinyjs(),
   includeCSS("www/dfe_shiny_gov_style.css"),
   title = "Unit for Future Skills - Career Explorer Dashboard",
@@ -220,7 +221,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("perc_in_sector"),
               uiOutput("kpiSector")
             ),
@@ -232,7 +233,7 @@ fluidPage(
               id = "first",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("median_in_sector"),
               uiOutput("kpiEarn")
             ),
@@ -244,7 +245,7 @@ fluidPage(
               id = "second",
               align = "left",
               width = 3,
-              style = "height:15vh; padding:5px; word-wrap: break-word;",
+              style = "height:15vh; min-height:96px; padding:5px; word-wrap: break-word;",
               uiOutput("directionSector"),
               uiOutput("kpiChange")
             ),
@@ -435,7 +436,7 @@ fluidPage(
 
     tabPanel(
       "Accessibility",
-      warning_text(inputId = "accessWarn", text = "THIS IS A DRAFT STATEMENT - NEEDS UPDATING AFTER TESTING"),
+      # warning_text(inputId = "accessWarn", text = "THIS IS A DRAFT STATEMENT - NEEDS UPDATING AFTER TESTING"),
       accessibility_statement() # defined in R/accessibility_statement.R
     ),
 
