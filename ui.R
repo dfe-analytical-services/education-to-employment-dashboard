@@ -325,7 +325,7 @@ fluidPage(
                     Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
                     Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
                     The table displays up to 20 qualifications, ordered by the number of employees who hold them.
-                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
+                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with no data fewer than 20 qualifications."
                   ),
                   DT::dataTableOutput("hqSubTable")
                 ),
@@ -339,7 +339,7 @@ fluidPage(
                     Select the ‘Subject area of highest qualification’ tab for a breakdown of the subject areas of employees’ highest qualifications and their average earnings.
                     Charts can be filtered by qualification level and sub-sector using the drop down selectors in the side panel.
                     The table displays up to 20 qualifications, ordered by the number of employees who hold them.
-                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with fewer than 20 qualifications."
+                    Qualifications with small numbers of employees are not included in this table, which means some selections result in a table with no data fewer than 20 qualifications."
                   ),
                   div(plotlyOutput("indSubChart"), align = "center")
                 )

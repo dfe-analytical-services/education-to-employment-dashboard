@@ -87,7 +87,14 @@ qualification type and the JACs principal subject code.",
     employees in full time and part time employment. The median earnings in this
     dashboard are presented as raw figures. They do not seek to control for
     differences in employee characteristics that may influence earnings over
-    time or across different employee populations."
+    time or across different employee populations.", br(), br(),
+    tags$h4("Rounding and suppression"),
+    "Employee numbers are rounded to the nearest 10, annual median earnings are rounded to
+    the nearest 100 and percentages are provided to the nearest one decimal place.
+    Figures have been suppressed with the value ‘u’ for annual earnings based on fewer than 10
+    employees and ‘c’ for percentages where the numerator is less than 3 or the denominator is
+    less than 6. Employee numbers below 5 are replaced with ‘low.’
+    Suppressed figures have been removed from charts and tables."
   )
 }
 

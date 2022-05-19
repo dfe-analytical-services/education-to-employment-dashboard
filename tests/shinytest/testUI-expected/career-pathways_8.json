@@ -11,7 +11,14 @@
   },
   "output": {
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
-    "box3title": "Subject and qualification choices for employees at  working in all sub-sectors",
+    "box3title": {
+      "message": "Subject and qualification choices for employees",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
     "box4title": "Post-16 qualification pathways starting at  level 2",
     "box7title": "30.7% of employees have a highest qualification at level 2",
     "directionSector": {

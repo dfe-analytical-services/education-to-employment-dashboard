@@ -11,7 +11,14 @@
   },
   "output": {
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
-    "box3title": "Subject and qualification choices for employees at  working in all sub-sectors",
+    "box3title": {
+      "message": "Subject and qualification choices for employees",
+      "call": "NULL",
+      "type": [
+        "shiny.silent.error",
+        "validation"
+      ]
+    },
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
       "deps": [
