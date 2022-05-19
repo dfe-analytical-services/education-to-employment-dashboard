@@ -657,7 +657,6 @@ server <- function(input, output, session) {
         tagList(
           helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
           br(),
-          br(),
           selectizeInput("inSelect2",
             options = list(create = TRUE),
             label = "Choose an industry sub-sector:",
