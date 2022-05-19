@@ -713,7 +713,9 @@ server <- function(input, output, session) {
 
 
   # Page 1&2: reactive Box & KPIs titles --------------------------------------------------------------
-
+ 
+ `%notin%` <- Negate(`%in%`)
+  
   # page titles
   output$page1title <- renderUI({
     if (input$region %in% c("England", "Yorkshire and The Humber")) {
@@ -825,6 +827,8 @@ server <- function(input, output, session) {
 
   # page 1: subject chart and qualification table
   output$box3title <- renderText({
+    validate(need(input$inSelect %notin% c("", NA), 
+                  "Subject and qualification choices for employees"))
     HTML(
       paste0(
         "Subject and qualification choices for employees at ", tolower(input$inSelect),
