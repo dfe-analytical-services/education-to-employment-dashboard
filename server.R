@@ -260,20 +260,6 @@ server <- function(input, output, session) {
 
   # Page1: Reactive chart subject ------------------------------------------------------
 
-  observe({
-    updateSelectInput(session,
-      "inSelect2",
-      choices = subsector_v,
-      selected = "All sub-sectors"
-    )
-
-    updateSelectInput(session,
-      "inSelect",
-      choices = levelsRelabelled,
-      selected = "All levels"
-    )
-  })
-
   # choices in select input
   sect_sub_v <- reactive({
     stat_subs_sub %>%
@@ -291,29 +277,28 @@ server <- function(input, output, session) {
       unlist(use.names = F)
   })
 
-
   indSubChart <- reactive({
     stat_subs_sub %>%
       filter(Region == input$region &
-        Sector == input$sector &
-        Subsector == input$inSelect2 &
-        Level_order == input$inSelect) %>%
+               Sector == input$sector &
+               Subsector == input$inSelect2 &
+               Level_order == input$inSelect) %>%
       ggplot(aes(
         x = reorder(Subject, -perc), y = perc,
         text = paste(
           paste0("Percentage: ", formatC(perc * 100,
-            digits = 1,
-            format = "f"
+                                         digits = 1,
+                                         format = "f"
           ), "%"),
           paste0("Volume: ", formatC(number_students_sub,
-            digits = 0,
-            format = "f",
-            big.mark = ","
+                                     digits = 0,
+                                     format = "f",
+                                     big.mark = ","
           )),
           paste0("Average Earnings: ", "£", formatC(median_income,
-            digits = 0,
-            format = "f",
-            big.mark = ","
+                                                    digits = 0,
+                                                    format = "f",
+                                                    big.mark = ","
           )),
           sep = "\n"
         )
@@ -337,6 +322,7 @@ server <- function(input, output, session) {
         panel.grid.minor.y = element_blank()
       )
   })
+  
 
   # Page2: Reactive stack chart InWork % --------------------------------------
 
@@ -433,104 +419,6 @@ server <- function(input, output, session) {
     ggplotly(subsVolMedianChart(), tooltip = c("text"))
   })
 
-
-  output$indSubChart <- renderPlotly({
-    validate(
-      need(nrow(stat_subs_sub %>%
-        filter(Region == input$region &
-          Sector == input$sector &
-          Subsector == input$inSelect2 &
-          Level_order == input$inSelect)) > 0, "There are no employees matching this selection. Please select again.")
-    )
-    ggplotly(indSubChart(), tooltip = "text")
-  })
-
-
-  output$studinWorkChart <- renderPlotly({
-    validate(
-      need(nrow(selection_in_work()) > 0, "There are no employees matching this selection. Please select again.")
-    )
-    ggplotly(inWorkChart(), tooltip = "text")
-  })
-
-
-  # Page1: Render top quals table ------------------------------------------------------
-
-  observe({
-    updateSelectInput(session,
-      "inSelect",
-      choices = hq_sub_v(),
-      selected = "All levels"
-    )
-
-    updateSelectInput(session,
-      "inSelect2",
-      choices = sect_sub_v(),
-      selected = "All sub-sectors"
-    )
-  })
-
-  output$hqSubTable <- renderDataTable({
-    DT::datatable(stat_hq_sub %>%
-      filter(Region == input$region &
-        Sector == input$sector &
-        Level_order == input$inSelect &
-        Subsector == input$inSelect2) %>%
-      # final selection
-      select(Qualification,
-        Level = Level_order_UI,
-        Percentage = perc,
-        "Average earnings" = median_income
-      ),
-    rownames = FALSE,
-    options = list(
-      searching = FALSE,
-      pageLength = 10,
-      lengthMenu = c(10, 20),
-      searchHighlight = TRUE,
-      dom = "p",
-      scrollX = TRUE
-    ),
-    width = "625px",
-    height = "350px",
-    style = "bootstrap", class = "table-bordered table-condensed align-center"
-    ) %>%
-      formatPercentage(3, digits = 1) %>%
-      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
-      formatStyle(0,
-        target = "row",
-        color = "black",
-        fontSize = "14px",
-        backgroundColor = "white",
-        lineHeight = "100%"
-      )
-  })
-
-  observeEvent(input$reset, {
-    updateSelectInput(session,
-      "sector",
-      choices = sectors_v,
-      selected = "Construction"
-    )
-
-    updateSelectInput(session,
-      "region",
-      choices = regions_v,
-      selected = "England"
-    )
-
-    updateSelectInput(session,
-      "inSelect",
-      choices = hq_sub_v(),
-      selected = "All levels"
-    )
-
-    updateSelectInput(session,
-      "inSelect2",
-      choices = sect_sub_v(),
-      selected = "All sub-sectors"
-    )
-  })
 
 
   # Page1: Render KPIS --------------------------------------------------------------------
@@ -747,8 +635,144 @@ server <- function(input, output, session) {
     }
   })
 
-
-
+  observe({
+    if (input$subsectorlevel=='Subject and qualification'){
+      output$SubjQualInputPanel <- renderUI({
+        tagList(
+          helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
+          br(),
+          actionButton("reset", "Reset",
+                       style = "color: #0b0c0c;
+                                             font-size: 12px;
+                                             font-weight: bold;
+                                             background-color: #ffffff"
+          ),
+          br(),
+          br(),
+          selectizeInput("inSelect2",
+                         options = list(create = TRUE),
+                         label = "Choose an industry sub-sector:",
+                         choices = subsector_v,
+                         multiple = F,
+                         width = "100%",
+                         selected = "All sub-sectors"
+          ),
+          selectizeInput("inSelect",
+                         options = list(create = TRUE),
+                         label = "Choose a qualification level:",
+                         choices = levelsRelabelled,
+                         multiple = F,
+                         selected = "All levels"
+          ),
+              downloadButton(
+            outputId = "download_btn1",
+            label = "Download",
+            icon = shiny::icon("download")
+          ))
+    }
+    )
+      observe({
+        updateSelectInput(session,
+                          "inSelect2",
+                          choices = subsector_v,
+                          selected = "All sub-sectors"
+        )
+        updateSelectInput(session,
+                          "inSelect",
+                          choices = levelsRelabelled,
+                          selected = "All levels"
+        )
+      })
+      
+      output$indSubChart <- renderPlotly({
+        validate(
+          need(nrow(stat_subs_sub %>%
+                      filter(Region == input$region &
+                               Sector == input$sector &
+                               Subsector == input$inSelect2 &
+                               Level_order == input$inSelect)) > 0, "There are no employees matching this selection. Please select again.")
+        )
+        ggplotly(indSubChart(), tooltip = "text")
+      })
+      
+      observe({
+        updateSelectInput(session,
+                          "inSelect",
+                          choices = hq_sub_v(),
+                          selected = "All levels"
+        )
+        updateSelectInput(session,
+                          "inSelect2",
+                          choices = sect_sub_v(),
+                          selected = "All sub-sectors"
+        )
+      })
+      observeEvent(input$reset, {
+        updateSelectInput(session,
+                          "sector",
+                          choices = sectors_v,
+                          selected = "Construction"
+        )
+        
+        updateSelectInput(session,
+                          "region",
+                          choices = regions_v,
+                          selected = "England"
+        )
+        
+        updateSelectInput(session,
+                          "inSelect",
+                          choices = hq_sub_v(),
+                          selected = "All levels"
+        )
+        
+        updateSelectInput(session,
+                          "inSelect2",
+                          choices = sect_sub_v(),
+                          selected = "All sub-sectors"
+        )
+      })
+      
+      
+    }
+  })
+  
+  output$hqSubTable <- renderDataTable({
+    validate(need(!is.null(input$inSelect),"Table will go here."))
+    data <- stat_hq_sub %>%
+      filter(Region == input$region,
+             Sector == input$sector,
+             Level_order == input$inSelect,
+             Subsector == input$inSelect2) %>%
+      select(Qualification,
+             Level = Level_order_UI,
+             Percentage = perc,
+             "Average earnings" = median_income)
+    DT::datatable(data,
+                  rownames = FALSE,
+                  options = list(
+                    searching = FALSE,
+                    pageLength = 10,
+                    lengthMenu = c(10, 20),
+                    searchHighlight = TRUE,
+                    dom = "p",
+                    scrollX = TRUE
+                  ),
+                  width = "625px",
+                  height = "350px",
+                  style = "bootstrap", class = "table-bordered table-condensed align-center"
+    ) %>%
+      formatPercentage(3, digits = 1) %>%
+      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
+      formatStyle(0,
+                  target = "row",
+                  color = "black",
+                  fontSize = "14px",
+                  backgroundColor = "white",
+                  lineHeight = "100%"
+      )
+  })
+  
   # KPIs selection
   selection_kpis <- reactive({
     kpis %>%
@@ -881,6 +905,13 @@ server <- function(input, output, session) {
       inWorkChartLevel()
     ))
   })
+  output$studinWorkChart <- renderPlotly({
+    validate(
+      need(nrow(selection_in_work()) > 0, "There are no employees matching this selection. Please select again.")
+    )
+    ggplotly(inWorkChart(), tooltip = "text")
+  })
+  
 
   # page 2: treeplot
   output$box4title <- renderText({
@@ -916,6 +947,9 @@ server <- function(input, output, session) {
     HTML(svg_html_legend)
   })
 
+  
+  
+  
   # Download data -----------------------------------------------------------
 
   to_download_pg1 <- reactiveValues(

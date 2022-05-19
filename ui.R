@@ -149,51 +149,7 @@ fluidPage(
             inline = F,
             width = "50%"
           ),
-          conditionalPanel(
-            condition = "input.subsectorlevel=='Subject and qualification'",
-
-            ### Help text ---------------------------------------------------------------------
-            helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
-            br(),
-
-            ### Reset button -------------------------------------------------------------------
-
-            actionButton("reset", "Reset",
-              style = "color: #0b0c0c;
-                                       font-size: 12px;
-                                       font-weight: bold;
-                                       background-color: #ffffff"
-            ),
-            br(), br(),
-
-            ### Sub-Sector input -------------------------------------------------------------------
-            selectizeInput("inSelect2",
-              options = list(create = TRUE),
-              label = "Choose an industry sub-sector:",
-              choices = subsector_v,
-              multiple = F,
-              width = "100%",
-              selected = "All sub-sectors"
-            ),
-
-
-            ### Level input -------------------------------------------------------------------
-            selectizeInput("inSelect",
-              options = list(create = TRUE),
-              label = "Choose a qualification level:",
-              choices = levelsRelabelled,
-              multiple = F,
-              selected = "All levels"
-            ),
-
-            ### Download button -------------------------------------------------------------------
-
-            downloadButton(
-              outputId = "download_btn1",
-              label = "Download",
-              icon = shiny::icon("download")
-            )
-          )
+          uiOutput("SubjQualInputPanel"),
         ), # end of sidebar
 
         ## Main panel 1============================================================================
