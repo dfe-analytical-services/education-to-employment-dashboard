@@ -152,7 +152,7 @@ fluidPage(
           uiOutput("SubjQualInputPanel"),
           br(),
           actionButton("reset", "Reset",
-                       style = "color: #0b0c0c;
+            style = "color: #0b0c0c;
                                              font-size: 12px;
                                              font-weight: bold;
                                              background-color: #ffffff"
