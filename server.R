@@ -143,19 +143,19 @@ server <- function(input, output, session) {
     stat_hq %>%
       filter(Region == input$region &
         Sector == input$sector) %>%
-    mutate(Level = case_when(
-          Level_order == "Below level 2" ~ "Below level 2 (GCSE grades 1-3)",
-          Level_order == "Level 2" ~ "Level 2 (GCSE grades 4-9)",
-          Level_order == "Level 3" ~ "Level 3 (GCE A level)",
-          Level_order == "Level 4/5" ~ "Level 4/5 (HNC or HND)",
-          Level_order == "Level 6" ~ "Level 6 (Degree)",
-          TRUE ~ "Level 7 (Master's degree)"
-        )) 
+      mutate(Level = case_when(
+        Level_order == "Below level 2" ~ "Below level 2 (GCSE grades 1-3)",
+        Level_order == "Level 2" ~ "Level 2 (GCSE grades 4-9)",
+        Level_order == "Level 3" ~ "Level 3 (GCE A level)",
+        Level_order == "Level 4/5" ~ "Level 4/5 (HNC or HND)",
+        Level_order == "Level 6" ~ "Level 6 (Degree)",
+        TRUE ~ "Level 7 (Master's degree)"
+      ))
   })
 
   highestQualVolMedianChart <- reactive({
     if (input$showMedian == "Percentage") {
-      selection() %>% 
+      selection() %>%
         ggplot(aes(
           x = Level,
           text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
@@ -194,7 +194,7 @@ server <- function(input, output, session) {
         scale_y_continuous(labels = scales::percent) +
         coord_flip()
     } else {
-      selection() %>% 
+      selection() %>%
         ggplot(aes(
           x = Level,
           text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
