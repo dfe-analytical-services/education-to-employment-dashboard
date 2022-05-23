@@ -260,20 +260,6 @@ server <- function(input, output, session) {
 
   # Page1: Reactive chart subject ------------------------------------------------------
 
-  observe({
-    updateSelectInput(session,
-      "inSelect2",
-      choices = subsector_v,
-      selected = "All sub-sectors"
-    )
-
-    updateSelectInput(session,
-      "inSelect",
-      choices = levelsRelabelled,
-      selected = "All levels"
-    )
-  })
-
   # choices in select input
   sect_sub_v <- reactive({
     stat_subs_sub %>%
@@ -290,7 +276,6 @@ server <- function(input, output, session) {
       distinct(Level_order, .keep_all = FALSE) %>%
       unlist(use.names = F)
   })
-
 
   indSubChart <- reactive({
     stat_subs_sub %>%
@@ -337,6 +322,7 @@ server <- function(input, output, session) {
         panel.grid.minor.y = element_blank()
       )
   })
+
 
   # Page2: Reactive stack chart InWork % --------------------------------------
 
@@ -433,104 +419,6 @@ server <- function(input, output, session) {
     ggplotly(subsVolMedianChart(), tooltip = c("text"))
   })
 
-
-  output$indSubChart <- renderPlotly({
-    validate(
-      need(nrow(stat_subs_sub %>%
-        filter(Region == input$region &
-          Sector == input$sector &
-          Subsector == input$inSelect2 &
-          Level_order == input$inSelect)) > 0, "There are no employees matching this selection. Please select again.")
-    )
-    ggplotly(indSubChart(), tooltip = "text")
-  })
-
-
-  output$studinWorkChart <- renderPlotly({
-    validate(
-      need(nrow(selection_in_work()) > 0, "There are no employees matching this selection. Please select again.")
-    )
-    ggplotly(inWorkChart(), tooltip = "text")
-  })
-
-
-  # Page1: Render top quals table ------------------------------------------------------
-
-  observe({
-    updateSelectInput(session,
-      "inSelect",
-      choices = hq_sub_v(),
-      selected = "All levels"
-    )
-
-    updateSelectInput(session,
-      "inSelect2",
-      choices = sect_sub_v(),
-      selected = "All sub-sectors"
-    )
-  })
-
-  output$hqSubTable <- renderDataTable({
-    DT::datatable(stat_hq_sub %>%
-      filter(Region == input$region &
-        Sector == input$sector &
-        Level_order == input$inSelect &
-        Subsector == input$inSelect2) %>%
-      # final selection
-      select(Qualification,
-        Level = Level_order_UI,
-        Percentage = perc,
-        "Average earnings" = median_income
-      ),
-    rownames = FALSE,
-    options = list(
-      searching = FALSE,
-      pageLength = 10,
-      lengthMenu = c(10, 20),
-      searchHighlight = TRUE,
-      dom = "p",
-      scrollX = TRUE
-    ),
-    width = "625px",
-    height = "350px",
-    style = "bootstrap", class = "table-bordered table-condensed align-center"
-    ) %>%
-      formatPercentage(3, digits = 1) %>%
-      formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
-      formatStyle(0,
-        target = "row",
-        color = "black",
-        fontSize = "14px",
-        backgroundColor = "white",
-        lineHeight = "100%"
-      )
-  })
-
-  observeEvent(input$reset, {
-    updateSelectInput(session,
-      "sector",
-      choices = sectors_v,
-      selected = "Construction"
-    )
-
-    updateSelectInput(session,
-      "region",
-      choices = regions_v,
-      selected = "England"
-    )
-
-    updateSelectInput(session,
-      "inSelect",
-      choices = hq_sub_v(),
-      selected = "All levels"
-    )
-
-    updateSelectInput(session,
-      "inSelect2",
-      choices = sect_sub_v(),
-      selected = "All sub-sectors"
-    )
-  })
 
 
   # Page1: Render KPIS --------------------------------------------------------------------
@@ -747,6 +635,139 @@ server <- function(input, output, session) {
     }
   })
 
+  observeEvent(input$reset, {
+    updateSelectInput(session,
+      "sector",
+      choices = sectors_v,
+      selected = "Construction"
+    )
+
+    updateSelectInput(session,
+      "region",
+      choices = regions_v,
+      selected = "England"
+    )
+  })
+
+  observe({
+    if (input$subsectorlevel == "Subject and qualification") {
+      # Render the specific ui elements for the sidebar when the Subject and
+      # Qualification tab is selected.
+      output$SubjQualInputPanel <- renderUI({
+        tagList(
+          helpText("Choose an industry sub-sector and qualification level to view further detail on subject and qualification data."),
+          br(),
+          selectizeInput("inSelect2",
+            options = list(create = TRUE),
+            label = "Choose an industry sub-sector:",
+            choices = subsector_v,
+            multiple = F,
+            width = "100%",
+            selected = "All sub-sectors"
+          ),
+          selectizeInput("inSelect",
+            options = list(create = TRUE),
+            label = "Choose a qualification level:",
+            choices = levelsRelabelled,
+            multiple = F,
+            selected = "All levels"
+          ),
+          br()
+        )
+      })
+      observe({
+        updateSelectInput(session,
+          "inSelect2",
+          choices = subsector_v,
+          selected = "All sub-sectors"
+        )
+        updateSelectInput(session,
+          "inSelect",
+          choices = levelsRelabelled,
+          selected = "All levels"
+        )
+      })
+
+      output$indSubChart <- renderPlotly({
+        validate(
+          need(nrow(stat_subs_sub %>%
+            filter(Region == input$region &
+              Sector == input$sector &
+              Subsector == input$inSelect2 &
+              Level_order == input$inSelect)) > 0, "There are no employees matching this selection. Please select again.")
+        )
+        ggplotly(indSubChart(), tooltip = "text")
+      })
+
+      observe({
+        updateSelectInput(session,
+          "inSelect",
+          choices = hq_sub_v(),
+          selected = "All levels"
+        )
+        updateSelectInput(session,
+          "inSelect2",
+          choices = sect_sub_v(),
+          selected = "All sub-sectors"
+        )
+      })
+      # Reset Levels and sub-sectors inputs when reset button pressed.
+      observeEvent(input$reset, {
+        updateSelectInput(session,
+          "inSelect",
+          choices = hq_sub_v(),
+          selected = "All levels"
+        )
+        updateSelectInput(session,
+          "inSelect2",
+          choices = sect_sub_v(),
+          selected = "All sub-sectors"
+        )
+      })
+      output$hqSubTable <- renderDataTable({
+        validate(need(!is.null(input$inSelect), "Table will go here."))
+        data <- stat_hq_sub %>%
+          filter(
+            Region == input$region,
+            Sector == input$sector,
+            Level_order == input$inSelect,
+            Subsector == input$inSelect2
+          ) %>%
+          select(Qualification,
+            Level = Level_order_UI,
+            Percentage = perc,
+            "Average earnings" = median_income
+          )
+        DT::datatable(data,
+          rownames = FALSE,
+          options = list(
+            searching = FALSE,
+            pageLength = 10,
+            lengthMenu = c(10, 20),
+            searchHighlight = TRUE,
+            dom = "p",
+            scrollX = TRUE
+          ),
+          width = "625px",
+          height = "350px",
+          style = "bootstrap", class = "table-bordered table-condensed align-center"
+        ) %>%
+          formatPercentage(3, digits = 1) %>%
+          formatCurrency(4, digits = 0, currency = "£", mark = ",") %>%
+          formatStyle(0,
+            target = "row",
+            color = "black",
+            fontSize = "14px",
+            backgroundColor = "white",
+            lineHeight = "100%"
+          )
+      })
+    } else {
+      output$SubjQualInputPanel <- renderUI({
+        tagList(br())
+      })
+    }
+  })
 
 
   # KPIs selection
@@ -881,6 +902,13 @@ server <- function(input, output, session) {
       inWorkChartLevel()
     ))
   })
+  output$studinWorkChart <- renderPlotly({
+    validate(
+      need(nrow(selection_in_work()) > 0, "There are no employees matching this selection. Please select again.")
+    )
+    ggplotly(inWorkChart(), tooltip = "text")
+  })
+
 
   # page 2: treeplot
   output$box4title <- renderText({
@@ -915,6 +943,9 @@ server <- function(input, output, session) {
   output$svglegend <- renderUI({
     HTML(svg_html_legend)
   })
+
+
+
 
   # Download data -----------------------------------------------------------
 
