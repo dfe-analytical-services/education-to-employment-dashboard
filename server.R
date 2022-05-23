@@ -149,7 +149,7 @@ server <- function(input, output, session) {
         Level_order == "Level 3" ~ "Level 3 (GCE A level)",
         Level_order == "Level 4/5" ~ "Level 4/5 (HNC or HND)",
         Level_order == "Level 6" ~ "Level 6 (Degree)",
-        TRUE ~ "Level 7 (Master's degree)"
+        TRUE ~ "Level 7+ (Master's degree)"
       ))
   })
 
