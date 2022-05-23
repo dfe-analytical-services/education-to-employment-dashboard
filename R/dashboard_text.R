@@ -82,9 +82,9 @@ for these qualifications have been mapped to SSA tier 1. The titles for these qu
 qualification type and the JACs principal subject code.",
     br(), br(),
     tags$h4("Median annual earnings"),
-    "The median earnings in this dashboard are presented as raw figures. 
+    "The median earnings in this dashboard are presented as raw figures.
     They do not seek to control for differences in employee characteristics that may influence earnings over time or across different employee populations.",
-    "Earnings estimates are based on information recorded through the PAYE system. The earnings estimates do not include any income that was recorded though the self-assessment tax system. This means that earnings will be underreported for employees who have self-assessment income in addition to earnings from paid employment collected by the PAYE system. 
+    "Earnings estimates are based on information recorded through the PAYE system. The earnings estimates do not include any income that was recorded though the self-assessment tax system. This means that earnings will be underreported for employees who have self-assessment income in addition to earnings from paid employment collected by the PAYE system.
     The PAYE records from HMRC do not include reliable information on the hours worked in employment so it is not possible to accurately distinguish between employees in full time and part time employment.", br(), br(),
     tags$h4("Rounding and suppression"),
     "Employee numbers are rounded to the nearest 10, annual median earnings are rounded to
