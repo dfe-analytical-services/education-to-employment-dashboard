@@ -10,7 +10,7 @@ welcome_text <- function() {
     br(),
     "The data in the career pathways dashboard aims to use this development to:",
     tags$ul(
-      tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors;"),
+      tags$li("Explore how LEO can help us to understand the education pathways of employees in different industry sectors."),
       tags$li("Demonstrate how LEO data could be used to develop a careers information tool via an interactive dashboard.")
     ),
     "This dashboard has been produced to support the aims of the ",
@@ -37,7 +37,8 @@ welcome_text <- function() {
 
 industry_overview_text <- function() {
   div(
-    "This tab provides a region-specific overview of employees who work in each industry sector. It includes information on overall levels of education and average earnings, the sub-sectors of work, and subject and qualification choices. It also includes a forecast of annual employment growth in the sector between 2022 and 2027. ",
+    "This tab provides a region-specific overview of employees who work in each industry sector. It includes information on overall levels of education and average earnings, the sub-sectors of work, and subject and qualification choices.
+    It also includes a forecast of annual employment growth in the sector between 2022 and 2027. In this dashboard, region is based on the home postcode of the employee.",
     br(), br(),
     "Data included on the page are for employees who turn age 25-30 in the 2018-19 tax year.
     Specifically, the dashboard covers employees born between September 1988 and August 1993
@@ -66,7 +67,7 @@ industry_overview_text <- function() {
     "Please note that these projections are based on employment estimates derived from published labour market data.
     They are not precise predictions of future employment levels, but represent the most likely trajectory of labour market change, given long-term trends in the economy and explicit assumptions about likely future economic change.
     The projections were created when it was expected there would be a negotiated Brexit and before the Covid-19 pandemic, which may result in considerable disruption to the UK and world economic system.
-    These projections indicate what the labour market might have looked like before the pandemic. They, therefore, can be used to provide a measure of how the labour market has changed and the implications of the pandemic.",
+    These projections indicate what the labour market might have looked like before the pandemic. They, therefore, cannot be used to provide a measure of how the labour market has changed and the implications of the pandemic.",
     br(), br(),
     tags$h4("Education level, subject, and qualification"),
     "Education level and subject are based on highest qualification achievement at the start of the 2018-19 tax year.
@@ -81,13 +82,10 @@ for these qualifications have been mapped to SSA tier 1. The titles for these qu
 qualification type and the JACs principal subject code.",
     br(), br(),
     tags$h4("Median annual earnings"),
-    "Earnings estimates are based on information recorded through the PAYE system.",
-    "The PAYE records from HMRC do not include reliable information on the hours
-    worked in employment so it is not possible to accurately distinguish between
-    employees in full time and part time employment. The median earnings in this
-    dashboard are presented as raw figures. They do not seek to control for
-    differences in employee characteristics that may influence earnings over
-    time or across different employee populations.", br(), br(),
+    "The median earnings in this dashboard are presented as raw figures.
+    They do not seek to control for differences in employee characteristics that may influence earnings over time or across different employee populations.",
+    "Earnings estimates are based on information recorded through the PAYE system. The earnings estimates do not include any income that was recorded though the self-assessment tax system. This means that earnings will be underreported for employees who have self-assessment income in addition to earnings from paid employment collected by the PAYE system.
+    The PAYE records from HMRC do not include reliable information on the hours worked in employment so it is not possible to accurately distinguish between employees in full time and part time employment.", br(), br(),
     tags$h4("Rounding and suppression"),
     "Employee numbers are rounded to the nearest 10, annual median earnings are rounded to
     the nearest 100 and percentages are provided to the nearest one decimal place.

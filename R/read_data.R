@@ -51,16 +51,6 @@ levels_v <- stat_hq_sub %>%
   distinct(Level_order, .keep_all = F) %>%
   unlist(use.names = F)
 
-# vector for relabel level of qualification
-
-levelsRelabelled <- c(
-  "Below level 2 (GCSE grades 1-3)",
-  "Level 2 (GCSE grades 4-9)",
-  "Level 3 (GCE A level)",
-  "Level 4/5 (HNC or HND)",
-  "Level 6 (Degree)",
-  "Level 7 (Master's degree)"
-)
 
 # second page -------------------------------------------------------------
 

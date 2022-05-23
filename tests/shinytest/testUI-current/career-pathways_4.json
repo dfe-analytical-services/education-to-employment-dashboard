@@ -1,0 +1,51 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "overview",
+    "qualificationsubject": "Top 20 post-16 qualifications",
+    "region": "North East",
+    "regionp": "England",
+    "sector": "Agriculture",
+    "sectorp": "Construction",
+    "showMedian": "Average earnings"
+  },
+  "output": {
+    "box2title": "Employee earnings by industry sub-sector and highest level of education",
+    "directionSector": {
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiChange": {
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
+      "deps": [
+
+      ]
+    },
+    "kpiSector": {
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Proportion of employees aged 25-30 in the North East that work in agriculture<\/b>",
+      "deps": [
+
+      ]
+    },
+    "median_in_sector": {
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,988.19<\/b>",
+      "deps": [
+
+      ]
+    },
+    "page1title": {
+      "html": "<b style=\"font-size: 24px;\">Agriculture in the North East: overview of employee education levels and qualification choices<\/b>",
+      "deps": [
+
+      ]
+    },
+    "perc_in_sector": {
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">50.1%<\/b>",
+      "deps": [
+
+      ]
+    }
+  }
+}

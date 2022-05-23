@@ -1,0 +1,15 @@
+{
+  "input": {
+    "inSelect3": "Level 2",
+    "navbar": "homepage",
+    "qualificationsubject": "Top 20 post-16 qualifications",
+    "region": "England",
+    "regionp": "England",
+    "sector": "Construction",
+    "sectorp": "Construction",
+    "showMedian": "Average earnings"
+  },
+  "output": {
+
+  }
+}
