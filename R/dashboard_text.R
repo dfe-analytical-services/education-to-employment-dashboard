@@ -37,7 +37,8 @@ welcome_text <- function() {
 
 industry_overview_text <- function() {
   div(
-    "This tab provides a region-specific overview of employees who work in each industry sector. It includes information on overall levels of education and average earnings, the sub-sectors of work, and subject and qualification choices. It also includes a forecast of annual employment growth in the sector between 2022 and 2027. ",
+    "This tab provides a region-specific overview of employees who work in each industry sector. It includes information on overall levels of education and average earnings, the sub-sectors of work, and subject and qualification choices. 
+    It also includes a forecast of annual employment growth in the sector between 2022 and 2027. In this dashboard, region is based on the home postcode of the employee.",
     br(), br(),
     "Data included on the page are for employees who turn age 25-30 in the 2018-19 tax year.
     Specifically, the dashboard covers employees born between September 1988 and August 1993

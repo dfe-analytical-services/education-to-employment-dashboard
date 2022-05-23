@@ -131,7 +131,7 @@ server <- function(input, output, session) {
           panel.grid.minor.y = element_blank()
         ) +
         scale_y_continuous(labels = comma_format(big.mark = ",")) +
-        ylim(0, 50000) +
+        ylim(0, 75000) +
         coord_flip()
     }
   })
@@ -142,14 +142,22 @@ server <- function(input, output, session) {
   selection <- reactive({
     stat_hq %>%
       filter(Region == input$region &
-        Sector == input$sector)
+        Sector == input$sector) %>%
+    mutate(Level = case_when(
+          Level_order == "Below level 2" ~ "Below level 2 (GCSE grades 1-3)",
+          Level_order == "Level 2" ~ "Level 2 (GCSE grades 4-9)",
+          Level_order == "Level 3" ~ "Level 3 (GCE A level)",
+          Level_order == "Level 4/5" ~ "Level 4/5 (HNC or HND)",
+          Level_order == "Level 6" ~ "Level 6 (Degree)",
+          TRUE ~ "Level 7 (Master's degree)"
+        )) 
   })
 
   highestQualVolMedianChart <- reactive({
     if (input$showMedian == "Percentage") {
-      selection() %>%
+      selection() %>% 
         ggplot(aes(
-          x = Level_order,
+          x = Level,
           text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
             digits = 1,
             format = "f"
@@ -184,12 +192,11 @@ server <- function(input, output, session) {
           panel.grid.minor.y = element_blank()
         ) +
         scale_y_continuous(labels = scales::percent) +
-        scale_x_discrete(labels = levelsRelabelled) +
         coord_flip()
     } else {
-      selection() %>%
+      selection() %>% 
         ggplot(aes(
-          x = Level_order,
+          x = Level,
           text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
             digits = 1,
             format = "f"
@@ -211,7 +218,7 @@ server <- function(input, output, session) {
         geom_text(
           data = selection(),
           aes(
-            x = Level_order,
+            x = Level,
             y = median_income,
             label = paste0("£", formatC(median_income,
               digits = 0,
@@ -226,8 +233,8 @@ server <- function(input, output, session) {
           check_overlap = TRUE
         ) +
         geom_segment(aes(
-          x = Level_order,
-          xend = Level_order,
+          x = Level,
+          xend = Level,
           y = 0,
           yend = median_income
         ),
@@ -250,8 +257,7 @@ server <- function(input, output, session) {
           panel.grid.minor.y = element_blank()
         ) +
         scale_y_continuous(labels = comma_format(big.mark = ",")) +
-        scale_x_discrete(labels = levelsRelabelled) +
-        ylim(0, 50000) +
+        ylim(0, 75000) +
         coord_flip()
     }
   })
@@ -912,11 +918,9 @@ server <- function(input, output, session) {
 
   # page 2: treeplot
   output$box4title <- renderText({
-    s <- selected_region_sector() %>%
-      filter(Level == input$inSelect3)
     HTML(paste(
       "Post-16 qualification pathways starting at ",
-      tolower(s$Level[[1]])
+      tolower(input$inSelect3)
     ))
   })
 
