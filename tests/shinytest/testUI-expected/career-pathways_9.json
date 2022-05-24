@@ -19,11 +19,7 @@
         "validation"
       ]
     },
-    "box4title": {
-      "message": "subscript out of bounds",
-      "call": "s$Level[[1]]",
-      "type": null
-    },
+    "box4title": "Post-16 qualification pathways starting at  level 2",
     "box7title": "14.5% of employees have a highest qualification at level 2",
     "directionSector": {
       "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
