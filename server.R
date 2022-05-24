@@ -942,7 +942,7 @@ server <- function(input, output, session) {
     '<text x="185" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 4/5</text>',
     '<text x="275" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 6</text>',
     '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>',
-    '</svg>'
+    "</svg>"
   )
 
   output$svglegend <- renderUI({
