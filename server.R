@@ -930,8 +930,8 @@ server <- function(input, output, session) {
     '<circle cx="10" cy="10" r="8" style="fill: #f3f2f1;"></circle>',
     '<circle cx="90" cy="10" r="8" style="fill: #7FCFF2;"></circle>',
     '<circle cx="170" cy="10" r="8" style="fill: #489FD6;"></circle>',
-    '<circle cx="260" cy="10" r="8" style="fill: #1D70B8";></circle>',
-    '<circle cx="340" cy="10" r="8" style="fill: #0b0c0c;></circle>',
+    '<circle cx="260" cy="10" r="8" style="fill: #1D70B8;"></circle>',
+    '<circle cx="340" cy="10" r="8" style="fill: #0b0c0c;"></circle>',
     '<circle cx="10" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
     '<circle cx="90" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
     '<circle cx="170" cy="10" r="8" style="fill: none; stroke: black; stroke-width: 2;"></circle>',
@@ -941,7 +941,8 @@ server <- function(input, output, session) {
     '<text x="105" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 3</text>',
     '<text x="185" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 4/5</text>',
     '<text x="275" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 6</text>',
-    '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>'
+    '<text x="355" y="12" alignment-baseline="middle" style="font-size: 15px;">Level 7+</text>',
+    '</svg>'
   )
 
   output$svglegend <- renderUI({
