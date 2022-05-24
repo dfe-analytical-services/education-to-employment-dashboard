@@ -674,7 +674,7 @@ server <- function(input, output, session) {
           selectizeInput("inSelect",
             options = list(create = TRUE),
             label = "Choose a qualification level:",
-            choices = levelsRelabelled,
+            choices = levels_v,
             multiple = F,
             selected = "All levels"
           ),
@@ -689,7 +689,7 @@ server <- function(input, output, session) {
         )
         updateSelectInput(session,
           "inSelect",
-          choices = levelsRelabelled,
+          choices = levels_v,
           selected = "All levels"
         )
       })
