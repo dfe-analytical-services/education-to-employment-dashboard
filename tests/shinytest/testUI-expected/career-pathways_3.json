@@ -12,7 +12,7 @@
   "output": {
     "box2title": "Employee earnings by industry sub-sector and highest level of education",
     "directionSector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">-0.3%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">-0.6%<\/b>",
       "deps": [
 
       ]
@@ -30,7 +30,7 @@
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£20,008.88<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£21,000<\/b>",
       "deps": [
 
       ]
@@ -42,7 +42,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">40.6%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.5%<\/b>",
       "deps": [
 
       ]
