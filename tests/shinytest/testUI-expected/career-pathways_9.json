@@ -20,15 +20,15 @@
       ]
     },
     "box4title": "Post-16 qualification pathways starting at  level 2",
-    "box7title": "14.5% of employees have a highest qualification at level 2",
+    "box7title": "8.1% of employees have a highest qualification at level 2",
     "directionSector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">-0.2%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual decline in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
@@ -40,7 +40,7 @@
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,988.19<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,000<\/b>",
       "deps": [
 
       ]
@@ -58,7 +58,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">50.1%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.3%<\/b>",
       "deps": [
 
       ]
@@ -75,16 +75,16 @@
               0.9
             ],
             "base": [
-              0.704926145728678,
-              0.856601920677349,
-              1.54515890451148,
-              2.11380211589858
+              0.089,
+              0.293,
+              0.334,
+              0.889
             ],
             "x": [
-              0.151675774948671,
-              0.688556983834133,
-              0.568643211387098,
-              0.890340686310083
+              0.204,
+              0.041,
+              0.555,
+              0.111
             ],
             "y": [
               1,
@@ -114,8 +114,8 @@
           {
             "orientation": "h",
             "width": 0.9,
-            "base": 0.560328992782161,
-            "x": 0.144597152946517,
+            "base": 0.008,
+            "x": 0.081,
             "y": 1,
             "text": "At level 2",
             "type": "bar",
@@ -140,7 +140,7 @@
             "orientation": "h",
             "width": 0.9,
             "base": 0,
-            "x": 0.560328992782161,
+            "x": 0.008,
             "y": 1,
             "text": "Lower than level 2",
             "type": "bar",
@@ -184,28 +184,31 @@
             "type": "linear",
             "autorange": false,
             "range": [
-              -0.150207140110433,
-              3.1543499423191
+              -0.05,
+              1.05
             ],
             "tickmode": "array",
             "ticktext": [
               "0%",
-              "100%",
-              "200%",
-              "300%"
+              "25%",
+              "50%",
+              "75%",
+              "100%"
             ],
             "tickvals": [
               0,
-              1,
-              2,
-              3
+              0.25,
+              0.5,
+              0.75,
+              1
             ],
             "categoryorder": "array",
             "categoryarray": [
               "0%",
-              "100%",
-              "200%",
-              "300%"
+              "25%",
+              "50%",
+              "75%",
+              "100%"
             ],
             "nticks": null,
             "ticks": "outside",

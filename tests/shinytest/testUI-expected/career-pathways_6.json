@@ -20,13 +20,13 @@
       ]
     },
     "directionSector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.2%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">-0.2%<\/b>",
       "deps": [
 
       ]
     },
     "kpiChange": {
-      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual growth in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
+      "html": "<b style=\"font-size: 12px; color: #ffffff\">Projected annual decline in employment in agriculture in the North East up to 2027 (Working Futures)<\/b>",
       "deps": [
 
       ]
@@ -38,7 +38,7 @@
       ]
     },
     "median_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,988.19<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">£19,000<\/b>",
       "deps": [
 
       ]
@@ -50,7 +50,7 @@
       ]
     },
     "perc_in_sector": {
-      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">50.1%<\/b>",
+      "html": "<b style=\"font-size:36px; text-align:center; color:\t#ffffff\">0.3%<\/b>",
       "deps": [
 
       ]
