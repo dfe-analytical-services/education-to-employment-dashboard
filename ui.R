@@ -40,6 +40,7 @@ fluidPage(
   ),
   navbarPage("",
     id = "navbar",
+    tags$head(includeHTML(("google-analytics.html"))),
 
     # Homepage tab ==========================================================
     tabPanel(
