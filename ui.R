@@ -51,7 +51,7 @@ fluidPage(
         "using our <a href='https://forms.office.com/e/ZjNxf10uuN'>user-testing volunteer form</a>.</b><br>"
       )
     ),
-    
+
     # Homepage tab ==========================================================
     tabPanel(
       value = "homepage", title = "Homepage",
