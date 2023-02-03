@@ -4,7 +4,6 @@ defaultW <- getOption("warn")
 options(warn = -1)
 
 server <- function(input, output, session) {
-
   # Close session after closing app --------------------------
 
   session$onSessionEnded(stopApp) # commenting out to test using lighthouse
@@ -37,16 +36,17 @@ server <- function(input, output, session) {
       selection_subs() %>%
         ggplot(aes(
           x = Subsector,
-          text = paste(paste0("Percentage: ", formatC(perc_subs * 100,
-            digits = 1,
-            format = "f"
-          ), "%"),
-          paste0("Volume: ", formatC(number_students_subs,
-            digits = 0,
-            format = "f",
-            big.mark = ","
-          )),
-          sep = "\n"
+          text = paste(
+            paste0("Percentage: ", formatC(perc_subs * 100,
+              digits = 1,
+              format = "f"
+            ), "%"),
+            paste0("Volume: ", formatC(number_students_subs,
+              digits = 0,
+              format = "f",
+              big.mark = ","
+            )),
+            sep = "\n"
           )
         )) +
         geom_col(aes(y = perc_subs),
@@ -74,16 +74,17 @@ server <- function(input, output, session) {
       selection_subs() %>%
         ggplot(aes(
           x = Subsector,
-          text = paste(paste0("Percentage: ", formatC(perc_subs * 100,
-            digits = 1,
-            format = "f"
-          ), "%"),
-          paste0("Volume: ", formatC(number_students_subs,
-            digits = 0,
-            format = "f",
-            big.mark = ","
-          )),
-          sep = "\n"
+          text = paste(
+            paste0("Percentage: ", formatC(perc_subs * 100,
+              digits = 1,
+              format = "f"
+            ), "%"),
+            paste0("Volume: ", formatC(number_students_subs,
+              digits = 0,
+              format = "f",
+              big.mark = ","
+            )),
+            sep = "\n"
           )
         )) +
         geom_count(aes(y = median_income),
@@ -108,12 +109,13 @@ server <- function(input, output, session) {
           colour = "#0b0c0c",
           check_overlap = TRUE
         ) +
-        geom_segment(aes(
-          x = Subsector, xend = Subsector,
-          y = 0,
-          yend = median_income
-        ),
-        size = 0.5, color = "#4c2c92"
+        geom_segment(
+          aes(
+            x = Subsector, xend = Subsector,
+            y = 0,
+            yend = median_income
+          ),
+          size = 0.5, color = "#4c2c92"
         ) +
         labs(
           y = "", x = "",
@@ -158,16 +160,17 @@ server <- function(input, output, session) {
       selection() %>%
         ggplot(aes(
           x = Level,
-          text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
-            digits = 1,
-            format = "f"
-          ), "%"),
-          paste0("Volume: ", formatC(number_students_hq,
-            digits = 0,
-            format = "f",
-            big.mark = ","
-          )),
-          sep = "\n"
+          text = paste(
+            paste0("Percentage: ", formatC(perc_hq * 100,
+              digits = 1,
+              format = "f"
+            ), "%"),
+            paste0("Volume: ", formatC(number_students_hq,
+              digits = 0,
+              format = "f",
+              big.mark = ","
+            )),
+            sep = "\n"
           )
         )) +
         geom_bar(aes(y = perc_hq),
@@ -197,16 +200,17 @@ server <- function(input, output, session) {
       selection() %>%
         ggplot(aes(
           x = Level,
-          text = paste(paste0("Percentage: ", formatC(perc_hq * 100,
-            digits = 1,
-            format = "f"
-          ), "%"),
-          paste0("Volume: ", formatC(number_students_hq,
-            digits = 0,
-            format = "f",
-            big.mark = ","
-          )),
-          sep = "\n"
+          text = paste(
+            paste0("Percentage: ", formatC(perc_hq * 100,
+              digits = 1,
+              format = "f"
+            ), "%"),
+            paste0("Volume: ", formatC(number_students_hq,
+              digits = 0,
+              format = "f",
+              big.mark = ","
+            )),
+            sep = "\n"
           )
         )) +
         geom_point(aes(y = median_income),
@@ -232,14 +236,15 @@ server <- function(input, output, session) {
           size = 3,
           check_overlap = TRUE
         ) +
-        geom_segment(aes(
-          x = Level,
-          xend = Level,
-          y = 0,
-          yend = median_income
-        ),
-        size = 0.5,
-        color = "#4c2c92"
+        geom_segment(
+          aes(
+            x = Level,
+            xend = Level,
+            y = 0,
+            yend = median_income
+          ),
+          size = 0.5,
+          color = "#4c2c92"
         ) +
         labs(
           y = "", x = "",
@@ -613,18 +618,20 @@ server <- function(input, output, session) {
   # page titles
   output$page1title <- renderUI({
     if (input$region %in% c("England", "Yorkshire and The Humber")) {
-      tags$b(paste0(
-        input$sector, " in ", input$region,
-        ": overview of employee education levels and qualification choices"
-      ),
-      style = "font-size: 24px;"
+      tags$b(
+        paste0(
+          input$sector, " in ", input$region,
+          ": overview of employee education levels and qualification choices"
+        ),
+        style = "font-size: 24px;"
       )
     } else {
-      tags$b(paste0(
-        input$sector, " in the ", input$region,
-        ": overview of employee education levels and qualification choices"
-      ),
-      style = "font-size: 24px;"
+      tags$b(
+        paste0(
+          input$sector, " in the ", input$region,
+          ": overview of employee education levels and qualification choices"
+        ),
+        style = "font-size: 24px;"
       )
     }
   })
